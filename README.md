@@ -30,6 +30,7 @@ Precision ad popup blocker engineered exclusively for Olympus Staff (`olympustaf
 - [Comparison](#comparison)
 - [Target Scope](#target-scope)
 - [Features](#features)
+- [Video Tutorial](#video-tutorial)
 - [Installation](#installation)
 - [Automatic Background Updates](#automatic-background-updates)
 - [Architecture](#architecture)
@@ -91,6 +92,17 @@ All other legitimate browser popups, reader tools, and navigation links execute 
 
 ---
 
+<a id="video-tutorial"></a>
+## Video Tutorial
+
+Step-by-step walkthrough demonstrating installation on **PC** (Google Chrome / Chromium) and **Mobile** (Kiwi Browser for Android):
+
+<video src="assets/videos/TeamX_AdBlock_Tutorial_EN.mp4" controls="controls" width="100%">
+  <p>Your browser does not support embedded HTML5 video. You can <a href="assets/videos/TeamX_AdBlock_Tutorial_EN.mp4">view or download the video directly</a>.</p>
+</video>
+
+---
+
 <a id="installation"></a>
 ## Installation
 
@@ -98,6 +110,13 @@ All other legitimate browser popups, reader tools, and navigation links execute 
 1. Download [`TeamX-AdBlock.crx`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx) from Releases.
 2. Open `chrome://extensions/` and enable **Developer mode**.
 3. Drag and drop the `.crx` file onto the page to install.
+
+### For Android (Kiwi Browser)
+1. Install **Kiwi Browser** from the [Google Play Store](https://play.google.com/store/apps/details?id=com.kiwibrowser.browser).
+2. Download [`TeamX-AdBlock.crx`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx).
+3. Open `kiwi://extensions` in the address bar.
+4. Enable **Developer mode** toggle in the top-right.
+5. Tap **+(from .zip/.crx/.user.js)**, select the downloaded `.crx` file, and confirm.
 
 ### For Mozilla Firefox
 1. Download [`TeamX-AdBlock.xpi`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.xpi) from Releases.
@@ -147,10 +166,13 @@ teamx-adblock/
 │   └── workflows/
 │       └── release.yml          # Automated CI/CD release & CRX builder
 ├── assets/
-│   └── logo/
-│       ├── teamx-adblock-banner.png     # English banner asset
-│       ├── teamx-adblock-banner-ar.png  # Arabic banner asset
-│       └── teamx-adblock-logo.png       # Master brand logo
+│   ├── logo/
+│   │   ├── teamx-adblock-banner.png     # English banner asset
+│   │   ├── teamx-adblock-banner-ar.png  # Arabic banner asset
+│   │   └── teamx-adblock-logo.png       # Master brand logo
+│   └── videos/
+│       ├── TeamX_AdBlock_Tutorial_AR.mp4   # Arabic tutorial video
+│       └── TeamX_AdBlock_Tutorial_EN.mp4   # English tutorial video
 ├── docs/
 │   ├── ARCHITECTURE.md          # Technical design & hook lifecycle
 │   ├── ARCHITECTURE_AR.md       # Arabic technical design

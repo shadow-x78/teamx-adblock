@@ -20,7 +20,9 @@
 ## Table of Contents
 
 - [Overview](#overview)
+- [Video Setup Walkthrough](#video-walkthrough)
 - [Chromium Browsers (Chrome, Brave, Edge, Opera)](#chromium-browsers)
+- [Android Devices (Kiwi Browser)](#android-kiwi)
 - [Mozilla Firefox](#mozilla-firefox)
 - [Load Unpacked Source](#load-unpacked)
 - [Browser Compatibility Matrix](#browser-compatibility)
@@ -31,6 +33,15 @@
 ## Overview
 
 You can install **TeamX - AdBlock** across all modern Chromium and Gecko (Firefox) browsers using pre-packaged extension binaries or from source.
+
+---
+
+<a id="video-walkthrough"></a>
+## Video Setup Walkthrough
+
+<video src="../assets/videos/TeamX_AdBlock_Tutorial_EN.mp4" controls="controls" width="100%">
+  <p>Your browser does not support embedded HTML5 video. You can <a href="../assets/videos/TeamX_AdBlock_Tutorial_EN.mp4">view or download the video directly</a>.</p>
+</video>
 
 ---
 
@@ -45,6 +56,20 @@ You can install **TeamX - AdBlock** across all modern Chromium and Gecko (Firefo
 
 > [!NOTE]
 > CRX installations receive automatic silent background updates directly from GitHub.
+
+---
+
+<a id="android-kiwi"></a>
+## Android Devices (Kiwi Browser)
+
+To block popups on Android mobile devices:
+
+1. Download and install **Kiwi Browser** from the [Google Play Store](https://play.google.com/store/apps/details?id=com.kiwibrowser.browser).
+2. Download [`TeamX-AdBlock.crx`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx) to your device.
+3. Open Kiwi Browser and navigate to `kiwi://extensions`.
+4. Turn on the **Developer mode** toggle switch.
+5. Tap **+(from .zip/.crx/.user.js)** button.
+6. Select `TeamX-AdBlock.crx` from your Downloads folder to activate.
 
 ---
 

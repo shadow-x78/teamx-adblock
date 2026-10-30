@@ -30,6 +30,7 @@
 - [المقارنة](#المقارنة)
 - [نطاق العمل](#نطاق-العمل)
 - [المميزات](#المميزات)
+- [فيديو الشرح والتثبيت](#فيديو-الشرح-والتثبيت)
 - [طريقة التثبيت](#طريقة-التثبيت)
 - [التحديث التلقائي في الخلفية](#التحديث-التلقائي-في-الخلفية)
 - [البنية البرمجية](#البنية-البرمجية)
@@ -91,16 +92,34 @@
 
 ---
 
+<a id="فيديو-الشرح-والتثبيت"></a>
+## فيديو الشرح والتثبيت
+
+دليل مرئي عملي يوضح خطوات التثبيت بالتفصيل على **الكمبيوتر** (متصفح كروم / كروميوم) و**الهاتف** (عبر متصفح Kiwi الرسمي):
+
+<video src="assets/videos/TeamX_AdBlock_Tutorial_AR.mp4" controls="controls" width="100%">
+  <p>متصفحك لا يدعم تشغيل الفيديو المباشر. يمكنك <a href="assets/videos/TeamX_AdBlock_Tutorial_AR.mp4">مشاهدة أو تحميل الفيديو مباشرة</a>.</p>
+</video>
+
+---
+
 <a id="طريقة-التثبيت"></a>
 ## طريقة التثبيت
 
-### لمتصفحات كروم، بريف، وإيدج
+### لمتصفحات كروم، بريف، وإيدج (الكمبيوتر)
 1. حمّل ملف [`TeamX-AdBlock.crx`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx) من صفحة الإصدارات.
 2. افتح `chrome://extensions/` وفعّل **وضع المطور**.
 3. اسحب ملف `.crx` وأفلته داخل الصفحة لتثبيته فوراً.
 
+### للهواتف بنظام أندرويد (متصفح Kiwi)
+1. ثبّت **متصفح Kiwi** من [متجر Google Play](https://play.google.com/store/apps/details?id=com.kiwibrowser.browser).
+2. حمّل ملف [`TeamX-AdBlock.crx`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx).
+3. افتح الرابط `kiwi://extensions` في شريط العنوان.
+4. فعّل زر **وضع المطور**.
+5. اضغط على **+(from .zip/.crx/.user.js)** واختر ملف `.crx` الذي قمت بتحميله لتثبيته فوراً.
+
 ### لمتصفح موزيلا فايرفوكس
-1. حمّل ملف [`TeamX-AdBlock.xpi`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.xpi) من صفحة الإصدارات.
+1. حمّل ملف [`TeamX-AdBlock.xpi`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.xpi) from Releases.
 2. افتح الرابط `about:debugging#/runtime/this-firefox`.
 3. اضغط على **Load Temporary Add-on...** واختر ملف `.xpi` (أو `manifest.json`).
 
@@ -144,10 +163,13 @@ teamx-adblock/
 │   └── workflows/
 │       └── release.yml          # سير عمل GitHub Actions لحزم وتجهيز الإصدارات
 ├── assets/
-│   └── logo/
-│       ├── teamx-adblock-banner.png     # بانر التوثيق باللغة الإنجليزية
-│       ├── teamx-adblock-banner-ar.png  # بانر التوثيق باللغة العربية
-│       └── teamx-adblock-logo.png       # الشعار الأساسي فائق الدقة
+│   ├── logo/
+│   │   ├── teamx-adblock-banner.png     # بانر التوثيق باللغة الإنجليزية
+│   │   ├── teamx-adblock-banner-ar.png  # بانر التوثيق باللغة العربية
+│   │   └── teamx-adblock-logo.png       # الشعار الأساسي فائق الدقة
+│   └── videos/
+│       ├── TeamX_AdBlock_Tutorial_AR.mp4   # فيديو الشرح باللغة العربية
+│       └── TeamX_AdBlock_Tutorial_EN.mp4   # فيديو الشرح باللغة الإنجليزية
 ├── docs/
 │   ├── ARCHITECTURE.md          # المعمارية التقنية ودورة حياة الاعتراض
 │   ├── ARCHITECTURE_AR.md       # المعمارية التقنية باللغة العربية
