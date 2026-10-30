@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TeamX - AdBlock",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Prevent specific unwanted ad popups",
   "author": "shadow-x78",
   "homepage_url": "https://github.com/shadow-x78/teamx-adblock",

@@ -8,7 +8,7 @@
 
 مانع النوافذ المنبثقة فائق السرعة المخصص لموقع أوليمبوس ستاف (`olympustaff.com`).
 
-[![Version](https://img.shields.io/badge/version-1.1.0-2563eb?style=for-the-badge&logo=semver)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.2.0-2563eb?style=for-the-badge&logo=semver)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=for-the-badge)](LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=for-the-badge&logo=googlechrome)
 ![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Brave%20%7C%20Edge-9333ea?style=for-the-badge&logo=googlechrome)
@@ -158,8 +158,11 @@ teamx-adblock/
 │       └── teamx-adblock-logo.png       # الشعار الأساسي فائق الدقة
 ├── docs/
 │   ├── ARCHITECTURE.md          # المعمارية التقنية ودورة حياة الاعتراض
+│   ├── ARCHITECTURE_AR.md       # المعمارية التقنية باللغة العربية
 │   ├── AUTO_UPDATE.md           # بروتوكول Omaha والتحديث الصامت
-│   └── INSTALLATION.md          # خطوات التثبيت المفصلة لمختلف المتصفحات
+│   ├── AUTO_UPDATE_AR.md        # دليل التحديث التلقائي بالعربية
+│   ├── INSTALLATION.md          # خطوات التثبيت المفصلة لمختلف المتصفحات
+│   └── INSTALLATION_AR.md       # دليل التثبيت باللغة العربية
 ├── icons/
 │   ├── icon16.png               # حجم شريط المتصفح والـ Favicon
 │   ├── icon32.png               # شاشات العرض عالية الدقة Retina
@@ -185,9 +188,9 @@ teamx-adblock/
 
 | المستند | الوصف |
 | :--- | :--- |
-| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | شرح بنية الكود وسياق MAIN world واعتراض دوال window.open |
-| [AUTO_UPDATE.md](docs/AUTO_UPDATE.md) | شرح بروتوكول التحديث لكروم ومفاتيح التوقيع الرقمي وإطلاق الإصدارات |
-| [INSTALLATION.md](docs/INSTALLATION.md) | خطوات التثبيت المفصلة لمختلف متصفحات Chromium |
+| [ARCHITECTURE.md](docs/ARCHITECTURE.md) ([العربية](docs/ARCHITECTURE_AR.md)) | شرح بنية الكود وسياق MAIN world واعتراض دوال window.open |
+| [AUTO_UPDATE.md](docs/AUTO_UPDATE.md) ([العربية](docs/AUTO_UPDATE_AR.md)) | شرح بروتوكول التحديث لكروم ومفاتيح التوقيع الرقمي وإطلاق الإصدارات |
+| [INSTALLATION.md](docs/INSTALLATION.md) ([العربية](docs/INSTALLATION_AR.md)) | خطوات التثبيت المفصلة لمختلف متصفحات Chromium |
 
 ---
 
