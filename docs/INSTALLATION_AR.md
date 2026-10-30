@@ -5,7 +5,7 @@
 [![Version](https://img.shields.io/badge/version-1.2.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](../LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=flat-square&logo=googlechrome)
-![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Chromium-9333ea?style=flat-square&logo=googlechrome)
+![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Firefox%20%7C%20Brave%20%7C%20Edge-9333ea?style=flat-square&logo=googlechrome)
 
 </div>
 
@@ -20,62 +20,76 @@
 ## جدول المحتويات
 
 - [نظرة عامة](#نظرة-عامة)
-- [الطريقة الأولى: التثبيت عبر ملف CRX](#طريقة-crx)
-- [الطريقة الثانية: تحميل الكود المصدري](#طريقة-المصدر)
-- [توافق المتصفحات](#توافق-المتصفحات)
+- [متصفحات كروميوم (كروم، بريف، إيدج، أوبرا)](#متصفحات-كروميوم)
+- [متصفح موزيلا فايرفوكس (Mozilla Firefox)](#موزيلا-فايرفوكس)
+- [تحميل الكود المصدري](#تحميل-المصدر)
+- [مصفوفة توافق المتصفحات](#توافق-المتصفحات)
 
 ---
 
 <a id="نظرة-عامة"></a>
 ## نظرة عامة
 
-يمكنك تثبيت **TeamX - AdBlock** إما باستخدام ملف CRX الجاهز (وهو الخيار الموصى به لدعم التحديثات التلقائية في الخلفية) أو كإضافة غير مجهزة للمطورين.
+يمكنك تثبيت **TeamX - AdBlock** بسهولة على كافة المتصفحات الحديثة المبنية على محرك كروميوم أو محرك جيكو (فايرفوكس) سواء عبر ملفات التثبيت الجاهزة أو عبر الكود المصدري.
 
 ---
 
-<a id="طريقة-crx"></a>
-## الطريقة الأولى: التثبيت عبر ملف CRX (موصى بها للمستخدمين)
+<a id="متصفحات-كروميوم"></a>
+## متصفحات كروميوم (كروم، بريف، إيدج، أوبرا)
 
-التثبيت بواسطة ملف `.crx` يربط الإضافة بقناة التحديثات التلقائية:
-
-1. حمّل أحدث إصدار من ملف [`TeamX-AdBlock.crx`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx) من صفحة [الإصدارات](https://github.com/shadow-x78/teamx-adblock/releases).
-2. افتح متصفح كروم (أو بريف، إيدج، كروميوم) وانتقل إلى:
+1. حمّل ملف [`TeamX-AdBlock.crx`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx) من صفحة [الإصدارات](https://github.com/shadow-x78/teamx-adblock/releases).
+2. افتح صفحة الإضافات في متصفحك:
    ```text
    chrome://extensions/
    ```
-3. فعّل **وضع المطور (Developer mode)** من الزر في أعلى يمين الصفحة.
-4. اسحب ملف `TeamX-AdBlock.crx` وأفلته داخل الصفحة.
-5. اضغط على **Add extension** عند ظهور نافذة التأكيد.
+3. فعّل **وضع المطور (Developer mode)** في أعلى الصفحة.
+4. اسحب ملف `TeamX-AdBlock.crx` وأفلته داخل الصفحة، ثم اضغط على **Add extension**.
 
 > [!NOTE]
-> بمجرد تثبيتها بهذه الطريقة، سيفحص المتصفح دورياً ويثبت أي إصدارات جديدة تصدرها لاحقاً بشكل تلقائي وصامت!
+> النسخ المثبتة عبر ملف `.crx` تتلقى التحديثات الصامتة تلقائياً في الخلفية.
 
 ---
 
-<a id="طريقة-المصدر"></a>
-## الطريقة الثانية: تحميل الكود المصدري (للمطورين)
+<a id="موزيلا-فايرفوكس"></a>
+## متصفح موزيلا فايرفوكس (Mozilla Firefox)
 
-1. انسخ المستودع عبر الطرفية:
-   ```bash
-   git clone https://github.com/shadow-x78/teamx-adblock.git
+### الخيار الأول: التثبيت السريع كإضافة مؤقتة (لأي إصدار فايرفوكس)
+1. حمّل ملف [`TeamX-AdBlock.xpi`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.xpi) أو انسخ المستودع.
+2. في شريط عنوان فايرفوكس، اكتب الرابط التالي:
+   ```text
+   about:debugging#/runtime/this-firefox
    ```
-2. افتح `chrome://extensions/` وتأكد من تفعيل **وضع المطور**.
-3. اضغط على زر **Load unpacked**.
-4. حدد مجلد `teamx-adblock` الذي نسخته.
-5. الإضافة أصبحت نشطة وتعمل الآن.
+3. اضغط على زر **Load Temporary Add-on...** (تحميل إضافة مؤقتة).
+4. حدد ملف `manifest.json` من مجلد الإضافة (أو حدد ملف `.xpi` المحمّل).
+5. ستعمل الإضافة فوراً وتبدأ بحجب الإعلانات على الموقع.
+
+### الخيار الثاني: التثبيت الدائم (Firefox Developer Edition / Nightly)
+1. افتح صفحة `about:config` وعطّل قيد التوقيع بجعل `xpinstall.signatures.required` بقيمة `false`.
+2. اسحب ملف `TeamX-AdBlock.xpi` وأفلته داخل المتصفح واضغط **Add**.
+
+---
+
+<a id="تحميل-المصدر"></a>
+## تحميل الكود المصدري (للمطورين)
+
+```bash
+git clone https://github.com/shadow-x78/teamx-adblock.git
+```
+- **على كروم / بريف / إيدج:** من صفحة `chrome://extensions/` اضغط **Load unpacked** واختر مجلد `teamx-adblock`.
+- **على فايرفوكس:** من صفحة `about:debugging#/runtime/this-firefox` اضغط **Load Temporary Add-on** واختر `teamx-adblock/manifest.json`.
 
 ---
 
 <a id="توافق-المتصفحات"></a>
-## توافق المتصفحات
+## مصفوفة توافق المتصفحات
 
-| المتصفح | مدعوم | التحديث التلقائي |
-| :--- | :---: | :---: |
-| **Google Chrome** | ✅ | ✅ مدعوم عبر بروتوكول Omaha |
-| **Brave Browser** | ✅ | ✅ مدعوم |
-| **Microsoft Edge** | ✅ | ✅ مدعوم |
-| **Chromium** | ✅ | ✅ مدعوم |
-| **Vivaldi** | ✅ | ✅ مدعوم |
+| المتصفح | المحرك المدعوم | التحديث التلقائي | صيغة الحزمة |
+| :--- | :---: | :---: | :---: |
+| **Google Chrome** | Chromium 111+ | ✅ بروتوكول Omaha | `.crx` |
+| **Mozilla Firefox** | Gecko 109+ | ✅ مدعوم | `.xpi` |
+| **Brave Browser** | Chromium 111+ | ✅ مدعوم | `.crx` |
+| **Microsoft Edge** | Chromium 111+ | ✅ مدعوم | `.crx` |
+| **Opera / Vivaldi** | Chromium 111+ | ✅ مدعوم | `.crx` |
 
 ---
 

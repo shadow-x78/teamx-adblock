@@ -11,7 +11,7 @@
 [![Version](https://img.shields.io/badge/version-1.2.0-2563eb?style=for-the-badge&logo=semver)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=for-the-badge)](LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=for-the-badge&logo=googlechrome)
-![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Brave%20%7C%20Edge-9333ea?style=for-the-badge&logo=googlechrome)
+[![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Firefox%20%7C%20Brave%20%7C%20Edge-9333ea?style=for-the-badge&logo=googlechrome)](https://github.com/shadow-x78/teamx-adblock)
 [![Auto--Update](https://img.shields.io/badge/auto--update-enabled-059669?style=for-the-badge&logo=githubactions)](docs/AUTO_UPDATE.md)
 
 </div>
@@ -58,6 +58,7 @@
 | اعتراض الأكواد المضمنة | ❌ تفلت السكربتات السريعة | ⚠️ يعتمد على التوقيت | ✅ **اعتراض مضمون 100%** |
 | استهلاك الذاكرة | ~100-250 ميجابايت | ~30-60 ميجابايت | ✅ **أقل من 1 ميجابايت (معدوم)** |
 | سرعة واستجابة التصفح | تباطؤ ملحوظ في القارئ | تأثير متوسط | ✅ **سرعة أصلية فورية بدون أي تأخير** |
+| دعم المتصفحات | متفاوت | يتطلب إضافات إضافية | ✅ **كروم وفايرفوكس بشكل شامل** |
 | خصوصية النطاق | ❌ فلاتر عامة لكل المواقع | ⚠️ يتطلب إعداد يدوي | ✅ **موجّه ومحصور بالموقع فقط** |
 | التحديث التلقائي الصامت | ⚠️ متجر الإضافات | ⚠️ تحديثات يدوية | ✅ **بروتوكول Omaha الرسمي** |
 
@@ -83,6 +84,7 @@
 
 - ⚡ **تنفيذ فوري:** تبدأ فوراً عند `document_start` وقبل اكتمال تحميل عناصر الصفحة.
 - 🛡️ **اعتراض من السياق الأصلي:** تعمل في `MAIN World` للوصول المباشر إلى السياق البرمجي للصفحة واعتراض الأوامر المضمنة.
+- 🦊 **دعم شامل لفايرفوكس:** توافق كامل مع موزيلا فايرفوكس (Gecko 109+) ومتصفحات كروميوم.
 - 🔄 **تحديثات تلقائية بدون تدخل المستخدم:** تدعم بروتوكول التحديث الرسمي لكروم (Omaha Protocol) لسحب التحديثات من GitHub وتثبيتها تلقائياً في الخلفية.
 - 🎨 **هوية بصرية أصلية:** أيقونات وشعار فيكتور مستوحى مباشرة من درع TeamX الرسمي لموقع Olympus Staff.
 - 🪶 **صفر اعتماديات:** كود جافاسكريبت نقي ونظيف بدون أي مكتبات خارجية.
@@ -92,27 +94,17 @@
 <a id="طريقة-التثبيت"></a>
 ## طريقة التثبيت
 
-### الطريقة الأولى: عبر ملف `.crx` المجهز (موصى بها للمستخدمين)
+### لمتصفحات كروم، بريف، وإيدج
+1. حمّل ملف [`TeamX-AdBlock.crx`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx) من صفحة الإصدارات.
+2. افتح `chrome://extensions/` وفعّل **وضع المطور**.
+3. اسحب ملف `.crx` وأفلته داخل الصفحة لتثبيته فوراً.
 
-1. حمّل أحدث إصدار من ملف [`TeamX-AdBlock.crx`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx).
-2. افتح صفحة الإضافات في متصفحك:
-   ```text
-   chrome://extensions/
-   ```
-3. فعّل **وضع المطور (Developer mode)** في أعلى الصفحة.
-4. اسحب ملف `TeamX-AdBlock.crx` وأفلته داخل الصفحة لتثبيته.
+### لمتصفح موزيلا فايرفوكس
+1. حمّل ملف [`TeamX-AdBlock.xpi`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.xpi) من صفحة الإصدارات.
+2. افتح الرابط `about:debugging#/runtime/this-firefox`.
+3. اضغط على **Load Temporary Add-on...** واختر ملف `.xpi` (أو `manifest.json`).
 
-> [!TIP]
-> عند التثبيت عبر ملف `.crx`، ستتلقى الإضافة **كافة التحديثات القادمة تلقائياً في الخلفية** مباشرة من هذا المستودع دون الحاجة لإعادة التثبيت يدوياً!
-
-### الطريقة الثانية: تحميل المجلد البرمجي (للمطورين)
-
-```bash
-git clone https://github.com/shadow-x78/teamx-adblock.git
-```
-1. افتح `chrome://extensions/`.
-2. فعّل **وضع المطور**.
-3. اضغط على **Load unpacked** واختر المجلد المنسوخ.
+للاطلاع على الخطوات التفصيلية، راجع [دليل التثبيت الشامل](docs/INSTALLATION_AR.md).
 
 ---
 
@@ -124,7 +116,7 @@ git clone https://github.com/shadow-x78/teamx-adblock.git
 - يقوم متصفح كروم دورياً بفحص المستودع في الخلفية للتأكد من وجود إصدارات جديدة.
 - عند نشر إصدار جديد، يتم سحب التحديث والتحقق من التوقيع الرقمي وتحديث الإضافة صامتاً دون أن يطلب المتصفح من المستخدم فعل أي شيء.
 
-للاطلاع على التفاصيل البرمجية، راجع [دليل التحديث التلقائي](docs/AUTO_UPDATE.md).
+للاطلاع على التفاصيل البرمجية، راجع [دليل التحديث التلقائي](docs/AUTO_UPDATE_AR.md).
 
 ---
 

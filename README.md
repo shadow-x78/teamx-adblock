@@ -11,7 +11,7 @@ Precision ad popup blocker engineered exclusively for Olympus Staff (`olympustaf
 [![Version](https://img.shields.io/badge/version-1.2.0-2563eb?style=for-the-badge&logo=semver)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=for-the-badge)](LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=for-the-badge&logo=googlechrome)
-![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Brave%20%7C%20Edge-9333ea?style=for-the-badge&logo=googlechrome)
+[![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Firefox%20%7C%20Brave%20%7C%20Edge-9333ea?style=for-the-badge&logo=googlechrome)](https://github.com/shadow-x78/teamx-adblock)
 [![Auto--Update](https://img.shields.io/badge/auto--update-enabled-059669?style=for-the-badge&logo=githubactions)](docs/AUTO_UPDATE.md)
 
 </div>
@@ -58,6 +58,7 @@ Unlike generic ad blockers that inject heavy DOM filter lists and slow down page
 | Intercept inline scripts | ❌ Misses fast triggers | ⚠️ Timing dependent | ✅ **100% Guaranteed hook** |
 | Memory overhead | ~100-250 MB | ~30-60 MB | ✅ **< 1 MB (Zero overhead)** |
 | Site responsiveness | Slows reader/DOM | Moderate impact | ✅ **Native instantaneous speed** |
+| Browser support | Varies | Varies | ✅ **Chrome & Firefox Universal** |
 | Scoped strictly to site | ❌ Global rules | ⚠️ User-configured | ✅ **Domain-exclusive** |
 | Automatic background updates | ⚠️ Extension store | ⚠️ Manual scripts | ✅ **Native Omaha protocol** |
 
@@ -83,6 +84,7 @@ All other legitimate browser popups, reader tools, and navigation links execute 
 
 - ⚡ **Instant Execution:** Injected at `document_start` before page scripts initialize.
 - 🛡️ **Native Interception:** Executes in the page's `MAIN` execution context to bypass inline evasion tricks.
+- 🦊 **Universal Compatibility:** Full native support for Chromium (Chrome, Brave, Edge) and Gecko (Mozilla Firefox 109+).
 - 🔄 **Fully Automated Updates:** Built-in Omaha protocol support enables automatic silent background updates directly from GitHub.
 - 🎨 **Authentic Brand Iconography:** Custom vector-crafted brand shield designed around the official Olympus Staff TeamX identity.
 - 🪶 **Zero Dependencies:** Pure, clean, lightweight vanilla JavaScript.
@@ -92,26 +94,17 @@ All other legitimate browser popups, reader tools, and navigation links execute 
 <a id="installation"></a>
 ## Installation
 
-### Option 1: Pre-packaged `.crx` (Recommended)
+### For Google Chrome, Brave, and Edge
+1. Download [`TeamX-AdBlock.crx`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx) from Releases.
+2. Open `chrome://extensions/` and enable **Developer mode**.
+3. Drag and drop the `.crx` file onto the page to install.
 
-1. Download the latest [`TeamX-AdBlock.crx`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx) from Releases.
-2. Open `chrome://extensions/` in your browser.
-3. Toggle **Developer mode** in the top-right corner.
-4. Drag and drop the `.crx` file onto the extensions page.
-5. Confirm installation.
+### For Mozilla Firefox
+1. Download [`TeamX-AdBlock.xpi`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.xpi) from Releases.
+2. Navigate to `about:debugging#/runtime/this-firefox`.
+3. Click **Load Temporary Add-on...** and select the `.xpi` file (or `manifest.json`).
 
-> [!TIP]
-> Extensions installed via `.crx` receive **automatic background updates** directly from this repository without requiring any manual action!
-
-### Option 2: Load Unpacked Source (For Developers)
-
-```bash
-git clone https://github.com/shadow-x78/teamx-adblock.git
-```
-
-1. Open `chrome://extensions/`.
-2. Enable **Developer mode**.
-3. Click **Load unpacked** and select the cloned directory.
+Read detailed steps in the [Installation Guide](docs/INSTALLATION.md).
 
 ---
 
