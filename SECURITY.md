@@ -1,14 +1,73 @@
-# Security Policy
+<div align="center">
 
+# Security Policy - TeamX - Ads Block
+
+[![Version](https://img.shields.io/badge/version-1.1.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
+[![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](LICENSE)
+![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=flat-square&logo=googlechrome)
+![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Chromium-9333ea?style=flat-square&logo=googlechrome)
+
+</div>
+
+---
+
+## Table of Contents
+
+- [Supported Versions](#supported-versions)
+- [Reporting a Vulnerability](#reporting)
+- [Disclosure Policy](#disclosure)
+- [Trust Boundaries](#trust-boundaries)
+
+---
+
+<a id="supported-versions"></a>
 ## Supported Versions
 
-| Version | Supported          |
-| ------- | ------------------ |
+| Version | Supported |
+|---------|-----------|
 | 1.1.x   | :white_check_mark: |
-| < 1.1.0 | :x:                |
+| < 1.1.0 | :x: |
 
+---
+
+<a id="reporting"></a>
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability or bypass in **TeamX - Ads Block**, please report it responsibly:
-- Email or open a private security advisory on GitHub: [Security Advisories](https://github.com/shadow-x78/TeamX-AdsBlock/security/advisories)
-- Please do not disclose vulnerabilities publicly until a patch has been published.
+If you discover a security vulnerability or ad popup interception bypass in **TeamX - Ads Block**, please report it responsibly:
+
+- Open a private security advisory through GitHub: [Security Advisories](https://github.com/shadow-x78/teamx-adsblock/security/advisories)
+- Or contact the maintainer directly through GitHub.
+
+Please include:
+1. Steps to reproduce the bypass on `olympustaff.com`.
+2. Browser version and environment details.
+3. Any scripts or network payloads triggering the popup.
+
+---
+
+<a id="disclosure"></a>
+## Disclosure Policy
+
+- Security reports receive an initial response within 48 hours.
+- A fix will be developed in a private branch, verified, and distributed via an automated patch release.
+- Public disclosure occurs only after an update has been released to all users.
+
+---
+
+<a id="trust-boundaries"></a>
+## Trust Boundaries
+
+- **Execution Context:** The extension runs in `MAIN` world at `document_start` to intercept `window.open`. It does not store user data, transmit network telemetry, or inspect credentials.
+- **Auto-Updates:** Automated background updates verify cryptographic signatures against the author's private key (`cnefeiflkeegmadihlfffchlmnmfedmd`). Untrusted binaries without valid matching signatures are rejected by Chromium.
+
+---
+
+<div align="center">
+
+Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
+[Changelog](CHANGELOG.md) ·
+[Security](SECURITY.md)
+
+<sub>&copy; 2026 TeamX - Ads Block</sub>
+
+</div>

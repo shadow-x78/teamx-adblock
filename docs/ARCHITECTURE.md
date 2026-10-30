@@ -1,5 +1,26 @@
-# Architecture & Technical Design
+<div align="center">
 
+# Architecture - TeamX - Ads Block
+
+[![Version](https://img.shields.io/badge/version-1.1.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
+[![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](../LICENSE)
+![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=flat-square&logo=googlechrome)
+![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Chromium-9333ea?style=flat-square&logo=googlechrome)
+
+</div>
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Execution Context](#execution-context)
+- [Interception Mechanics](#interception-mechanics)
+- [Performance & Security](#performance--security)
+
+---
+
+<a id="overview"></a>
 ## Overview
 
 `TeamX - Ads Block` is an ultra-lightweight Chrome Extension (Manifest V3) purpose-built to intercept and neutralize rogue ad popups on `olympustaff.com` without disturbing legitimate browsing or website scripts.
@@ -14,7 +35,10 @@ flowchart TD
     E -->|Normal URL / Safe navigation| G[Pass to original window.open]
 ```
 
-## Manifest V3 & Execution World
+---
+
+<a id="execution-context"></a>
+## Execution Context
 
 Most traditional adblockers inject scripts into an **Isolated World** (the default execution environment for extension content scripts). However, inline scripts executing in the page's original context (`MAIN` world) cannot be directly intercepted if they define or cache global functions before the isolated world can attach listeners.
 
@@ -25,9 +49,15 @@ By declaring:
 ```
 the extension guarantees that its wrapper runs before any inline scripts or external trackers on the host page have initialized, securing total interception fidelity.
 
-## Popup Interception Logic
+---
+
+<a id="interception-mechanics"></a>
+## Interception Mechanics
 
 ```javascript
+// TeamX - Ads Block (MIT)
+// https://github.com/shadow-x78/teamx-adsblock
+
 (() => {
   const originalOpen = window.open;
 
@@ -42,3 +72,24 @@ the extension guarantees that its wrapper runs before any inline scripts or exte
 
 - **Clean passthrough**: `arguments` and `this` context are faithfully preserved.
 - **Strict suppression**: Blacklisted domains immediately return `null` and terminate the popup lifecycle.
+
+---
+
+<a id="performance--security"></a>
+## Performance & Security
+
+- Zero CPU overhead while browsing or reading manga chapters.
+- No network requests, telemetry, or third-party analytic pings.
+- Native Chrome sandbox isolation for local script safety.
+
+---
+
+<div align="center">
+
+Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
+[Changelog](../CHANGELOG.md) ·
+[Security](../SECURITY.md)
+
+<sub>&copy; 2026 TeamX - Ads Block</sub>
+
+</div>

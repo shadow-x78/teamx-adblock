@@ -1,3 +1,6 @@
+// TeamX - Ads Block (MIT)
+// https://github.com/shadow-x78/teamx-adsblock
+
 (() => {
   const originalOpen = window.open;
 
@@ -8,4 +11,3 @@
     return originalOpen.apply(this, arguments);
   };
 })();
-

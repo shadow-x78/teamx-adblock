@@ -1,6 +1,17 @@
-# Changelog
+<div align="center">
 
-All notable changes to **TeamX - Ads Block** will be documented in this file.
+# Changelog - TeamX - Ads Block
+
+[![Version](https://img.shields.io/badge/version-1.1.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
+[![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](LICENSE)
+![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=flat-square&logo=googlechrome)
+![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Chromium-9333ea?style=flat-square&logo=googlechrome)
+
+</div>
+
+---
+
+All notable changes to **TeamX - Ads Block** are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -16,3 +27,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Custom vector-crafted brand iconography tailored for Olympus Staff (`olympustaff.com`).
 - Automatic updates protocol configuration via `update_url` and `updates.xml`.
 - GitHub Actions automated packaging workflow for CRX generation and releases.
+
+---
+
+<div align="center">
+
+Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
+[Changelog](CHANGELOG.md) ·
+[Security](SECURITY.md)
+
+<sub>&copy; 2026 TeamX - Ads Block</sub>
+
+</div>

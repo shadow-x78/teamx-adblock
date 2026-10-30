@@ -44,3 +44,4 @@ jobs:
             dist/TeamX-AdsBlock.zip
             dist/TeamX-AdsBlock.crx
           generate_release_notes: true
+

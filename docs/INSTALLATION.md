@@ -1,14 +1,38 @@
-# Installation Guide
+<div align="center">
+
+# Installation Guide - TeamX - Ads Block
+
+[![Version](https://img.shields.io/badge/version-1.1.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
+[![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](../LICENSE)
+![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=flat-square&logo=googlechrome)
+![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Chromium-9333ea?style=flat-square&logo=googlechrome)
+
+</div>
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Method 1: Pre-packaged CRX](#method-1-crx)
+- [Method 2: Load Unpacked Source](#method-2-unpacked)
+- [Browser Compatibility](#browser-compatibility)
+
+---
+
+<a id="overview"></a>
+## Overview
 
 You can install **TeamX - Ads Block** using either the pre-packaged CRX file (which supports silent background auto-updates) or as an unpacked developer extension.
 
 ---
 
+<a id="method-1-crx"></a>
 ## Method 1: Pre-packaged `.crx` (Recommended for Users)
 
 Installing via the `.crx` binary connects the extension to the automated update pipeline:
 
-1. Download the latest `TeamX-AdsBlock.crx` from the [Releases](https://github.com/shadow-x78/TeamX-AdsBlock/releases) page.
+1. Download the latest `TeamX-AdsBlock.crx` from the [Releases](https://github.com/shadow-x78/teamx-adsblock/releases) page.
 2. Open Google Chrome (or Brave, Edge, Chromium) and navigate to:
    ```text
    chrome://extensions/
@@ -22,13 +46,39 @@ Installing via the `.crx` binary connects the extension to the automated update 
 
 ---
 
+<a id="method-2-unpacked"></a>
 ## Method 2: Load Unpacked (For Developers)
 
 1. Clone or download the source code:
    ```bash
-   git clone https://github.com/shadow-x78/TeamX-AdsBlock.git
+   git clone https://github.com/shadow-x78/teamx-adsblock.git
    ```
 2. Open `chrome://extensions/` with **Developer mode** enabled.
 3. Click the **Load unpacked** button.
-4. Select the cloned `TeamX-AdsBlock` directory.
+4. Select the cloned `teamx-adsblock` directory.
 5. The extension is now active.
+
+---
+
+<a id="browser-compatibility"></a>
+## Browser Compatibility
+
+| Browser | Supported | Auto-Updates |
+| :--- | :---: | :---: |
+| **Google Chrome** | ✅ | ✅ Supported via Omaha protocol |
+| **Brave Browser** | ✅ | ✅ Supported |
+| **Microsoft Edge** | ✅ | ✅ Supported |
+| **Chromium** | ✅ | ✅ Supported |
+| **Vivaldi** | ✅ | ✅ Supported |
+
+---
+
+<div align="center">
+
+Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
+[Changelog](../CHANGELOG.md) ·
+[Security](../SECURITY.md)
+
+<sub>&copy; 2026 TeamX - Ads Block</sub>
+
+</div>
