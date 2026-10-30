@@ -32,10 +32,12 @@ jobs:
         env:
           CRX_PRIVATE_KEY: ${{ secrets.CRX_PRIVATE_KEY }}
         run: |
+          mkdir -p /tmp/pack-ext
+          cp -r manifest.json content.js rules.css rules.json icons updates.xml README.md LICENSE /tmp/pack-ext/
           echo "$CRX_PRIVATE_KEY" > /tmp/key.pem
-          google-chrome --pack-extension=${{ github.workspace }} --pack-extension-key=/tmp/key.pem
-          mv ../TeamX-AdBlock.crx dist/TeamX-AdBlock.crx
-          rm -f /tmp/key.pem
+          google-chrome --pack-extension=/tmp/pack-ext --pack-extension-key=/tmp/key.pem
+          mv /tmp/pack-ext.crx dist/TeamX-AdBlock.crx
+          rm -rf /tmp/pack-ext /tmp/key.pem
 
       - name: Upload Release Assets
         uses: softprops/action-gh-release@v2
