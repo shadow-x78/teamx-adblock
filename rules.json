@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||acscdn.com^",
+      "resourceTypes": ["script", "image", "xmlhttprequest", "sub_frame"]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||teethesmitsvah.com^",
+      "resourceTypes": ["script", "image", "xmlhttprequest", "sub_frame"]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||blockadsnot.com^",
+      "resourceTypes": ["script", "image", "xmlhttprequest", "sub_frame"]
+    }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||cnejpkmvsjvft.com^",
+      "resourceTypes": ["script", "image", "xmlhttprequest", "sub_frame"]
+    }
+  },
+  {
+    "id": 5,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||odpktokz.com^",
+      "resourceTypes": ["script", "image", "xmlhttprequest", "sub_frame"]
+    }
+  },
+  {
+    "id": 6,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||goodpics.net^",
+      "resourceTypes": ["main_frame", "sub_frame", "script", "xmlhttprequest"]
+    }
+  },
+  {
+    "id": 7,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "*/go/3343952*",
+      "resourceTypes": ["main_frame", "sub_frame", "script", "xmlhttprequest"]
+    }
+  },
+  {
+    "id": 8,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||dnhfi5nn2dt67.cloudfront.net^",
+      "resourceTypes": ["script", "xmlhttprequest"]
+    }
+  }
+]

@@ -8,7 +8,7 @@
 
 Precision ad popup blocker engineered exclusively for Olympus Staff (`olympustaff.com`).
 
-[![Version](https://img.shields.io/badge/version-1.2.0-2563eb?style=for-the-badge&logo=semver)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.3.0-2563eb?style=for-the-badge&logo=semver)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=for-the-badge)](LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=for-the-badge&logo=googlechrome)
 [![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Firefox%20%7C%20Brave%20%7C%20Edge-9333ea?style=for-the-badge&logo=googlechrome)](https://github.com/shadow-x78/teamx-adblock)
@@ -44,9 +44,9 @@ Precision ad popup blocker engineered exclusively for Olympus Staff (`olympustaf
 <a id="overview"></a>
 ## Overview
 
-**TeamX - AdBlock** is an ultra-fast, zero-overhead browser extension (Manifest V3) purpose-built to stop aggressive, unwanted popups and redirect ads on `olympustaff.com`.
+**TeamX - AdBlock** is an ultra-fast, zero-overhead browser extension (Manifest V3) purpose-built to eliminate all advertisements, banners, popunders, and redirect popups on `olympustaff.com`.
 
-Unlike generic ad blockers that inject heavy DOM filter lists and slow down page rendering, **TeamX - AdBlock** hooks directly into the page's original execution environment (`world: "MAIN"`) at `document_start` to intercept malicious `window.open` trigger invocations natively before they can spawn annoying tabs or popups.
+Unlike generic ad blockers that inject heavy DOM filter lists and trigger anti-adblock detection, **TeamX - AdBlock** combines declarative network-level request blocking, surgical DOM cosmetic elimination, and deep engine-level hooks in the page's original execution environment (`world: "MAIN"`) at `document_start`. It neutralizes ad runners like `aclib`, removes sticky `#fixedban` banners, blocks popunder scripts, and bypasses anti-adblock detection scripts with zero layout shifts.
 
 ---
 
@@ -56,7 +56,8 @@ Unlike generic ad blockers that inject heavy DOM filter lists and slow down page
 | Capability | Generic Ad-blockers | Script Managers | **TeamX - AdBlock** |
 | :--- | :---: | :---: | :---: |
 | Execution context | ⚠️ Isolated world | ⚠️ Late userscript | ✅ **MAIN World** (`document_start`) |
-| Intercept inline scripts | ❌ Misses fast triggers | ⚠️ Timing dependent | ✅ **100% Guaranteed hook** |
+| Intercept inline scripts & banners | ❌ Misses fast triggers | ⚠️ Timing dependent | ✅ **100% Guaranteed hook & proxy** |
+| Anti-adblock evasion | ❌ Triggers warning modal | ⚠️ Breaks reader DOM | ✅ **Silent automated probe bypass** |
 | Memory overhead | ~100-250 MB | ~30-60 MB | ✅ **< 1 MB (Zero overhead)** |
 | Site responsiveness | Slows reader/DOM | Moderate impact | ✅ **Native instantaneous speed** |
 | Browser support | Varies | Varies | ✅ **Chrome & Firefox Universal** |
@@ -72,11 +73,12 @@ The extension strictly activates on:
 - `https://olympustaff.com/*`
 - `https://*.olympustaff.com/*`
 
-It monitors window creation calls and completely terminates any requests containing:
-- `goodpics.net`
-- `/go/3343952`
-
-All other legitimate browser popups, reader tools, and navigation links execute with zero interference.
+It actively terminates and neutralizes:
+- **Popups & Redirects:** Intercepts `window.open` calls and click-hijacking listeners (`goodpics.net`, `/go/3343952`, ad campaigns).
+- **Popunder Networks:** Disables Monetag / PropellerAds (`au.teethesmitsvah.com`, `blockadsnot.com`, `cnejpkmvsjvft.com`, `odpktokz.com`).
+- **In-Page Banners:** Pre-emptively stubs `window.aclib` (`runBanner`, `runPop`, `runPush`), preventing ad scripts from spawning iframe slots.
+- **Sticky Overlays:** Strips floating `#fixedban` containers and chapter banners (`.body-top-ads`, `.body-bottom-ads`, `.c-ads`).
+- **Anti-AdBlock Detection:** Defuses BlockAdBlock probes and inline eval modal triggers seamlessly.
 
 ---
 
@@ -84,11 +86,12 @@ All other legitimate browser popups, reader tools, and navigation links execute 
 ## Features
 
 - ⚡ **Instant Execution:** Injected at `document_start` before page scripts initialize.
-- 🛡️ **Native Interception:** Executes in the page's `MAIN` execution context to bypass inline evasion tricks.
-- 🦊 **Universal Compatibility:** Full native support for Chromium (Chrome, Brave, Edge) and Gecko (Mozilla Firefox 109+).
+- 🛡️ **Multi-Layered Protection:** Combines Declarative Net Request rules (`rules.json`), cosmetic CSS (`rules.css`), and JavaScript hooks (`content.js`).
+- 🛑 **Complete Ad Annihilation:** Zero in-page banners, zero floating bars, zero popunders, and zero click popups.
+- 🦊 **Universal Compatibility:** Full native support for Chromium (Chrome, Brave, Edge, Kiwi Browser) and Gecko (Mozilla Firefox 109+).
 - 🔄 **Fully Automated Updates:** Built-in Omaha protocol support enables automatic silent background updates directly from GitHub.
 - 🎨 **Authentic Brand Iconography:** Custom vector-crafted brand shield designed around the official Olympus Staff TeamX identity.
-- 🪶 **Zero Dependencies:** Pure, clean, lightweight vanilla JavaScript.
+- 🪶 **Zero Dependencies:** Pure, clean, lightweight vanilla JavaScript without third-party libraries.
 
 ---
 
@@ -187,6 +190,8 @@ teamx-adblock/
 │   ├── icon128.png              # High-res store & install display
 │   └── icon512.png              # Master high-resolution asset
 ├── content.js                   # Interception logic (MAIN execution world)
+├── rules.css                    # Cosmetic ad hiding & layout collapse
+├── rules.json                   # Declarative Net Request blocking rules
 ├── manifest.json                # Manifest V3 extension configuration
 ├── updates.xml                  # Chrome Autoupdate protocol manifest
 ├── CHANGELOG.md                 # Semantic versioning release log

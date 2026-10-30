@@ -2,7 +2,7 @@
 
 # Architecture - TeamX - AdBlock
 
-[![Version](https://img.shields.io/badge/version-1.2.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.3.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](../LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=flat-square&logo=googlechrome)
 ![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Chromium-9333ea?style=flat-square&logo=googlechrome)
@@ -29,16 +29,18 @@
 <a id="overview"></a>
 ## Overview
 
-`TeamX - AdBlock` is an ultra-lightweight Chrome Extension (Manifest V3) purpose-built to intercept and neutralize rogue ad popups on `olympustaff.com` without disturbing legitimate browsing or website scripts.
+`TeamX - AdBlock` operates a multi-layered defense architecture specifically optimized for `olympustaff.com` to eliminate all ads, popups, and anti-adblock modals:
 
 ```mermaid
 flowchart TD
-    A[Browser navigates to olympustaff.com] --> B[Chrome loads content.js at document_start]
-    B --> C[Execution World: MAIN]
-    C --> D[Wrap window.open in Proxy / Hook]
-    D --> E{Script calls window.open}
-    E -->|URL contains goodpics.net or /go/3343952| F[Suppress popup & return null]
-    E -->|Normal URL / Safe navigation| G[Pass to original window.open]
+    A[Browser navigates to olympustaff.com] --> B[declarativeNetRequest blocks ad network requests]
+    A --> C[rules.css immediately collapses ad DOM elements]
+    A --> D[content.js loads at document_start in MAIN world]
+    D --> E[Stub window.aclib with immutable Proxy]
+    D --> F[Hook window.open to suppress ad popups]
+    D --> G[Hook addEventListener to drop click-hijacking listeners]
+    D --> H[Hook eval & Image to bypass anti-adblock probes]
+    D --> I[MutationObserver purges dynamic ad containers]
 ```
 
 ---

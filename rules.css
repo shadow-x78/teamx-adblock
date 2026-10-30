@@ -1,0 +1,72 @@
+/* TeamX - AdBlock (MIT)
+ * https://github.com/shadow-x78/teamx-adblock
+ * Elimination of all ad elements on Olympus Staff (olympustaff.com)
+ */
+
+/* 1. Sticky Floating Bottom Banner & Overlays */
+#fixedban,
+div[id="fixedban"],
+div[id*="fixedban"],
+a[onclick*="fixedban"],
+div[style*="z-index: 999999"],
+div[style*="z-index:999999"],
+div[style*="z-index: 99999"],
+div[style*="z-index:99999"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  width: 0 !important;
+  position: absolute !important;
+  left: -99999px !important;
+  top: -99999px !important;
+  overflow: hidden !important;
+}
+
+/* 2. In-Page Top and Bottom Chapter Banners */
+.c-ads,
+.body-top-ads,
+.body-bottom-ads,
+.custom-code.body-top-ads,
+.custom-code.body-bottom-ads,
+div[class*="body-top-ads"],
+div[class*="body-bottom-ads"],
+div[class*="c-ads"] {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* 3. Empty ad wrapper containers generated around aclib scripts */
+div.mb-3.mt-2:not(:has(*:not(script):not(style):not(div:empty))) {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 4. External Ad Iframes */
+iframe[src*="acscdn"],
+iframe[src*="teethesmitsvah"],
+iframe[src*="goodpics"],
+iframe[src*="blockadsnot"],
+iframe[src*="cnejpkmvsjvft"],
+iframe[src*="odpktokz"] {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
+/* 5. Anti-adblock overlay defusal */
+div[style*="position: fixed"][style*="z-index: 2147483647"],
+div[style*="position:fixed"][style*="z-index:2147483647"] {
+  display: none !important;
+  pointer-events: none !important;
+}

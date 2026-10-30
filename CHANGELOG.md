@@ -2,7 +2,7 @@
 
 # Changelog - TeamX - AdBlock
 
-[![Version](https://img.shields.io/badge/version-1.2.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.3.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=flat-square&logo=googlechrome)
 ![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Chromium-9333ea?style=flat-square&logo=googlechrome)
@@ -15,6 +15,19 @@ All notable changes to **TeamX - AdBlock** are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+---
+
+## [1.3.0] - 2026-10-31
+
+### Added
+- **Comprehensive Ad & Popup Blocking:** Multi-layered engine stopping all in-page banners, popunders, and redirect popups on `olympustaff.com`.
+- **Declarative Net Request Engine:** `rules.json` blocking ad network assets (`acscdn.com`, `teethesmitsvah.com`, `blockadsnot.com`, `cnejpkmvsjvft.com`, `odpktokz.com`, `goodpics.net`).
+- **Cosmetic CSS Elimination:** `rules.css` immediately hiding `#fixedban`, `.body-top-ads`, `.body-bottom-ads`, and `.c-ads` without visual layout shift.
+- **Pre-emptive Script & Global Neutering:** Read-only immutable proxy for `window.aclib` and defusal of the obfuscated popunder trigger.
+- **Click-Hijacking Prevention:** Interception of `EventTarget.prototype.addEventListener` preventing ad redirect listeners from binding.
+- **Anti-AdBlock Detection Bypass:** Silent defusal of BlockAdBlock / AdBlock Notice scripts in `window.eval` and fake ad image probes.
+- **Continuous DOM Cleanup:** Active `MutationObserver` purging dynamically injected ad wrappers and collapsed whitespace gaps.
 
 ---
 

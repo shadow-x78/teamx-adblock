@@ -2,7 +2,7 @@
 
 # البنية البرمجية والمعمارية - TeamX - AdBlock
 
-[![Version](https://img.shields.io/badge/version-1.2.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.3.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](../LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=flat-square&logo=googlechrome)
 ![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Chromium-9333ea?style=flat-square&logo=googlechrome)
@@ -29,16 +29,18 @@
 <a id="نظرة-عامة"></a>
 ## نظرة عامة
 
-**TeamX - AdBlock** هي إضافة كروم فائقة الخفة مبنية بمعمارية Manifest V3 صُممت خصيصاً لاعتراض واستئصال النوافذ الإعلانية المنبثقة الخبيثة على موقع `olympustaff.com` دون التأثير على تصفح المانجا الطبيعي أو أدوات القراءة المشروعة.
+تعتمد **TeamX - AdBlock** معمارية دفاعية متعددة الطبقات مخصصة لموقع `olympustaff.com` لإبادة كافة أشكال الإعلانات، البانرات، النوافذ المنبثقة، وتخطي رسائل حظر مانع الإعلانات:
 
 ```mermaid
 flowchart TD
-    A[المتصفح يتوجه لموقع olympustaff.com] --> B[كروم يحقن content.js عند document_start]
-    B --> C[سياق التنفيذ: MAIN world]
-    C --> D[تغليف واعتراض دالة window.open]
-    D --> E{السكربت يطلب فتح نافذة}
-    E -->|الرابط يحتوي goodpics.net أو /go/3343952| F[حجب النافذة بالكامل وإرجاع null]
-    E -->|رابط طبيعي ومشروع| G[تمرير الأمر للنافذة الأصلية window.open]
+    A[المتصفح يتوجه لموقع olympustaff.com] --> B[declarativeNetRequest يحظر طلبات شبكات الإعلانات]
+    A --> C[rules.css يخفي عناصر وبانرات الإعلانات فوراً]
+    A --> D[content.js يعمل عند document_start في MAIN world]
+    D --> E[تعطيل window.aclib عبر بروكسي مسبق]
+    D --> F[اعتراض دالة window.open لمنع أي نافذة إعلانية]
+    D --> G[اعتراض addEventListener لمنع مستمعي النقر الخاطف]
+    D --> H[تخطي كاشف مانع الإعلانات في eval وفحوصات الصور]
+    D --> I[مراقب MutationObserver لتطهير أي عناصر عائمة جديدة]
 ```
 
 ---

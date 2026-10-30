@@ -24,8 +24,8 @@ jobs:
       - name: Prepare Extension Archives (ZIP & Firefox XPI)
         run: |
           mkdir -p dist
-          zip -r dist/TeamX-AdBlock.zip manifest.json content.js icons/ updates.xml README.md LICENSE
-          zip -r dist/TeamX-AdBlock.xpi manifest.json content.js icons/ updates.xml README.md LICENSE
+          zip -r dist/TeamX-AdBlock.zip manifest.json content.js rules.css rules.json icons/ updates.xml README.md LICENSE
+          zip -r dist/TeamX-AdBlock.xpi manifest.json content.js rules.css rules.json icons/ updates.xml README.md LICENSE
 
       - name: Pack Chromium CRX Extension
         if: env.CRX_PRIVATE_KEY != ''
