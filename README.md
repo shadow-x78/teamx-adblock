@@ -8,7 +8,7 @@
 
 Precision ad popup blocker engineered exclusively for Olympus Staff (`olympustaff.com`).
 
-[![Version](https://img.shields.io/badge/version-1.1.0-2563eb?style=for-the-badge&logo=semver)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.2.0-2563eb?style=for-the-badge&logo=semver)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=for-the-badge)](LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=for-the-badge&logo=googlechrome)
 ![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Brave%20%7C%20Edge-9333ea?style=for-the-badge&logo=googlechrome)
@@ -78,6 +78,7 @@ All other legitimate browser popups, reader tools, and navigation links execute 
 
 ---
 
+<a id="features"></a>
 ## Features
 
 - ⚡ **Instant Execution:** Injected at `document_start` before page scripts initialize.
@@ -159,8 +160,11 @@ teamx-adblock/
 │       └── teamx-adblock-logo.png       # Master brand logo
 ├── docs/
 │   ├── ARCHITECTURE.md          # Technical design & hook lifecycle
+│   ├── ARCHITECTURE_AR.md       # Arabic technical design
 │   ├── AUTO_UPDATE.md           # Omaha protocol & auto-update pipeline
-│   └── INSTALLATION.md          # Step-by-step installation instructions
+│   ├── AUTO_UPDATE_AR.md        # Arabic auto-update guide
+│   ├── INSTALLATION.md          # Step-by-step installation instructions
+│   └── INSTALLATION_AR.md       # Arabic installation instructions
 ├── icons/
 │   ├── icon16.png               # Browser toolbar & favicon size
 │   ├── icon32.png               # Retina resolution display
@@ -186,9 +190,9 @@ teamx-adblock/
 
 | Document | Description |
 | :--- | :--- |
-| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | Technical execution flow, MAIN world mechanics, and popup interception |
-| [AUTO_UPDATE.md](docs/AUTO_UPDATE.md) | Google Omaha autoupdate protocol, cryptographic signing, and release workflow |
-| [INSTALLATION.md](docs/INSTALLATION.md) | Multi-browser installation steps and verification procedures |
+| [ARCHITECTURE.md](docs/ARCHITECTURE.md) ([العربية](docs/ARCHITECTURE_AR.md)) | Technical execution flow, MAIN world mechanics, and popup interception |
+| [AUTO_UPDATE.md](docs/AUTO_UPDATE.md) ([العربية](docs/AUTO_UPDATE_AR.md)) | Google Omaha autoupdate protocol, cryptographic signing, and release workflow |
+| [INSTALLATION.md](docs/INSTALLATION.md) ([العربية](docs/INSTALLATION_AR.md)) | Multi-browser installation steps and verification procedures |
 
 ---
 

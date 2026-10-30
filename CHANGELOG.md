@@ -2,7 +2,7 @@
 
 # Changelog - TeamX - AdBlock
 
-[![Version](https://img.shields.io/badge/version-1.1.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.2.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=flat-square&logo=googlechrome)
 ![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Chromium-9333ea?style=flat-square&logo=googlechrome)
@@ -15,6 +15,18 @@ All notable changes to **TeamX - AdBlock** are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+---
+
+## [1.2.0] - 2026-10-30
+
+### Changed
+- Rebranded official repository and project to `teamx-adblock` / `TeamX - AdBlock`.
+- Switched licensing to the permissive **MIT License**.
+- Redesigned and geometrically fitted brand shield (`Cyber Hex-Shield`) matching Olympus Staff's TeamX eagle proportions.
+- Refactored documentation banners with compact typographic lockups and Pango Arabic text rendering.
+- Added comprehensive Arabic documentation suite (`docs/ARCHITECTURE_AR.md`, `docs/AUTO_UPDATE_AR.md`, `docs/INSTALLATION_AR.md`).
+- Standardized git commit conventions to `teamx-adblock | <type>: <description>`.
 
 ---
 
