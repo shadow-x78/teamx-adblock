@@ -1,6 +1,6 @@
 <div align="center">
 
-# Contributing to TeamX - Ads Block
+# Contributing to TeamX - AdBlock
 
 [![Version](https://img.shields.io/badge/version-1.1.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](LICENSE)
@@ -13,25 +13,25 @@
 
 ## Table of Contents
 
-- [Contributing to TeamX - Ads Block](#contributing-to-teamx---ads-block)
+- [Contributing to TeamX - AdBlock](#contributing-to-teamx---adblock)
 - [Day-to-Day Work](#day-to-day-work)
 - [Release Process (maintainers)](#release-process-maintainers)
 - [Verification Checklist](#verification-checklist)
 
 ---
 
-Contributions to TeamX - Ads Block are welcome. Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+Contributions to TeamX - AdBlock are welcome. Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 <a id="day-to-day-work"></a>
 ## Day-to-Day Work
 
 - **Branches:** `feature/`, `fix/`, `docs/`, `chore/` prefixes (e.g. `feature/block-new-redirect`), branched from `main`.
-- **Commits:** `teamx-adsblock | <type>: <description>` for work, `teamx-adsblock | vX.Y.Z | <type>: <description>` for release commits. Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`.
-- **Style:** Pure, zero-dependency vanilla JavaScript. Every file header follows the TeamX - Ads Block style:
+- **Commits:** `teamx-adblock | <type>: <description>` for work, `teamx-adblock | vX.Y.Z | <type>: <description>` for release commits. Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`.
+- **Style:** Pure, zero-dependency vanilla JavaScript. Every file header follows the TeamX - AdBlock style:
 
 ```javascript
-// TeamX - Ads Block (MIT)
-// https://github.com/shadow-x78/teamx-adsblock
+// TeamX - AdBlock (MIT)
+// https://github.com/shadow-x78/teamx-adblock
 ```
 
 - **Pull requests:** from a fork, targeting `main`, with tests verified on `olympustaff.com`, a `CHANGELOG.md` entry, and clean commit logs.
@@ -45,8 +45,8 @@ Contributions to TeamX - Ads Block are welcome. Please note that this project is
    ```bash
    google-chrome --pack-extension=. --pack-extension-key=../TeamX-AdsBlock.pem
    ```
-4. Commit as `teamx-adsblock | vX.Y.Z | release: <summary>` and tag `vX.Y.Z`.
-5. Create a GitHub Release with the tag and upload the built `.crx` and `.zip`.
+4. Commit as `teamx-adblock | vX.Y.Z | release: <summary>` and tag `vX.Y.Z`.
+5. Create a GitHub Release with the tag and upload the built `TeamX-AdBlock.crx` and `TeamX-AdBlock.zip`.
 
 <a id="verification-checklist"></a>
 ## Verification Checklist
@@ -65,6 +65,6 @@ Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [Changelog](CHANGELOG.md) ·
 [Security](SECURITY.md)
 
-<sub>&copy; 2026 TeamX - Ads Block</sub>
+<sub>&copy; 2026 TeamX - AdBlock</sub>
 
 </div>

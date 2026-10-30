@@ -1,6 +1,6 @@
 <div align="center">
 
-# Security Policy - TeamX - Ads Block
+# Security Policy - TeamX - AdBlock
 
 [![Version](https://img.shields.io/badge/version-1.1.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](LICENSE)
@@ -33,9 +33,9 @@
 <a id="reporting"></a>
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability or ad popup interception bypass in **TeamX - Ads Block**, please report it responsibly:
+If you discover a security vulnerability or ad popup interception bypass in **TeamX - AdBlock**, please report it responsibly:
 
-- Open a private security advisory through GitHub: [Security Advisories](https://github.com/shadow-x78/teamx-adsblock/security/advisories)
+- Open a private security advisory through GitHub: [Security Advisories](https://github.com/shadow-x78/teamx-adblock/security/advisories)
 - Or contact the maintainer directly through GitHub.
 
 Please include:
@@ -68,6 +68,6 @@ Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [Changelog](CHANGELOG.md) ·
 [Security](SECURITY.md)
 
-<sub>&copy; 2026 TeamX - Ads Block</sub>
+<sub>&copy; 2026 TeamX - AdBlock</sub>
 
 </div>

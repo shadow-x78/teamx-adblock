@@ -1,6 +1,6 @@
 <div align="center">
 
-# Auto-Updates - TeamX - Ads Block
+# Auto-Updates - TeamX - AdBlock
 
 [![Version](https://img.shields.io/badge/version-1.1.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](../LICENSE)
@@ -41,7 +41,7 @@ sequenceDiagram
     UserChrome->>GitHubRaw: GET https://raw.githubusercontent.com/.../updates.xml
     GitHubRaw-->>UserChrome: 200 OK with latest version info
     alt If newer version available
-        UserChrome->>GitHubRelease: GET https://github.com/.../TeamX-AdsBlock.crx
+        UserChrome->>GitHubRelease: GET https://github.com/.../TeamX-AdBlock.crx
         GitHubRelease-->>UserChrome: Downloads signed .crx
         Note over UserChrome: Silently validates signature & replaces extension in background
         UserChrome->>UserChrome: Extension updated automatically (Zero user action needed!)
@@ -61,7 +61,7 @@ In Chromium browsers, an extension's ID is deterministically computed from the p
 - **Extension ID**: `cnefeiflkeegmadihlfffchlmnmfedmd`
 
 > [!IMPORTANT]
-> To allow automatic updates, every new version of `TeamX-AdsBlock.crx` MUST be signed with the **same** private key (`TeamX-AdsBlock.pem`).
+> To allow automatic updates, every new version of `TeamX-AdBlock.crx` MUST be signed with the **same** private key (`TeamX-AdsBlock.pem`).
 
 ---
 
@@ -70,7 +70,7 @@ In Chromium browsers, an extension's ID is deterministically computed from the p
 
 ### In `manifest.json`:
 ```json
-"update_url": "https://raw.githubusercontent.com/shadow-x78/teamx-adsblock/main/updates.xml"
+"update_url": "https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/updates.xml"
 ```
 
 ### In `updates.xml`:
@@ -78,7 +78,7 @@ In Chromium browsers, an extension's ID is deterministically computed from the p
 <?xml version='1.0' encoding='UTF-8'?>
 <gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
   <app appid='cnefeiflkeegmadihlfffchlmnmfedmd'>
-    <updatecheck codebase='https://github.com/shadow-x78/teamx-adsblock/releases/latest/download/TeamX-AdsBlock.crx' version='1.1.0' />
+    <updatecheck codebase='https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx' version='1.1.0' />
   </app>
 </gupdate>
 ```
@@ -94,13 +94,13 @@ When deploying an update to all users:
 2. Increment the `version` attribute in `updates.xml` to match (`version='1.2.0'`).
 3. Commit and push your changes to GitHub:
    ```bash
-   git commit -m "teamx-adsblock | v1.2.0 | release: update ad filter rules"
+   git commit -m "teamx-adblock | v1.2.0 | release: update ad filter rules"
    ```
 4. Pack the new `.crx` file:
    ```bash
    google-chrome --pack-extension=. --pack-extension-key=../TeamX-AdsBlock.pem
    ```
-5. Create a new GitHub Release with the tag `v1.2.0` and upload the generated `TeamX-AdsBlock.crx`.
+5. Create a new GitHub Release with the tag `v1.2.0` and upload the generated `TeamX-AdBlock.crx`.
 
 Once published, all users' Chrome browsers will automatically pull the update within hours without requiring any manual clicks or intervention!
 
@@ -112,6 +112,6 @@ Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [Changelog](../CHANGELOG.md) ·
 [Security](../SECURITY.md)
 
-<sub>&copy; 2026 TeamX - Ads Block</sub>
+<sub>&copy; 2026 TeamX - AdBlock</sub>
 
 </div>

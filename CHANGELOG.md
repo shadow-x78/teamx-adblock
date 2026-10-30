@@ -1,6 +1,6 @@
 <div align="center">
 
-# Changelog - TeamX - Ads Block
+# Changelog - TeamX - AdBlock
 
 [![Version](https://img.shields.io/badge/version-1.1.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](LICENSE)
@@ -11,7 +11,7 @@
 
 ---
 
-All notable changes to **TeamX - Ads Block** are documented in this file.
+All notable changes to **TeamX - AdBlock** are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -36,6 +36,6 @@ Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [Changelog](CHANGELOG.md) ·
 [Security](SECURITY.md)
 
-<sub>&copy; 2026 TeamX - Ads Block</sub>
+<sub>&copy; 2026 TeamX - AdBlock</sub>
 
 </div>

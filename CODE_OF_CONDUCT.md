@@ -1,6 +1,6 @@
 <div align="center">
 
-# Code of Conduct - TeamX - Ads Block
+# Code of Conduct - TeamX - AdBlock
 
 [![Version](https://img.shields.io/badge/version-1.1.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](LICENSE)
@@ -70,7 +70,7 @@ This Code of Conduct applies within all community spaces, and also applies when 
 <a id="enforcement"></a>
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement via [GitHub Issues](https://github.com/shadow-x78/teamx-adsblock/issues). All complaints will be reviewed and investigated promptly and fairly.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement via [GitHub Issues](https://github.com/shadow-x78/teamx-adblock/issues). All complaints will be reviewed and investigated promptly and fairly.
 
 ---
 
@@ -99,7 +99,6 @@ Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [Changelog](CHANGELOG.md) ·
 [Security](SECURITY.md)
 
-<sub>&copy; 2026 TeamX - Ads Block</sub>
+<sub>&copy; 2026 TeamX - AdBlock</sub>
 
 </div>
-

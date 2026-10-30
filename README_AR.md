@@ -1,10 +1,10 @@
 <div align="center">
 
-<a href="https://github.com/shadow-x78/teamx-adsblock">
-  <img src="https://raw.githubusercontent.com/shadow-x78/teamx-adsblock/main/assets/logo/teamx-adsblock-banner-ar.png" alt="TeamX - Ads Block banner" width="100%" />
+<a href="https://github.com/shadow-x78/teamx-adblock">
+  <img src="https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/logo/teamx-adblock-banner-ar.png" alt="TeamX - AdBlock banner" width="100%" />
 </a>
 
-# TeamX - Ads Block
+# TeamX - AdBlock
 
 مانع النوافذ المنبثقة فائق السرعة المخصص لموقع أوليمبوس ستاف (`olympustaff.com`).
 
@@ -43,7 +43,7 @@
 <a id="نظرة-عامة"></a>
 ## نظرة عامة
 
-**TeamX - Ads Block** هي إضافة متصفح خفيفة ومبنية بمعمارية Manifest V3 صُممت خصيصاً للقضاء التام على النوافذ الإعلانية المنبثقة وإعادة التوجيه الإجباري على موقع `olympustaff.com`.
+**TeamX - AdBlock** هي إضافة متصفح خفيفة ومبنية بمعمارية Manifest V3 صُممت خصيصاً للقضاء التام على النوافذ الإعلانية المنبثقة وإعادة التوجيه الإجباري على موقع `olympustaff.com`.
 
 على عكس برامج حجب الإعلانات التقليدية التي تستهلك الذاكرة بقوائم فلاتر ضخمة وتؤخر استجابة تصفح المانجا، تعمل هذه الإضافة عبر حقن مباشر في السياق الأصلي لتنفيذ الصفحة (`world: "MAIN"`) فور لحظة البدء (`document_start`) لاعتراض واستئصال دوال فتح النوافذ الخبيثة (`window.open`) قبل أن تتمكن من فتح أي تبويب مزعج.
 
@@ -52,7 +52,7 @@
 <a id="المقارنة"></a>
 ## المقارنة
 
-| الخاصية | برامج الحجب العامة | سكربتات المستخدمين | **TeamX - Ads Block** |
+| الخاصية | برامج الحجب العامة | سكربتات المستخدمين | **TeamX - AdBlock** |
 | :--- | :---: | :---: | :---: |
 | سياق التنفيذ | ⚠️ Isolated world | ⚠️ Userscript متأخر | ✅ **MAIN World** (`document_start`) |
 | اعتراض الأكواد المضمنة | ❌ تفلت السكربتات السريعة | ⚠️ يعتمد على التوقيت | ✅ **اعتراض مضمون 100%** |
@@ -94,13 +94,13 @@
 
 ### الطريقة الأولى: عبر ملف `.crx` المجهز (موصى بها للمستخدمين)
 
-1. حمّل أحدث إصدار من ملف [`TeamX-AdsBlock.crx`](https://github.com/shadow-x78/teamx-adsblock/releases/latest/download/TeamX-AdsBlock.crx).
+1. حمّل أحدث إصدار من ملف [`TeamX-AdBlock.crx`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx).
 2. افتح صفحة الإضافات في متصفحك:
    ```text
    chrome://extensions/
    ```
 3. فعّل **وضع المطور (Developer mode)** في أعلى الصفحة.
-4. اسحب ملف `TeamX-AdsBlock.crx` وأفلته داخل الصفحة لتثبيته.
+4. اسحب ملف `TeamX-AdBlock.crx` وأفلته داخل الصفحة لتثبيته.
 
 > [!TIP]
 > عند التثبيت عبر ملف `.crx`، ستتلقى الإضافة **كافة التحديثات القادمة تلقائياً في الخلفية** مباشرة من هذا المستودع دون الحاجة لإعادة التثبيت يدوياً!
@@ -108,7 +108,7 @@
 ### الطريقة الثانية: تحميل المجلد البرمجي (للمطورين)
 
 ```bash
-git clone https://github.com/shadow-x78/teamx-adsblock.git
+git clone https://github.com/shadow-x78/teamx-adblock.git
 ```
 1. افتح `chrome://extensions/`.
 2. فعّل **وضع المطور**.
@@ -147,15 +147,15 @@ flowchart TD
 ## هيكلية المشروع
 
 ```text
-teamx-adsblock/
+teamx-adblock/
 ├── .github/
 │   └── workflows/
 │       └── release.yml          # سير عمل GitHub Actions لحزم وتجهيز الإصدارات
 ├── assets/
 │   └── logo/
-│       ├── teamx-adsblock-banner.png     # بانر التوثيق باللغة الإنجليزية
-│       ├── teamx-adsblock-banner-ar.png  # بانر التوثيق باللغة العربية
-│       └── teamx-adsblock-logo.png       # الشعار الأساسي فائق الدقة
+│       ├── teamx-adblock-banner.png     # بانر التوثيق باللغة الإنجليزية
+│       ├── teamx-adblock-banner-ar.png  # بانر التوثيق باللغة العربية
+│       └── teamx-adblock-logo.png       # الشعار الأساسي فائق الدقة
 ├── docs/
 │   ├── ARCHITECTURE.md          # المعمارية التقنية ودورة حياة الاعتراض
 │   ├── AUTO_UPDATE.md           # بروتوكول Omaha والتحديث الصامت
@@ -195,7 +195,7 @@ teamx-adsblock/
 ## المساهمة
 
 1. أنشئ تفريعاً (Fork) للمستودع وأنشئ فرعك الخاص (`feature/xyz`).
-2. التزم بنمط الكوميت الموحد: `teamx-adsblock | <type>: <description>`.
+2. التزم بنمط الكوميت الموحد: `teamx-adblock | <type>: <description>`.
 3. حافظ على كود جافاسكريبت أصلي نقي بدون اعتماديات.
 4. اختبر التوافق مباشرة مع موقع `olympustaff.com`.
 5. افتح Pull Request.
@@ -217,6 +217,6 @@ teamx-adsblock/
 [سجل التغييرات](CHANGELOG.md) ·
 [الأمان](SECURITY.md)
 
-<sub>&copy; 2026 TeamX - Ads Block</sub>
+<sub>&copy; 2026 TeamX - AdBlock</sub>
 
 </div>
