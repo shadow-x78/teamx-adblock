@@ -1,0 +1,17 @@
+# Security & Keys
+*.pem
+*.key
+
+# Build Artifacts
+*.crx
+*.zip
+dist/
+build/
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
