@@ -24,7 +24,7 @@ jobs:
       - name: Prepare Extension Archive
         run: |
           mkdir -p dist
-          zip -r dist/TeamX-AdsBlock.zip manifest.json content.js icons/ updates.xml README.md LICENSE
+          zip -r dist/TeamX-AdBlock.zip manifest.json content.js icons/ updates.xml README.md LICENSE
 
       - name: Pack CRX Extension
         if: env.CRX_PRIVATE_KEY != ''
@@ -33,7 +33,7 @@ jobs:
         run: |
           echo "$CRX_PRIVATE_KEY" > /tmp/key.pem
           google-chrome --pack-extension=${{ github.workspace }} --pack-extension-key=/tmp/key.pem
-          mv ../TeamX-AdsBlock.crx dist/TeamX-AdsBlock.crx
+          mv ../TeamX-AdBlock.crx dist/TeamX-AdBlock.crx
           rm -f /tmp/key.pem
 
       - name: Upload Release Assets
@@ -41,7 +41,6 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            dist/TeamX-AdsBlock.zip
-            dist/TeamX-AdsBlock.crx
+            dist/TeamX-AdBlock.zip
+            dist/TeamX-AdBlock.crx
           generate_release_notes: true
-

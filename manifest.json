@@ -1,11 +1,11 @@
 {
   "manifest_version": 3,
-  "name": "TeamX - Ads Block",
+  "name": "TeamX - AdBlock",
   "version": "1.1.0",
   "description": "Prevent specific unwanted ad popups",
   "author": "shadow-x78",
-  "homepage_url": "https://github.com/shadow-x78/teamx-adsblock",
-  "update_url": "https://raw.githubusercontent.com/shadow-x78/teamx-adsblock/main/updates.xml",
+  "homepage_url": "https://github.com/shadow-x78/teamx-adblock",
+  "update_url": "https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/updates.xml",
   "icons": {
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",
@@ -19,7 +19,7 @@
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     },
-    "default_title": "TeamX - Ads Block"
+    "default_title": "TeamX - AdBlock"
   },
   "content_scripts": [
     {

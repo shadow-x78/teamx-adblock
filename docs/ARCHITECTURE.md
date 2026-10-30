@@ -1,6 +1,6 @@
 <div align="center">
 
-# Architecture - TeamX - Ads Block
+# Architecture - TeamX - AdBlock
 
 [![Version](https://img.shields.io/badge/version-1.1.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](../LICENSE)
@@ -23,7 +23,7 @@
 <a id="overview"></a>
 ## Overview
 
-`TeamX - Ads Block` is an ultra-lightweight Chrome Extension (Manifest V3) purpose-built to intercept and neutralize rogue ad popups on `olympustaff.com` without disturbing legitimate browsing or website scripts.
+`TeamX - AdBlock` is an ultra-lightweight Chrome Extension (Manifest V3) purpose-built to intercept and neutralize rogue ad popups on `olympustaff.com` without disturbing legitimate browsing or website scripts.
 
 ```mermaid
 flowchart TD
@@ -55,8 +55,8 @@ the extension guarantees that its wrapper runs before any inline scripts or exte
 ## Interception Mechanics
 
 ```javascript
-// TeamX - Ads Block (MIT)
-// https://github.com/shadow-x78/teamx-adsblock
+// TeamX - AdBlock (MIT)
+// https://github.com/shadow-x78/teamx-adblock
 
 (() => {
   const originalOpen = window.open;
@@ -90,6 +90,6 @@ Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [Changelog](../CHANGELOG.md) ·
 [Security](../SECURITY.md)
 
-<sub>&copy; 2026 TeamX - Ads Block</sub>
+<sub>&copy; 2026 TeamX - AdBlock</sub>
 
 </div>

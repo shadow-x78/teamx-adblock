@@ -1,6 +1,6 @@
 # ─────────────────────────────────────────────
-# TeamX - Ads Block - Editor Configuration
-# https://github.com/shadow-x78/teamx-adsblock
+# TeamX - AdBlock - Editor Configuration
+# https://github.com/shadow-x78/teamx-adblock
 # ─────────────────────────────────────────────
 
 # ── Root ──
@@ -22,4 +22,3 @@ indent_size = 2
 # ── Markdown ──
 [*.md]
 trim_trailing_whitespace = false
-

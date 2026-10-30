@@ -1,10 +1,10 @@
 <div align="center">
 
-<a href="https://github.com/shadow-x78/teamx-adsblock">
-  <img src="https://raw.githubusercontent.com/shadow-x78/teamx-adsblock/main/assets/logo/teamx-adsblock-banner.png" alt="TeamX - Ads Block banner" width="100%" />
+<a href="https://github.com/shadow-x78/teamx-adblock">
+  <img src="https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/logo/teamx-adblock-banner.png" alt="TeamX - AdBlock banner" width="100%" />
 </a>
 
-# TeamX - Ads Block
+# TeamX - AdBlock
 
 Precision ad popup blocker engineered exclusively for Olympus Staff (`olympustaff.com`).
 
@@ -43,16 +43,16 @@ Precision ad popup blocker engineered exclusively for Olympus Staff (`olympustaf
 <a id="overview"></a>
 ## Overview
 
-**TeamX - Ads Block** is an ultra-fast, zero-overhead browser extension (Manifest V3) purpose-built to stop aggressive, unwanted popups and redirect ads on `olympustaff.com`.
+**TeamX - AdBlock** is an ultra-fast, zero-overhead browser extension (Manifest V3) purpose-built to stop aggressive, unwanted popups and redirect ads on `olympustaff.com`.
 
-Unlike generic ad blockers that inject heavy DOM filter lists and slow down page rendering, **TeamX - Ads Block** hooks directly into the page's original execution environment (`world: "MAIN"`) at `document_start` to intercept malicious `window.open` trigger invocations natively before they can spawn annoying tabs or popups.
+Unlike generic ad blockers that inject heavy DOM filter lists and slow down page rendering, **TeamX - AdBlock** hooks directly into the page's original execution environment (`world: "MAIN"`) at `document_start` to intercept malicious `window.open` trigger invocations natively before they can spawn annoying tabs or popups.
 
 ---
 
 <a id="comparison"></a>
 ## Comparison
 
-| Capability | Generic Ad-blockers | Script Managers | **TeamX - Ads Block** |
+| Capability | Generic Ad-blockers | Script Managers | **TeamX - AdBlock** |
 | :--- | :---: | :---: | :---: |
 | Execution context | ⚠️ Isolated world | ⚠️ Late userscript | ✅ **MAIN World** (`document_start`) |
 | Intercept inline scripts | ❌ Misses fast triggers | ⚠️ Timing dependent | ✅ **100% Guaranteed hook** |
@@ -78,7 +78,6 @@ All other legitimate browser popups, reader tools, and navigation links execute 
 
 ---
 
-<a id="features"></a>
 ## Features
 
 - ⚡ **Instant Execution:** Injected at `document_start` before page scripts initialize.
@@ -94,7 +93,7 @@ All other legitimate browser popups, reader tools, and navigation links execute 
 
 ### Option 1: Pre-packaged `.crx` (Recommended)
 
-1. Download the latest [`TeamX-AdsBlock.crx`](https://github.com/shadow-x78/teamx-adsblock/releases/latest/download/TeamX-AdsBlock.crx) from Releases.
+1. Download the latest [`TeamX-AdBlock.crx`](https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx) from Releases.
 2. Open `chrome://extensions/` in your browser.
 3. Toggle **Developer mode** in the top-right corner.
 4. Drag and drop the `.crx` file onto the extensions page.
@@ -106,7 +105,7 @@ All other legitimate browser popups, reader tools, and navigation links execute 
 ### Option 2: Load Unpacked Source (For Developers)
 
 ```bash
-git clone https://github.com/shadow-x78/teamx-adsblock.git
+git clone https://github.com/shadow-x78/teamx-adblock.git
 ```
 
 1. Open `chrome://extensions/`.
@@ -149,15 +148,15 @@ Read full technical breakdown in [ARCHITECTURE.md](docs/ARCHITECTURE.md).
 ## Project Structure
 
 ```text
-teamx-adsblock/
+teamx-adblock/
 ├── .github/
 │   └── workflows/
 │       └── release.yml          # Automated CI/CD release & CRX builder
 ├── assets/
 │   └── logo/
-│       ├── teamx-adsblock-banner.png     # English banner asset
-│       ├── teamx-adsblock-banner-ar.png  # Arabic banner asset
-│       └── teamx-adsblock-logo.png       # Master brand logo
+│       ├── teamx-adblock-banner.png     # English banner asset
+│       ├── teamx-adblock-banner-ar.png  # Arabic banner asset
+│       └── teamx-adblock-logo.png       # Master brand logo
 ├── docs/
 │   ├── ARCHITECTURE.md          # Technical design & hook lifecycle
 │   ├── AUTO_UPDATE.md           # Omaha protocol & auto-update pipeline
@@ -198,7 +197,7 @@ teamx-adsblock/
 
 1. Fork the repository and create your branch (`feature/xyz`, `fix/xyz`).
 2. Maintain strict zero-dependency vanilla JavaScript standards.
-3. Commit as `teamx-adsblock | <type>: <description>` (e.g. `teamx-adsblock | feat: add rule`).
+3. Commit as `teamx-adblock | <type>: <description>` (e.g. `teamx-adblock | feat: add rule`).
 4. Test compatibility directly against `olympustaff.com`.
 5. Submit a Pull Request.
 
@@ -219,6 +218,6 @@ Built by <a href="https://github.com/shadow-x78">shadow-x78</a> ·
 [Changelog](CHANGELOG.md) ·
 [Security](SECURITY.md)
 
-<sub>&copy; 2026 TeamX - Ads Block</sub>
+<sub>&copy; 2026 TeamX - AdBlock</sub>
 
 </div>
