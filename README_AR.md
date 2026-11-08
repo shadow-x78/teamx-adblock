@@ -109,8 +109,6 @@
 > [!NOTE]
 > يُشغَّل المشغّل المدمج من مخزن ملفات GitHub، ويبقى نفس التسجيل مُودَعاً داخل مجلد `assets/videos/` في هذا المستودع.
 
-جميع طرق المشاهدة وتفاصيل الترميز وفصول الدليل موثّقة في [دليل فيديو الشرح](docs/VIDEO_TUTORIAL_AR.md).
-
 ---
 
 <a id="طريقة-التثبيت"></a>
@@ -188,9 +186,7 @@ teamx-adblock/
 │   ├── AUTO_UPDATE.md           # بروتوكول Omaha والتحديث الصامت
 │   ├── AUTO_UPDATE_AR.md        # دليل التحديث التلقائي بالعربية
 │   ├── INSTALLATION.md          # خطوات التثبيت المفصلة لمختلف المتصفحات
-│   ├── INSTALLATION_AR.md       # دليل التثبيت باللغة العربية
-│   ├── VIDEO_TUTORIAL.md        # دليل مشاهدة فيديو الشرح وفصوله
-│   └── VIDEO_TUTORIAL_AR.md     # دليل فيديو الشرح باللغة العربية
+│   └── INSTALLATION_AR.md       # دليل التثبيت باللغة العربية
 ├── icons/
 │   ├── icon16.png               # حجم شريط المتصفح والـ Favicon
 │   ├── icon32.png               # شاشات العرض عالية الدقة Retina
@@ -221,7 +217,6 @@ teamx-adblock/
 | [ARCHITECTURE.md](docs/ARCHITECTURE.md) ([العربية](docs/ARCHITECTURE_AR.md)) | شرح بنية الكود وسياق MAIN world واعتراض دوال window.open |
 | [AUTO_UPDATE.md](docs/AUTO_UPDATE.md) ([العربية](docs/AUTO_UPDATE_AR.md)) | شرح بروتوكول التحديث لكروم ومفاتيح التوقيع الرقمي وإطلاق الإصدارات |
 | [INSTALLATION.md](docs/INSTALLATION.md) ([العربية](docs/INSTALLATION_AR.md)) | خطوات التثبيت المفصلة لمختلف متصفحات Chromium |
-| [VIDEO_TUTORIAL.md](docs/VIDEO_TUTORIAL.md) ([العربية](docs/VIDEO_TUTORIAL_AR.md)) | طرق مشاهدة فيديو الشرح وتفاصيل الترميز وتقسيم الفصول |
 
 ---
 

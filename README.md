@@ -109,8 +109,6 @@ Step-by-step walkthrough demonstrating installation on **PC** (Google Chrome / C
 > [!NOTE]
 > The inline player is served from GitHub's asset store, while the same recording stays versioned inside `assets/videos/` in this repository.
 
-Full playback options, codec details, and the per-platform chapters are documented in the [Video Tutorial Guide](docs/VIDEO_TUTORIAL.md).
-
 ---
 
 <a id="installation"></a>
@@ -191,9 +189,7 @@ teamx-adblock/
 │   ├── AUTO_UPDATE.md           # Omaha protocol & auto-update pipeline
 │   ├── AUTO_UPDATE_AR.md        # Arabic auto-update guide
 │   ├── INSTALLATION.md          # Step-by-step installation instructions
-│   ├── INSTALLATION_AR.md       # Arabic installation instructions
-│   ├── VIDEO_TUTORIAL.md        # Tutorial video playback & chapter guide
-│   └── VIDEO_TUTORIAL_AR.md     # Arabic tutorial video guide
+│   └── INSTALLATION_AR.md       # Arabic installation instructions
 ├── icons/
 │   ├── icon16.png               # Browser toolbar & favicon size
 │   ├── icon32.png               # Retina resolution display
@@ -224,7 +220,6 @@ teamx-adblock/
 | [ARCHITECTURE.md](docs/ARCHITECTURE.md) ([العربية](docs/ARCHITECTURE_AR.md)) | Technical execution flow, MAIN world mechanics, and popup interception |
 | [AUTO_UPDATE.md](docs/AUTO_UPDATE.md) ([العربية](docs/AUTO_UPDATE_AR.md)) | Google Omaha autoupdate protocol, cryptographic signing, and release workflow |
 | [INSTALLATION.md](docs/INSTALLATION.md) ([العربية](docs/INSTALLATION_AR.md)) | Multi-browser installation steps and verification procedures |
-| [VIDEO_TUTORIAL.md](docs/VIDEO_TUTORIAL.md) ([العربية](docs/VIDEO_TUTORIAL_AR.md)) | Tutorial video playback options, codec details, and chapter breakdown |
 
 ---
 

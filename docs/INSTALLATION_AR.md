@@ -43,7 +43,7 @@
   <p>متصفحك لا يدعم تشغيل الفيديو المباشر. يمكنك <a href="https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4">مشاهدة أو تحميل الفيديو مباشرة</a>.</p>
 </video>
 
-▶ **شاهد الدليل بالعربية** — 1920×1080 · H.264/AAC · 00:56 · [تحميل ملف MP4](https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4) · [🇬🇧 English version](INSTALLATION.md#video-walkthrough) · [دليل فيديو الشرح](VIDEO_TUTORIAL_AR.md)
+▶ **شاهد الدليل بالعربية** — 1920×1080 · H.264/AAC · 00:56 · [تحميل ملف MP4](https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4) · [🇬🇧 English version](INSTALLATION.md#video-walkthrough)
 
 > [!NOTE]
 > يُشغَّل المشغّل المدمج من مخزن ملفات GitHub، ويبقى نفس التسجيل مُودَعاً داخل مجلد `assets/videos/` في هذا المستودع.
