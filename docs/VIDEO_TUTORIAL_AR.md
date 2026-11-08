@@ -24,7 +24,7 @@
 - [المواصفات الفنية](#المواصفات-الفنية)
 - [فصول الدليل](#فصول-الدليل)
 - [المشاهدة بدون إنترنت](#المشاهدة-بدون-إنترنت)
-- [لماذا لا يوجد مشغّل مدمج؟](#المشغل-المدمج)
+- [كيف يعمل المشغّل المدمج](#المشغل-المدمج)
 
 ---
 
@@ -45,13 +45,17 @@
 
 ### 🇬🇧 English
 
-[![TeamX - AdBlock Tutorial (English)](../assets/videos/TeamX_AdBlock_Tutorial_EN_poster.jpg)](https://cdn.jsdelivr.net/gh/shadow-x78/teamx-adblock@main/assets/videos/TeamX_AdBlock_Tutorial_EN.mp4)
+<video src="https://github.com/user-attachments/assets/275fd7df-f6fc-42b6-a293-3d121013b46d" poster="../assets/videos/TeamX_AdBlock_Tutorial_EN_poster.jpg" controls width="100%" style="max-width: 100%;">
+  <p>Your browser does not support embedded HTML5 video. You can <a href="https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_EN.mp4">view or download the video directly</a>.</p>
+</video>
 
 ▶ **Watch the English walkthrough** — [Download MP4](https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_EN.mp4) · [Open in repository](https://github.com/shadow-x78/teamx-adblock/blob/main/assets/videos/TeamX_AdBlock_Tutorial_EN.mp4)
 
 ### 🇸🇦 العربية
 
-[![دليل شرح وتثبيت TeamX - AdBlock (بالعربية)](../assets/videos/TeamX_AdBlock_Tutorial_AR_poster.jpg)](https://cdn.jsdelivr.net/gh/shadow-x78/teamx-adblock@main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4)
+<video src="https://github.com/user-attachments/assets/26e429e0-2202-436c-87e8-5f361f6f3d20" poster="../assets/videos/TeamX_AdBlock_Tutorial_AR_poster.jpg" controls width="100%" style="max-width: 100%;">
+  <p>متصفحك لا يدعم تشغيل الفيديو المباشر. يمكنك <a href="https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4">مشاهدة أو تحميل الفيديو مباشرة</a>.</p>
+</video>
 
 ▶ **شاهد الدليل بالعربية** — [تحميل ملف MP4](https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4) · [فتح داخل المستودع](https://github.com/shadow-x78/teamx-adblock/blob/main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4)
 
@@ -103,11 +107,18 @@ curl -L -o TeamX_AdBlock_Tutorial_AR.mp4 https://raw.githubusercontent.com/shado
 ---
 
 <a id="المشغل-المدمج"></a>
-## لماذا لا يوجد مشغّل مدمج؟
+## كيف يعمل المشغّل المدمج
 
-يقوم GitHub بمعالجة ملفات Markdown على الخادم ثم ينقّي ناتج HTML. تُحذف وسوم `<video>` التي تشير إلى ملفات داخل المستودع، كما يُعرض ملف الفيديو المُودَع باستخدام صيغة الصورة على شكل صورة معطوبة بدل مشغّل. لذلك يعتمد المستودع على صورة غلاف مرتبطة بملف الفيديو عبر شبكة توصيل محتوى (CDN) تُعيد نوع المحتوى الصحيح `video/mp4`، فتُفتح التسجيل بجودته الكاملة مباشرةً داخل المتصفح.
+يقوم GitHub بمعالجة ملفات Markdown على الخادم ثم ينقّي ناتج HTML. تُحذف وسوم `<video>` التي تشير إلى ملفات داخل المستودع، كما يُعرض ملف الفيديو المُودَع باستخدام صيغة الصورة على شكل صورة معطوبة بدل مشغّل. المصدر الوحيد الذي يقبله GitHub داخل README هو رابط ملف مرفوع من صيغة `https://github.com/user-attachments/assets/<uuid>`، وهو ما يحوّله GitHub إلى رابط موقّع على `private-user-images.githubusercontent.com` يعمل التشغيل داخل المتصفح.
 
-ولتحصيل مشغّل مدمج فعلياً داخل GitHub، ارفع ملف MP4 عبر محرر GitHub على الويب (`Attach files by dragging & dropping, selecting from a file browser, or pasting`) واستخدم الرابط الناتج `https://github.com/user-attachments/assets/...`، حيث يعرضه GitHub كمشغّل مدمج.
+لذلك يُنشر كل تسجيل نسختين:
+
+| النسخة | الموقع | الغرض |
+| :--- | :--- | :--- |
+| **المشغّل المدمج** | مخزن ملفات GitHub (`user-attachments`) | يعمل مباشرةً داخل README على GitHub |
+| **النسخة المُودَعة** | `assets/videos/` داخل هذا المستودع | نسخة قابلة للتحميل، ومشاهدة بدون إنترنت، وتجهيز الإصدارات |
+
+وعند تحديث أي تسجيل، ارفع الملف الجديد عبر محرر GitHub على الويب (`Attach files by dragging & dropping, selecting from a file browser, or pasting`) واستبدل رابط الملف في ملفات التوثيق.
 
 ---
 

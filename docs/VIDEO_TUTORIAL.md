@@ -24,7 +24,7 @@
 - [Media Specifications](#media-specifications)
 - [Chapter Breakdown](#chapter-breakdown)
 - [Offline Playback](#offline-playback)
-- [Why There Is No Embedded Player](#embedded-player)
+- [How The Inline Player Works](#embedded-player)
 
 ---
 
@@ -45,13 +45,17 @@ Two recorded walkthroughs cover the complete setup of **TeamX - AdBlock** on des
 
 ### 🇬🇧 English
 
-[![TeamX - AdBlock Tutorial (English)](../assets/videos/TeamX_AdBlock_Tutorial_EN_poster.jpg)](https://cdn.jsdelivr.net/gh/shadow-x78/teamx-adblock@main/assets/videos/TeamX_AdBlock_Tutorial_EN.mp4)
+<video src="https://github.com/user-attachments/assets/275fd7df-f6fc-42b6-a293-3d121013b46d" poster="../assets/videos/TeamX_AdBlock_Tutorial_EN_poster.jpg" controls width="100%" style="max-width: 100%;">
+  <p>Your browser does not support embedded HTML5 video. You can <a href="https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_EN.mp4">view or download the video directly</a>.</p>
+</video>
 
 ▶ **Watch the English walkthrough** — [Download MP4](https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_EN.mp4) · [Open in repository](https://github.com/shadow-x78/teamx-adblock/blob/main/assets/videos/TeamX_AdBlock_Tutorial_EN.mp4)
 
 ### 🇸🇦 العربية
 
-[![دليل شرح وتثبيت TeamX - AdBlock (بالعربية)](../assets/videos/TeamX_AdBlock_Tutorial_AR_poster.jpg)](https://cdn.jsdelivr.net/gh/shadow-x78/teamx-adblock@main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4)
+<video src="https://github.com/user-attachments/assets/26e429e0-2202-436c-87e8-5f361f6f3d20" poster="../assets/videos/TeamX_AdBlock_Tutorial_AR_poster.jpg" controls width="100%" style="max-width: 100%;">
+  <p>متصفحك لا يدعم تشغيل الفيديو المباشر. يمكنك <a href="https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4">مشاهدة أو تحميل الفيديو مباشرة</a>.</p>
+</video>
 
 ▶ **شاهد الدليل بالعربية** — [تحميل ملف MP4](https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4) · [فتح داخل المستودع](https://github.com/shadow-x78/teamx-adblock/blob/main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4)
 
@@ -103,11 +107,18 @@ The video is a standalone walkthrough; the extension itself is installed separat
 ---
 
 <a id="embedded-player"></a>
-## Why There Is No Embedded Player
+## How The Inline Player Works
 
-GitHub renders Markdown on the server and sanitizes the produced HTML. Raw `<video>` elements that point at files inside the repository are removed from the output, and a committed media file referenced with image syntax is rendered as a broken image instead of a player. The repository therefore uses a poster frame that links to the MP4 through a CDN that serves the correct `video/mp4` content type, which opens the full-resolution recording directly in the browser.
+GitHub renders Markdown on the server and sanitizes the produced HTML. Raw `<video>` elements that point at files inside the repository are removed from the output, and a committed media file referenced with image syntax is rendered as a broken image instead of a player. The only media source GitHub accepts inside a README is an uploaded asset URL of the form `https://github.com/user-attachments/assets/<uuid>`, which it rewrites into a signed `private-user-images.githubusercontent.com` address that the browser can play inline.
 
-To obtain a truly inline player on GitHub itself, upload the MP4 through the GitHub web editor (`Attach files by dragging & dropping, selecting from a file browser, or pasting`) and reference the generated `https://github.com/user-attachments/assets/...` URL, which GitHub renders as an inline player.
+Both recordings are therefore published twice:
+
+| Copy | Location | Purpose |
+| :--- | :--- | :--- |
+| **Inline player** | GitHub asset store (`user-attachments`) | Plays directly inside the README on GitHub |
+| **Versioned source** | `assets/videos/` in this repository | Downloadable copy, offline playback, and release packaging |
+
+When a recording is updated, upload the new file through the GitHub web editor (`Attach files by dragging & dropping, selecting from a file browser, or pasting`) and replace the asset URL in the documentation set.
 
 ---
 

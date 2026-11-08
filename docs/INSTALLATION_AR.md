@@ -39,12 +39,14 @@
 <a id="فيديو-الشرح"></a>
 ## فيديو الشرح
 
-[![دليل التثبيت لفريق TeamX - AdBlock (بالعربية)](../assets/videos/TeamX_AdBlock_Tutorial_AR_poster.jpg)](https://cdn.jsdelivr.net/gh/shadow-x78/teamx-adblock@main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4)
+<video src="https://github.com/user-attachments/assets/26e429e0-2202-436c-87e8-5f361f6f3d20" poster="../assets/videos/TeamX_AdBlock_Tutorial_AR_poster.jpg" controls width="100%" style="max-width: 100%;">
+  <p>متصفحك لا يدعم تشغيل الفيديو المباشر. يمكنك <a href="https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4">مشاهدة أو تحميل الفيديو مباشرة</a>.</p>
+</video>
 
 ▶ **شاهد الدليل بالعربية** — 1920×1080 · H.264/AAC · 00:56 · [تحميل ملف MP4](https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4) · [🇬🇧 English version](INSTALLATION.md#video-walkthrough) · [دليل فيديو الشرح](VIDEO_TUTORIAL_AR.md)
 
 > [!NOTE]
-> يحذف GitHub وسوم `<video>` من ملفات Markdown، لذا تفتح الصورة أعلاه ملف الفيديو بجودة كاملة مباشرةً في متصفحك.
+> يُشغَّل المشغّل المدمج من مخزن ملفات GitHub، ويبقى نفس التسجيل مُودَعاً داخل مجلد `assets/videos/` في هذا المستودع.
 
 ---
 

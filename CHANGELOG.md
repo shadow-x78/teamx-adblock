@@ -22,10 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **Video Tutorial Guide:** New `docs/VIDEO_TUTORIAL.md` and `docs/VIDEO_TUTORIAL_AR.md` documenting playback options, media specifications, and the per-platform chapter breakdown of both recordings.
-- **Tutorial Poster Frames:** Added `assets/videos/TeamX_AdBlock_Tutorial_EN_poster.jpg` and `assets/videos/TeamX_AdBlock_Tutorial_AR_poster.jpg` as clickable poster frames for the walkthroughs.
+- **Tutorial Poster Frames:** Added `assets/videos/TeamX_AdBlock_Tutorial_EN_poster.jpg` and `assets/videos/TeamX_AdBlock_Tutorial_AR_poster.jpg` as poster frames for the inline players.
 
 ### Changed
-- **Visible Video Tutorial:** Replaced the raw `<video>` tags, which GitHub removes from rendered Markdown, with poster-frame players that open the H.264 walkthroughs in the browser across `README.md`, `README_AR.md`, `docs/INSTALLATION.md`, and `docs/INSTALLATION_AR.md`.
+- **Inline Video Players:** The walkthroughs now play directly inside `README.md`, `README_AR.md`, `docs/INSTALLATION.md`, `docs/INSTALLATION_AR.md`, and `docs/VIDEO_TUTORIAL*.md` through GitHub-hosted asset URLs, because GitHub removes `<video>` elements that point at files inside a repository.
 
 ---
 

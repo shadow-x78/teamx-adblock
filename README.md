@@ -100,12 +100,14 @@ It actively terminates and neutralizes:
 
 Step-by-step walkthrough demonstrating installation on **PC** (Google Chrome / Chromium) and **Mobile** (Kiwi Browser for Android):
 
-[![TeamX - AdBlock Tutorial (English)](assets/videos/TeamX_AdBlock_Tutorial_EN_poster.jpg)](https://cdn.jsdelivr.net/gh/shadow-x78/teamx-adblock@main/assets/videos/TeamX_AdBlock_Tutorial_EN.mp4)
+<video src="https://github.com/user-attachments/assets/275fd7df-f6fc-42b6-a293-3d121013b46d" poster="assets/videos/TeamX_AdBlock_Tutorial_EN_poster.jpg" controls width="100%" style="max-width: 100%;">
+  <p>Your browser does not support embedded HTML5 video. You can <a href="https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_EN.mp4">view or download the video directly</a>.</p>
+</video>
 
 ▶ **Watch the English walkthrough** — 1920×1080 · H.264/AAC · 00:52 · [Download MP4](https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_EN.mp4) · [🇸🇦 النسخة العربية](README_AR.md#فيديو-الشرح-والتثبيت)
 
 > [!NOTE]
-> GitHub strips raw `<video>` tags from Markdown, so the poster above opens the full-resolution MP4 directly in your browser.
+> The inline player is served from GitHub's asset store, while the same recording stays versioned inside `assets/videos/` in this repository.
 
 Full playback options, codec details, and the per-platform chapters are documented in the [Video Tutorial Guide](docs/VIDEO_TUTORIAL.md).
 
