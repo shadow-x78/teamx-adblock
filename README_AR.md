@@ -100,9 +100,14 @@
 
 دليل مرئي عملي يوضح خطوات التثبيت بالتفصيل على **الكمبيوتر** (متصفح كروم / كروميوم) و**الهاتف** (عبر متصفح Kiwi الرسمي):
 
-<video src="assets/videos/TeamX_AdBlock_Tutorial_AR.mp4" controls="controls" width="100%">
-  <p>متصفحك لا يدعم تشغيل الفيديو المباشر. يمكنك <a href="assets/videos/TeamX_AdBlock_Tutorial_AR.mp4">مشاهدة أو تحميل الفيديو مباشرة</a>.</p>
-</video>
+[![دليل شرح وتثبيت TeamX - AdBlock (بالعربية)](assets/videos/TeamX_AdBlock_Tutorial_AR_poster.jpg)](https://cdn.jsdelivr.net/gh/shadow-x78/teamx-adblock@main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4)
+
+▶ **شاهد الدليل بالعربية** — 1920×1080 · H.264/AAC · 00:56 · [تحميل ملف MP4](https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4) · [🇬🇧 English version](README.md#video-tutorial)
+
+> [!NOTE]
+> يحذف GitHub وسوم `<video>` من ملفات Markdown، لذا تفتح الصورة أعلاه ملف الفيديو بجودة كاملة مباشرةً في متصفحك.
+
+جميع طرق المشاهدة وتفاصيل الترميز وفصول الدليل موثّقة في [دليل فيديو الشرح](docs/VIDEO_TUTORIAL_AR.md).
 
 ---
 
@@ -171,15 +176,19 @@ teamx-adblock/
 │   │   ├── teamx-adblock-banner-ar.png  # بانر التوثيق باللغة العربية
 │   │   └── teamx-adblock-logo.png       # الشعار الأساسي فائق الدقة
 │   └── videos/
-│       ├── TeamX_AdBlock_Tutorial_AR.mp4   # فيديو الشرح باللغة العربية
-│       └── TeamX_AdBlock_Tutorial_EN.mp4   # فيديو الشرح باللغة الإنجليزية
+│       ├── TeamX_AdBlock_Tutorial_AR.mp4        # فيديو الشرح باللغة العربية
+│       ├── TeamX_AdBlock_Tutorial_AR_poster.jpg # صورة الغلاف لفيديو الشرح بالعربية
+│       ├── TeamX_AdBlock_Tutorial_EN.mp4        # فيديو الشرح باللغة الإنجليزية
+│       └── TeamX_AdBlock_Tutorial_EN_poster.jpg # صورة الغلاف لفيديو الشرح بالإنجليزية
 ├── docs/
 │   ├── ARCHITECTURE.md          # المعمارية التقنية ودورة حياة الاعتراض
 │   ├── ARCHITECTURE_AR.md       # المعمارية التقنية باللغة العربية
 │   ├── AUTO_UPDATE.md           # بروتوكول Omaha والتحديث الصامت
 │   ├── AUTO_UPDATE_AR.md        # دليل التحديث التلقائي بالعربية
 │   ├── INSTALLATION.md          # خطوات التثبيت المفصلة لمختلف المتصفحات
-│   └── INSTALLATION_AR.md       # دليل التثبيت باللغة العربية
+│   ├── INSTALLATION_AR.md       # دليل التثبيت باللغة العربية
+│   ├── VIDEO_TUTORIAL.md        # دليل مشاهدة فيديو الشرح وفصوله
+│   └── VIDEO_TUTORIAL_AR.md     # دليل فيديو الشرح باللغة العربية
 ├── icons/
 │   ├── icon16.png               # حجم شريط المتصفح والـ Favicon
 │   ├── icon32.png               # شاشات العرض عالية الدقة Retina
@@ -210,6 +219,7 @@ teamx-adblock/
 | [ARCHITECTURE.md](docs/ARCHITECTURE.md) ([العربية](docs/ARCHITECTURE_AR.md)) | شرح بنية الكود وسياق MAIN world واعتراض دوال window.open |
 | [AUTO_UPDATE.md](docs/AUTO_UPDATE.md) ([العربية](docs/AUTO_UPDATE_AR.md)) | شرح بروتوكول التحديث لكروم ومفاتيح التوقيع الرقمي وإطلاق الإصدارات |
 | [INSTALLATION.md](docs/INSTALLATION.md) ([العربية](docs/INSTALLATION_AR.md)) | خطوات التثبيت المفصلة لمختلف متصفحات Chromium |
+| [VIDEO_TUTORIAL.md](docs/VIDEO_TUTORIAL.md) ([العربية](docs/VIDEO_TUTORIAL_AR.md)) | طرق مشاهدة فيديو الشرح وتفاصيل الترميز وتقسيم الفصول |
 
 ---
 

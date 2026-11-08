@@ -100,9 +100,14 @@ It actively terminates and neutralizes:
 
 Step-by-step walkthrough demonstrating installation on **PC** (Google Chrome / Chromium) and **Mobile** (Kiwi Browser for Android):
 
-<video src="assets/videos/TeamX_AdBlock_Tutorial_EN.mp4" controls="controls" width="100%">
-  <p>Your browser does not support embedded HTML5 video. You can <a href="assets/videos/TeamX_AdBlock_Tutorial_EN.mp4">view or download the video directly</a>.</p>
-</video>
+[![TeamX - AdBlock Tutorial (English)](assets/videos/TeamX_AdBlock_Tutorial_EN_poster.jpg)](https://cdn.jsdelivr.net/gh/shadow-x78/teamx-adblock@main/assets/videos/TeamX_AdBlock_Tutorial_EN.mp4)
+
+▶ **Watch the English walkthrough** — 1920×1080 · H.264/AAC · 00:52 · [Download MP4](https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_EN.mp4) · [🇸🇦 النسخة العربية](README_AR.md#فيديو-الشرح-والتثبيت)
+
+> [!NOTE]
+> GitHub strips raw `<video>` tags from Markdown, so the poster above opens the full-resolution MP4 directly in your browser.
+
+Full playback options, codec details, and the per-platform chapters are documented in the [Video Tutorial Guide](docs/VIDEO_TUTORIAL.md).
 
 ---
 
@@ -174,15 +179,19 @@ teamx-adblock/
 │   │   ├── teamx-adblock-banner-ar.png  # Arabic banner asset
 │   │   └── teamx-adblock-logo.png       # Master brand logo
 │   └── videos/
-│       ├── TeamX_AdBlock_Tutorial_AR.mp4   # Arabic tutorial video
-│       └── TeamX_AdBlock_Tutorial_EN.mp4   # English tutorial video
+│       ├── TeamX_AdBlock_Tutorial_AR.mp4        # Arabic tutorial video
+│       ├── TeamX_AdBlock_Tutorial_AR_poster.jpg # Arabic tutorial poster frame
+│       ├── TeamX_AdBlock_Tutorial_EN.mp4        # English tutorial video
+│       └── TeamX_AdBlock_Tutorial_EN_poster.jpg # English tutorial poster frame
 ├── docs/
 │   ├── ARCHITECTURE.md          # Technical design & hook lifecycle
 │   ├── ARCHITECTURE_AR.md       # Arabic technical design
 │   ├── AUTO_UPDATE.md           # Omaha protocol & auto-update pipeline
 │   ├── AUTO_UPDATE_AR.md        # Arabic auto-update guide
 │   ├── INSTALLATION.md          # Step-by-step installation instructions
-│   └── INSTALLATION_AR.md       # Arabic installation instructions
+│   ├── INSTALLATION_AR.md       # Arabic installation instructions
+│   ├── VIDEO_TUTORIAL.md        # Tutorial video playback & chapter guide
+│   └── VIDEO_TUTORIAL_AR.md     # Arabic tutorial video guide
 ├── icons/
 │   ├── icon16.png               # Browser toolbar & favicon size
 │   ├── icon32.png               # Retina resolution display
@@ -213,6 +222,7 @@ teamx-adblock/
 | [ARCHITECTURE.md](docs/ARCHITECTURE.md) ([العربية](docs/ARCHITECTURE_AR.md)) | Technical execution flow, MAIN world mechanics, and popup interception |
 | [AUTO_UPDATE.md](docs/AUTO_UPDATE.md) ([العربية](docs/AUTO_UPDATE_AR.md)) | Google Omaha autoupdate protocol, cryptographic signing, and release workflow |
 | [INSTALLATION.md](docs/INSTALLATION.md) ([العربية](docs/INSTALLATION_AR.md)) | Multi-browser installation steps and verification procedures |
+| [VIDEO_TUTORIAL.md](docs/VIDEO_TUTORIAL.md) ([العربية](docs/VIDEO_TUTORIAL_AR.md)) | Tutorial video playback options, codec details, and chapter breakdown |
 
 ---
 
