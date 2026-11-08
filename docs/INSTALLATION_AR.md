@@ -114,7 +114,7 @@ git clone https://github.com/shadow-x78/teamx-adblock.git
 | المتصفح | المحرك المدعوم | التحديث التلقائي | صيغة الحزمة |
 | :--- | :---: | :---: | :---: |
 | **Google Chrome** | Chromium 111+ | ✅ بروتوكول Omaha | `.crx` |
-| **Mozilla Firefox** | Gecko 109+ | ✅ مدعوم | `.xpi` |
+| **Mozilla Firefox** | Gecko 140+ | ✅ مدعوم | `.xpi` |
 | **Brave Browser** | Chromium 111+ | ✅ مدعوم | `.crx` |
 | **Microsoft Edge** | Chromium 111+ | ✅ مدعوم | `.crx` |
 | **Opera / Vivaldi** | Chromium 111+ | ✅ مدعوم | `.crx` |

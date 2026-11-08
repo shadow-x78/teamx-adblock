@@ -88,7 +88,7 @@ It actively terminates and neutralizes:
 - ⚡ **Instant Execution:** Injected at `document_start` before page scripts initialize.
 - 🛡️ **Multi-Layered Protection:** Combines Declarative Net Request rules (`rules.json`), cosmetic CSS (`rules.css`), and JavaScript hooks (`content.js`).
 - 🛑 **Complete Ad Annihilation:** Zero in-page banners, zero floating bars, zero popunders, and zero click popups.
-- 🦊 **Universal Compatibility:** Full native support for Chromium (Chrome, Brave, Edge, Kiwi Browser) and Gecko (Mozilla Firefox 109+).
+- 🦊 **Universal Compatibility:** Full native support for Chromium (Chrome, Brave, Edge, Kiwi Browser) and Gecko (Mozilla Firefox 140+).
 - 🔄 **Fully Automated Updates:** Built-in Omaha protocol support enables automatic silent background updates directly from GitHub.
 - 🎨 **Authentic Brand Iconography:** Custom vector-crafted brand shield designed around the official Olympus Staff TeamX identity.
 - 🪶 **Zero Dependencies:** Pure, clean, lightweight vanilla JavaScript without third-party libraries.

@@ -9,7 +9,11 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "teamx-adblock@shadow-x78",
-      "strict_min_version": "109.0"
+      "strict_min_version": "140.0",
+      "update_url": "https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/updates.xml",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
     }
   },
   "permissions": [

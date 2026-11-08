@@ -111,7 +111,7 @@ git clone https://github.com/shadow-x78/teamx-adblock.git
 | **Google Chrome** | Chromium 111+ | ✅ Omaha Protocol | `.crx` |
 | **Brave Browser** | Chromium 111+ | ✅ Supported | `.crx` |
 | **Microsoft Edge** | Chromium 111+ | ✅ Supported | `.crx` |
-| **Mozilla Firefox** | Gecko 109+ | ✅ WebExtensions | `.xpi` |
+| **Mozilla Firefox** | Gecko 140+ | ✅ WebExtensions | `.xpi` |
 | **Opera / Vivaldi** | Chromium 111+ | ✅ Supported | `.crx` |
 
 ---
