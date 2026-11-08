@@ -39,7 +39,9 @@
 <a id="فيديو-الشرح"></a>
 ## فيديو الشرح
 
-<video src="https://github.com/user-attachments/assets/26e429e0-2202-436c-87e8-5f361f6f3d20" controls width="100%" style="max-width: 100%;"></video>
+<video src="https://github.com/user-attachments/assets/26e429e0-2202-436c-87e8-5f361f6f3d20" controls width="100%" style="max-width: 100%;">
+  <p>متصفحك لا يدعم تشغيل الفيديو المباشر. <a href="https://github.com/shadow-x78/teamx-adblock/blob/main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4">شاهد الفيديو على GitHub</a>.</p>
+</video>
 
 ---
 
