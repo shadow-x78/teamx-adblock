@@ -2,7 +2,7 @@
 
 # Contributing to TeamX - AdBlock
 
-[![Version](https://img.shields.io/badge/version-1.1.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.3.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=flat-square&logo=googlechrome)
 ![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Chromium-9333ea?style=flat-square&logo=googlechrome)
@@ -26,7 +26,7 @@ Contributions to TeamX - AdBlock are welcome. Please note that this project is r
 ## Day-to-Day Work
 
 - **Branches:** `feature/`, `fix/`, `docs/`, `chore/` prefixes (e.g. `feature/block-new-redirect`), branched from `main`.
-- **Commits:** `teamx-adblock | <type>: <description>` for work, `teamx-adblock | vX.Y.Z | <type>: <description>` for release commits. Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`.
+- **Commits:** `teamx-adblock | <type>: <description>` for work, `teamx-adblock | vX.Y.Z | <type>: <description>` when the change targets the current release line (both forms are used in history). Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`.
 - **Style:** Pure, zero-dependency vanilla JavaScript. Every file header follows the TeamX - AdBlock style:
 
 ```javascript
