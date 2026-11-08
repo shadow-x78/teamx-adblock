@@ -1,6 +1,11 @@
 # Security & Keys
 *.pem
+*.pem.*
 *.key
+*.key.*
+*.p12
+*.pfx
+TeamX-AdsBlock.pem
 
 # Build Artifacts
 *.crx

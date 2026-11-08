@@ -41,9 +41,9 @@ Contributions to TeamX - AdBlock are welcome. Please note that this project is r
 
 1. Bump version in `manifest.json` and `updates.xml`.
 2. Update `CHANGELOG.md` with semantic version entry.
-3. Pack the signed `.crx` bundle using the private signing key:
+3. Pack the signed `.crx` bundle using the private signing key. The key lives **outside** the repository, is never committed, and CI reads it from the `CRX_PRIVATE_KEY` secret:
    ```bash
-   google-chrome --pack-extension=. --pack-extension-key=../TeamX-AdsBlock.pem
+   google-chrome --pack-extension=. --pack-extension-key=<path-outside-repo>/TeamX-AdsBlock.pem
    ```
 4. Commit as `teamx-adblock | vX.Y.Z | release: <summary>` and tag `vX.Y.Z`.
 5. Create a GitHub Release with the tag and upload the built `TeamX-AdBlock.crx` and `TeamX-AdBlock.zip`.

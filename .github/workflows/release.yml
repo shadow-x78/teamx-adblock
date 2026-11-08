@@ -16,6 +16,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Forbid Tracked Signing Keys
+        run: |
+          if git ls-files | grep -Ei '\.(pem|key|p12|pfx)$'; then
+            echo "::error::A signing key is tracked by git. Remove it and rotate the key."
+            exit 1
+          fi
+
       - name: Setup Node.js & Chrome
         uses: browser-actions/setup-chrome@v1
         with:

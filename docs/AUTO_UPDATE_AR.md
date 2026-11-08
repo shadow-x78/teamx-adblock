@@ -100,7 +100,7 @@ sequenceDiagram
 2. ارفع رقم الإصدار في `updates.xml` إلى نفس القيمة (`version='1.3.0'`).
 3. احزم ملف الـ `.crx` الجديد بالمفتاح الخاص:
    ```bash
-   google-chrome --pack-extension=. --pack-extension-key=../TeamX-AdsBlock.pem
+   google-chrome --pack-extension=. --pack-extension-key=<path-outside-repo>/TeamX-AdsBlock.pem
    ```
 4. ارفع التغييرات إلى GitHub واصنع Release جديداً بالوسم `v1.3.0` وارفق ملف `TeamX-AdBlock.crx`.
 

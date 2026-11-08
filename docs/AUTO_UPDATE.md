@@ -104,7 +104,7 @@ When deploying an update to all users:
    ```
 4. Pack the new `.crx` file:
    ```bash
-   google-chrome --pack-extension=. --pack-extension-key=../TeamX-AdsBlock.pem
+   google-chrome --pack-extension=. --pack-extension-key=<path-outside-repo>/TeamX-AdsBlock.pem
    ```
 5. Create a new GitHub Release with the tag `v1.3.0` and upload the generated `TeamX-AdBlock.crx`.
 
