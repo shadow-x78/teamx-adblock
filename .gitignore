@@ -1,4 +1,8 @@
-# Security & Keys
+# ─────────────────────────────────────────────
+# TeamX - AdBlock - Git Ignore Rules
+# ─────────────────────────────────────────────
+
+# ── Security & Keys ──
 *.pem
 *.pem.*
 *.key
@@ -7,17 +11,16 @@
 *.pfx
 TeamX-AdsBlock.pem
 
-# Build Artifacts
+# ── Build Artifacts ──
 *.crx
 *.zip
 dist/
 build/
 
-# Operating System
+# ── Operating System ──
 .DS_Store
 Thumbs.db
 
-# Editor
+# ── Editor ──
 .vscode/
 .idea/
-

@@ -1,18 +1,27 @@
+# ─────────────────────────────────────────────
+# TeamX - AdBlock - Release Workflow
+# ─────────────────────────────────────────────
+
+# ── Workflow Identity ──
 name: Release & Package Extension
 
+# ── Trigger ──
 on:
   push:
     tags:
       - 'v*'
   workflow_dispatch:
 
+# ── Permissions ──
 permissions:
   contents: write
 
+# ── Build Job ──
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
     steps:
+      # ── Repository & Tooling ──
       - name: Checkout Repository
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
@@ -28,12 +37,14 @@ jobs:
         with:
           chrome-version: stable
 
+      # ── Unsigned Archives ──
       - name: Prepare Extension Archives (ZIP & Firefox XPI)
         run: |
           mkdir -p dist
           zip -r dist/TeamX-AdBlock.zip manifest.json content.js rules.css rules.json icons/ updates.xml README.md LICENSE
           zip -r dist/TeamX-AdBlock.xpi manifest.json content.js rules.css rules.json icons/ updates.xml README.md LICENSE
 
+      # ── Signed Chromium Package ──
       - name: Pack Chromium CRX Extension
         if: env.CRX_PRIVATE_KEY != ''
         env:
@@ -50,6 +61,7 @@ jobs:
         if: always()
         run: rm -f /tmp/key.pem && rm -rf /tmp/pack-ext
 
+      # ── Publication ──
       - name: Upload Release Assets
         uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2
         if: startsWith(github.ref, 'refs/tags/')
