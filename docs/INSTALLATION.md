@@ -39,14 +39,7 @@ You can install **TeamX - AdBlock** across all modern Chromium and Gecko (Firefo
 <a id="video-walkthrough"></a>
 ## Video Setup Walkthrough
 
-<video src="https://github.com/user-attachments/assets/275fd7df-f6fc-42b6-a293-3d121013b46d" poster="../assets/videos/TeamX_AdBlock_Tutorial_EN_poster.jpg" controls width="100%" style="max-width: 100%;">
-  <p>Your browser does not support embedded HTML5 video. You can <a href="https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_EN.mp4">view or download the video directly</a>.</p>
-</video>
-
-▶ **Watch the English walkthrough** — 1920×1080 · H.264/AAC · 00:52 · [Download MP4](https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_EN.mp4) · [🇸🇦 النسخة العربية](INSTALLATION_AR.md#فيديو-الشرح)
-
-> [!NOTE]
-> The inline player is served from GitHub's asset store, while the same recording stays versioned inside `assets/videos/` in this repository.
+<video src="https://github.com/user-attachments/assets/275fd7df-f6fc-42b6-a293-3d121013b46d" controls width="100%" style="max-width: 100%;"></video>
 
 ---
 

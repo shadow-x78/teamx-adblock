@@ -20,9 +20,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-- **Tutorial Poster Frames:** Added `assets/videos/TeamX_AdBlock_Tutorial_EN_poster.jpg` and `assets/videos/TeamX_AdBlock_Tutorial_AR_poster.jpg` as poster frames for the inline players.
-
 ### Changed
 - **Inline Video Players:** The walkthroughs now play directly inside `README.md`, `README_AR.md`, `docs/INSTALLATION.md`, and `docs/INSTALLATION_AR.md` through GitHub-hosted asset URLs, because GitHub removes `<video>` elements that point at files inside a repository.
 

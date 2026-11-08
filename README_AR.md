@@ -100,14 +100,7 @@
 
 دليل مرئي عملي يوضح خطوات التثبيت بالتفصيل على **الكمبيوتر** (متصفح كروم / كروميوم) و**الهاتف** (عبر متصفح Kiwi الرسمي):
 
-<video src="https://github.com/user-attachments/assets/26e429e0-2202-436c-87e8-5f361f6f3d20" poster="assets/videos/TeamX_AdBlock_Tutorial_AR_poster.jpg" controls width="100%" style="max-width: 100%;">
-  <p>متصفحك لا يدعم تشغيل الفيديو المباشر. يمكنك <a href="https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4">مشاهدة أو تحميل الفيديو مباشرة</a>.</p>
-</video>
-
-▶ **شاهد الدليل بالعربية** — 1920×1080 · H.264/AAC · 00:56 · [تحميل ملف MP4](https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_AR.mp4) · [🇬🇧 English version](README.md#video-tutorial)
-
-> [!NOTE]
-> يُشغَّل المشغّل المدمج من مخزن ملفات GitHub، ويبقى نفس التسجيل مُودَعاً داخل مجلد `assets/videos/` في هذا المستودع.
+<video src="https://github.com/user-attachments/assets/26e429e0-2202-436c-87e8-5f361f6f3d20" controls width="100%" style="max-width: 100%;"></video>
 
 ---
 
@@ -176,10 +169,8 @@ teamx-adblock/
 │   │   ├── teamx-adblock-banner-ar.png  # بانر التوثيق باللغة العربية
 │   │   └── teamx-adblock-logo.png       # الشعار الأساسي فائق الدقة
 │   └── videos/
-│       ├── TeamX_AdBlock_Tutorial_AR.mp4        # فيديو الشرح باللغة العربية
-│       ├── TeamX_AdBlock_Tutorial_AR_poster.jpg # صورة الغلاف لفيديو الشرح بالعربية
-│       ├── TeamX_AdBlock_Tutorial_EN.mp4        # فيديو الشرح باللغة الإنجليزية
-│       └── TeamX_AdBlock_Tutorial_EN_poster.jpg # صورة الغلاف لفيديو الشرح بالإنجليزية
+│       ├── TeamX_AdBlock_Tutorial_AR.mp4   # فيديو الشرح باللغة العربية
+│       └── TeamX_AdBlock_Tutorial_EN.mp4   # فيديو الشرح باللغة الإنجليزية
 ├── docs/
 │   ├── ARCHITECTURE.md          # المعمارية التقنية ودورة حياة الاعتراض
 │   ├── ARCHITECTURE_AR.md       # المعمارية التقنية باللغة العربية

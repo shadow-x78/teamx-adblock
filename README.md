@@ -100,14 +100,7 @@ It actively terminates and neutralizes:
 
 Step-by-step walkthrough demonstrating installation on **PC** (Google Chrome / Chromium) and **Mobile** (Kiwi Browser for Android):
 
-<video src="https://github.com/user-attachments/assets/275fd7df-f6fc-42b6-a293-3d121013b46d" poster="assets/videos/TeamX_AdBlock_Tutorial_EN_poster.jpg" controls width="100%" style="max-width: 100%;">
-  <p>Your browser does not support embedded HTML5 video. You can <a href="https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_EN.mp4">view or download the video directly</a>.</p>
-</video>
-
-▶ **Watch the English walkthrough** — 1920×1080 · H.264/AAC · 00:52 · [Download MP4](https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/assets/videos/TeamX_AdBlock_Tutorial_EN.mp4) · [🇸🇦 النسخة العربية](README_AR.md#فيديو-الشرح-والتثبيت)
-
-> [!NOTE]
-> The inline player is served from GitHub's asset store, while the same recording stays versioned inside `assets/videos/` in this repository.
+<video src="https://github.com/user-attachments/assets/275fd7df-f6fc-42b6-a293-3d121013b46d" controls width="100%" style="max-width: 100%;"></video>
 
 ---
 
@@ -179,10 +172,8 @@ teamx-adblock/
 │   │   ├── teamx-adblock-banner-ar.png  # Arabic banner asset
 │   │   └── teamx-adblock-logo.png       # Master brand logo
 │   └── videos/
-│       ├── TeamX_AdBlock_Tutorial_AR.mp4        # Arabic tutorial video
-│       ├── TeamX_AdBlock_Tutorial_AR_poster.jpg # Arabic tutorial poster frame
-│       ├── TeamX_AdBlock_Tutorial_EN.mp4        # English tutorial video
-│       └── TeamX_AdBlock_Tutorial_EN_poster.jpg # English tutorial poster frame
+│       ├── TeamX_AdBlock_Tutorial_AR.mp4   # Arabic tutorial video
+│       └── TeamX_AdBlock_Tutorial_EN.mp4   # English tutorial video
 ├── docs/
 │   ├── ARCHITECTURE.md          # Technical design & hook lifecycle
 │   ├── ARCHITECTURE_AR.md       # Arabic technical design
