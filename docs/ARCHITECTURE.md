@@ -41,6 +41,7 @@ flowchart TD
     D --> G[Hook addEventListener to drop click-hijacking listeners]
     D --> H[Hook eval & Image to bypass anti-adblock probes]
     D --> I[MutationObserver purges dynamic ad containers]
+    D --> J[Observer callbacks coalesced per animation frame]
 ```
 
 ---
@@ -70,7 +71,9 @@ the extension guarantees that its wrapper runs before any inline scripts or exte
   const originalOpen = window.open;
 
   window.open = function (url) {
-    if (url && (String(url).includes("goodpics.net") || String(url).includes("/go/3343952"))) {
+    const host = new URL(String(url), window.location.href).hostname;
+    const trusted = host === "olympustaff.com" || host.endsWith(".olympustaff.com");
+    if (!trusted) {
       return null;
     }
     return originalOpen.apply(this, arguments);
@@ -79,7 +82,8 @@ the extension guarantees that its wrapper runs before any inline scripts or exte
 ```
 
 - **Clean passthrough**: `arguments` and `this` context are faithfully preserved.
-- **Strict suppression**: Blacklisted domains immediately return `null` and terminate the popup lifecycle.
+- **Strict suppression**: Any destination outside `olympustaff.com` immediately returns `null` and terminates the popup lifecycle.
+- **Label-boundary trust**: `fakeolympustaff.com` is rejected, so look-alike hosts cannot slip through the allowlist.
 
 ---
 
@@ -89,6 +93,8 @@ the extension guarantees that its wrapper runs before any inline scripts or exte
 - Zero CPU overhead while browsing or reading manga chapters.
 - No network requests, telemetry, or third-party analytic pings.
 - Native Chrome sandbox isolation for local script safety.
+- Observer callbacks are coalesced into a single animation frame, so a busy page no longer triggers a full-document scan per mutation.
+- Set `window.__TEAMX_DEBUG__ = true` to surface swallowed hook failures in the console.
 
 ---
 

@@ -41,6 +41,7 @@ flowchart TD
     D --> G[اعتراض addEventListener لمنع مستمعي النقر الخاطف]
     D --> H[تخطي كاشف مانع الإعلانات في eval وفحوصات الصور]
     D --> I[مراقب MutationObserver لتطهير أي عناصر عائمة جديدة]
+    D --> J[دمج نداءات المراقب في إطار رسم واحد]
 ```
 
 ---
@@ -70,7 +71,9 @@ flowchart TD
   const originalOpen = window.open;
 
   window.open = function (url) {
-    if (url && (String(url).includes("goodpics.net") || String(url).includes("/go/3343952"))) {
+    const host = new URL(String(url), window.location.href).hostname;
+    const trusted = host === "olympustaff.com" || host.endsWith(".olympustaff.com");
+    if (!trusted) {
       return null;
     }
     return originalOpen.apply(this, arguments);
@@ -79,7 +82,8 @@ flowchart TD
 ```
 
 - **تمرير طبيعي:** يتم الحفاظ على سياق `this` وجميع المعاملات `arguments` للنوافذ العادية.
-- **إخماد صارم:** يتم منع الروابط المحظورة فوراً وإرجاع `null` لإيقاف دورة حياة النافذة المنبثقة.
+- **إخماد صارم:** أي وجهة خارج `olympustaff.com` تُمنع فوراً وإرجاع `null` لإيقاف دورة حياة النافذة المنبثقة.
+- **ثقة بحدود النطاق:** يُرفض المضيف `fakeolympustaff.com` فلا تتجاوز النطاقات المشابهة قائمة الثقة.
 
 ---
 
@@ -89,6 +93,8 @@ flowchart TD
 - استهلاك المعالج والذاكرة شبه معدوم (< 1 ميجابايت).
 - لا ترسل أي بيانات أو تحليلات عبر الشبكة (Zero Telemetry).
 - تعمل ضمن ضوابط الأمان الصارمة لمتصفحات كروميوم.
+- تُدمج نداءات المراقب في إطار رسم واحد، فلا تتسبب الصفحة النشطة في مسح كامل للمستند عند كل تغيير.
+- اضبط `window.__TEAMX_DEBUG__ = true` لإظهار الأعطال التي كان يتم ابتلاعها في وحدة التحكم.
 
 ---
 
