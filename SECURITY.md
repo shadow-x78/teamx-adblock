@@ -59,7 +59,7 @@ Please include:
 ## Trust Boundaries
 
 - **Execution Context:** The extension runs in `MAIN` world at `document_start` to intercept `window.open`. It does not store user data, transmit network telemetry, or inspect credentials.
-- **Auto-Updates:** Automated background updates verify cryptographic signatures against the author's private key (`cnefeiflkeegmadihlfffchlmnmfedmd`). Untrusted binaries without valid matching signatures are rejected by Chromium.
+- **Auto-Updates:** Chromium verifies every `.crx` update against the extension's public key; the extension ID `cnefeiflkeegmadihlfffchlmnmfedmd` is derived from that key, so a package signed with a different key is rejected. The Firefox package updates through `browser_specific_settings.gecko.update_url` and must carry a valid Mozilla signature when distributed through AMO.
 
 ---
 

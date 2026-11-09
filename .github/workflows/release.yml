@@ -42,7 +42,10 @@ jobs:
         run: |
           mkdir -p dist
           zip -r dist/TeamX-AdBlock.zip manifest.json content.js rules.css rules.json icons/ updates.xml README.md LICENSE
-          zip -r dist/TeamX-AdBlock.xpi manifest.json content.js rules.css rules.json icons/ updates.xml README.md LICENSE
+          mkdir -p /tmp/firefox-ext
+          cp -r manifest.json content.js rules.css rules.json icons updates.xml README.md LICENSE /tmp/firefox-ext/
+          node -e "const fs=require('fs');const p='/tmp/firefox-ext/manifest.json';const m=JSON.parse(fs.readFileSync(p,'utf8'));delete m.update_url;fs.writeFileSync(p,JSON.stringify(m,null,2)+'\n');"
+          cd /tmp/firefox-ext && zip -r "$GITHUB_WORKSPACE/dist/TeamX-AdBlock.xpi" manifest.json content.js rules.css rules.json icons/ updates.xml README.md LICENSE
 
       # ── Signed Chromium Package ──
       - name: Pack Chromium CRX Extension

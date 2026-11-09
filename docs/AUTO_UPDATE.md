@@ -76,15 +76,21 @@ In Chromium browsers, an extension's ID is deterministically computed from the p
 
 ### In `manifest.json`:
 ```json
-"update_url": "https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/updates.xml"
+"update_url": "https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/updates.xml",
+"browser_specific_settings": {
+  "gecko": {
+    "update_url": "https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/updates.xml"
+  }
+}
 ```
+Chromium reads the root key; Firefox ignores it and reads the `browser_specific_settings.gecko` key instead.
 
 ### In `updates.xml`:
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
 <gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
   <app appid='cnefeiflkeegmadihlfffchlmnmfedmd'>
-    <updatecheck codebase='https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx' version='1.2.0' />
+    <updatecheck codebase='https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx' version='1.3.0' />
   </app>
 </gupdate>
 ```
