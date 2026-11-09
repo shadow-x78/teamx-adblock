@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Popup Allowlist Hardening:** `window.open` destinations are trusted only when the hostname is exactly `olympustaff.com` or a subdomain of it, so look-alike hosts such as `fakeolympustaff.com` can no longer pass the check.
 
 ### Fixed
+- **Image Hook Safety:** `new Image()` no longer throws `Cannot redefine property: src` on pages that already lock the `src` property; the hook now falls back to intercepting `setAttribute`, so site images keep loading.
 - **Popup Blocking Regression:** The page-context copy of the defenses no longer throws `ReferenceError: isTargetAd is not defined`, which previously broke every legitimate `window.open` call on the site.
 - **Over-Blocking of Legitimate Links:** The generic `bet` and `casino` substring checks were replaced with hostname-scoped ad-network matching, so URLs such as `alphabet.com`, `webster.com`, `/bets/reading`, or `?x=bet` are no longer cancelled.
 - **Firefox Update Channel:** Firefox now reads the Omaha manifest from `browser_specific_settings.gecko.update_url`, so `.xpi` users receive automatic updates again.
