@@ -130,35 +130,66 @@
     try {
       const OrigImage = win.Image;
       if (OrigImage) {
+        const isProbeSrc = (val) =>
+          typeof val === "string" &&
+          (val.includes("doubleclick") ||
+            val.includes("ads.twitter") ||
+            val.includes("advertising.yahoo") ||
+            val.includes("pagead2") ||
+            val.includes("google_ad"));
+
+        const fakeLoad = (img) => {
+          setTimeout(() => {
+            try {
+              if (typeof img.onload === "function") {
+                img.onload(new Event("load"));
+              }
+            } catch (e) {
+              report(e);
+            }
+          }, 10);
+        };
+
         win.Image = function (w, h) {
           const img = new OrigImage(w, h);
           let currentSrc = "";
-          Object.defineProperty(img, "src", {
-            get: () => currentSrc,
-            set: function (val) {
-              currentSrc = val;
-              if (
-                typeof val === "string" &&
-                (val.includes("doubleclick") ||
-                 val.includes("ads.twitter") ||
-                 val.includes("advertising.yahoo") ||
-                 val.includes("pagead2") ||
-                 val.includes("google_ad"))
-              ) {
-                setTimeout(() => {
-                  try {
-                    if (typeof img.onload === "function") {
-                      img.onload(new Event("load"));
-                    }
-                  } catch (e) {
-                    report(e);
-                  }
-                }, 10);
-                return;
+          const hookSrc = () => {
+            Object.defineProperty(img, "src", {
+              get: () => currentSrc,
+              set: function (val) {
+                currentSrc = val;
+                if (isProbeSrc(val)) {
+                  fakeLoad(img);
+                  return;
+                }
+                img.setAttribute("src", val);
               }
-              img.setAttribute("src", val);
+            });
+          };
+          const hookAttribute = () => {
+            const origSetAttribute = img.setAttribute;
+            img.setAttribute = function (name, value) {
+              const attr = String(name).toLowerCase();
+              if (attr === "src") {
+                currentSrc = String(value);
+                if (isProbeSrc(String(value))) {
+                  fakeLoad(img);
+                  return undefined;
+                }
+              }
+              return origSetAttribute.apply(this, arguments);
+            };
+          };
+          try {
+            hookSrc();
+          } catch (e) {
+            report(e);
+            try {
+              hookAttribute();
+            } catch (e2) {
+              report(e2);
             }
-          });
+          }
           return img;
         };
         win.Image.prototype = OrigImage.prototype;
