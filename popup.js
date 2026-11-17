@@ -151,25 +151,28 @@
     nodes.toggle.setAttribute("aria-checked", state.enabled ? "true" : "false");
     renderStatus();
 
-    await chrome.storage.local.set({ [keys.enabled]: state.enabled });
-
-    // If the ruleset could not be switched, put the control back where it was so
-    // the panel never claims protection it does not have.
-    if (!(await setRulesetEnabled(state.enabled))) {
-      state.enabled = !state.enabled;
-      await chrome.storage.local.set({ [keys.enabled]: state.enabled });
-      render();
-    }
-
-    nodes.toggle.disabled = false;
-
-    // Reload open site tabs so the page-context defenses are (un)installed.
     try {
+      await chrome.storage.local.set({ [keys.enabled]: state.enabled });
+
+      // If the ruleset could not be switched, put the control back where it was so
+      // the panel never claims protection it does not have.
+      if (!(await setRulesetEnabled(state.enabled))) {
+        state.enabled = !state.enabled;
+        await chrome.storage.local.set({ [keys.enabled]: state.enabled });
+        render();
+      }
+
+      // Reload open site tabs so the page-context defenses are (un)installed.
       const tabs = await chrome.tabs.query({});
       for (const tab of tabs) {
         if (tab.id !== undefined && onSite(tab)) chrome.tabs.reload(tab.id);
       }
-    } catch (_) {}
+    } catch (_) {
+      // The extension context can be invalidated while the panel is open; the
+      // switch must never stay disabled with no way to interact.
+    } finally {
+      nodes.toggle.disabled = false;
+    }
   });
 
   nodes.langGroup.addEventListener("click", async (event) => {
