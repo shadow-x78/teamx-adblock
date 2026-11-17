@@ -49,10 +49,13 @@ jobs:
 
       # ── Signed Chromium Package ──
       - name: Pack Chromium CRX Extension
-        if: env.CRX_PRIVATE_KEY != ''
         env:
           CRX_PRIVATE_KEY: ${{ secrets.CRX_PRIVATE_KEY }}
         run: |
+          if [ -z "$CRX_PRIVATE_KEY" ]; then
+            echo "::warning::CRX_PRIVATE_KEY is not set; skipping the signed CRX."
+            exit 0
+          fi
           mkdir -p /tmp/pack-ext
           cp -r manifest.json shared.js content.js bridge.js popup.html popup.css popup.js rules.css rules.json icons updates.xml README.md LICENSE /tmp/pack-ext/
           echo "$CRX_PRIVATE_KEY" > /tmp/key.pem
