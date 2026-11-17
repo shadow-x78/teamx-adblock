@@ -1,6 +1,6 @@
 # ─────────────────────────────────────────────
-# TeamX - Ads Block - Git Attributes
+# TeamX - AdBlock - Git Attributes
 # ─────────────────────────────────────────────
 
+# ── Linguist ──
 *.md   linguist-detectable=true
-
