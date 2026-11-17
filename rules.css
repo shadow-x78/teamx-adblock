@@ -1,16 +1,28 @@
 /* TeamX - AdBlock (MIT)
  * https://github.com/shadow-x78/teamx-adblock
- * Elimination of all ad elements on Olympus Staff (olympustaff.com)
+ * Elimination of ad elements on Olympus Staff (olympustaff.com)
+ *
+ * Two rules govern this file:
+ *
+ * 1. Scope: every selector is prefixed with `:root:not([data-teamx-enabled="0"])`
+ *    so the whole stylesheet goes inert the moment the popup switches the
+ *    extension off. The attribute is absent while the page loads, which means
+ *    the default state hides ads immediately (no flash of banners).
+ *
+ *    The "0" is the off value declared as `stateValues.off` in shared.js; CSS
+ *    cannot read a JS constant, so this literal is the stylesheet's side of that
+ *    one protocol and must change with it.
+ *
+ * 2. Specificity: only ad containers and the site's ad slot wrapper are hidden,
+ *    by ID/class. Generic attribute matches (inline `z-index: 999999`, arbitrary
+ *    `position: fixed` layers) are intentionally absent: the site ships modals
+ *    and readers with those same values, and hiding them hides real content.
  */
 
-#fixedban,
-div[id="fixedban"],
-div[id*="fixedban"],
-a[onclick*="fixedban"],
-div[style*="z-index: 999999"],
-div[style*="z-index:999999"],
-div[style*="z-index: 99999"],
-div[style*="z-index:99999"] {
+:root:not([data-teamx-enabled="0"]) #fixedban,
+:root:not([data-teamx-enabled="0"]) div[id="fixedban"],
+:root:not([data-teamx-enabled="0"]) div[id*="fixedban"],
+:root:not([data-teamx-enabled="0"]) a[onclick*="fixedban"] {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
@@ -24,14 +36,14 @@ div[style*="z-index:99999"] {
   overflow: hidden !important;
 }
 
-.c-ads,
-.body-top-ads,
-.body-bottom-ads,
-.custom-code.body-top-ads,
-.custom-code.body-bottom-ads,
-div[class*="body-top-ads"],
-div[class*="body-bottom-ads"],
-div[class*="c-ads"] {
+:root:not([data-teamx-enabled="0"]) .c-ads,
+:root:not([data-teamx-enabled="0"]) .body-top-ads,
+:root:not([data-teamx-enabled="0"]) .body-bottom-ads,
+:root:not([data-teamx-enabled="0"]) .custom-code.body-top-ads,
+:root:not([data-teamx-enabled="0"]) .custom-code.body-bottom-ads,
+:root:not([data-teamx-enabled="0"]) div[class*="body-top-ads"],
+:root:not([data-teamx-enabled="0"]) div[class*="body-bottom-ads"],
+:root:not([data-teamx-enabled="0"]) div[class*="c-ads"] {
   display: none !important;
   visibility: hidden !important;
   height: 0 !important;
@@ -41,27 +53,19 @@ div[class*="c-ads"] {
   overflow: hidden !important;
 }
 
-div.mb-3.mt-2:not(:has(*:not(script):not(style):not(div:empty))) {
-  display: none !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-iframe[src*="acscdn"],
-iframe[src*="teethesmitsvah"],
-iframe[src*="goodpics"],
-iframe[src*="blockadsnot"],
-iframe[src*="cnejpkmvsjvft"],
-iframe[src*="odpktokz"] {
+/* Ad iframes only. Never iframes in general: the reader and login flows use them.
+   Scripts cannot be hidden by display:none, so they are only listed for parity
+   with shared.js adSelectors and are removed by content.js. */
+:root:not([data-teamx-enabled="0"]) iframe[src*="acscdn"],
+:root:not([data-teamx-enabled="0"]) iframe[src*="teethesmitsvah"],
+:root:not([data-teamx-enabled="0"]) iframe[src*="goodpics"],
+:root:not([data-teamx-enabled="0"]) iframe[src*="blockadsnot"],
+:root:not([data-teamx-enabled="0"]) iframe[src*="cnejpkmvsjvft"],
+:root:not([data-teamx-enabled="0"]) iframe[src*="odpktokz"] {
   display: none !important;
   visibility: hidden !important;
   height: 0 !important;
   width: 0 !important;
 }
 
-div[style*="position: fixed"][style*="z-index: 2147483647"],
-div[style*="position:fixed"][style*="z-index:2147483647"] {
-  display: none !important;
-  pointer-events: none !important;
-}
+/* Loaded ad scripts are removed by content.js, not hidden here. */

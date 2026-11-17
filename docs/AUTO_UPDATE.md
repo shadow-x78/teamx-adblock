@@ -2,7 +2,7 @@
 
 # Auto-Updates - TeamX - AdBlock
 
-[![Version](https://img.shields.io/badge/version-1.3.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.4.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](../LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=flat-square&logo=googlechrome)
 ![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Chromium-9333ea?style=flat-square&logo=googlechrome)
@@ -90,7 +90,7 @@ Chromium reads the root key; Firefox ignores it and reads the `browser_specific_
 <?xml version='1.0' encoding='UTF-8'?>
 <gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
   <app appid='cnefeiflkeegmadihlfffchlmnmfedmd'>
-    <updatecheck codebase='https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx' version='1.3.0' />
+    <updatecheck codebase='https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx' version='1.4.0' />
   </app>
 </gupdate>
 ```
@@ -103,7 +103,7 @@ Chromium reads the root key; Firefox ignores it and reads the `browser_specific_
 When deploying an update to all users:
 
 1. Increment the `"version"` field in `manifest.json` (e.g. from `"1.2.0"` to `"1.3.0"`).
-2. Increment the `version` attribute in `updates.xml` to match (`version='1.3.0'`).
+2. Increment the `version` attribute in `updates.xml` to match (`version='1.4.0'`).
 3. Commit and push your changes to GitHub:
    ```bash
    git commit -m "teamx-adblock | v1.3.0 | release: update ad filter rules"

@@ -2,7 +2,7 @@
 
 # البنية البرمجية والمعمارية - TeamX - AdBlock
 
-[![Version](https://img.shields.io/badge/version-1.3.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.4.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](../LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=flat-square&logo=googlechrome)
 ![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Chromium-9333ea?style=flat-square&logo=googlechrome)
@@ -22,6 +22,7 @@
 - [نظرة عامة](#نظرة-عامة)
 - [سياق التنفيذ في Manifest V3](#سياق-التنفيذ)
 - [آلية اعتراض النوافذ المنبثقة](#آلية-الاعتراض)
+- [قائمة شريط الأدوات](#القائمة)
 - [الأداء والأمان](#الأداء-والأمان)
 
 ---
@@ -35,13 +36,20 @@
 flowchart TD
     A[المتصفح يتوجه لموقع olympustaff.com] --> B[declarativeNetRequest يحظر طلبات شبكات الإعلانات]
     A --> C[rules.css يخفي عناصر وبانرات الإعلانات فوراً]
-    A --> D[content.js يعمل عند document_start في MAIN world]
-    D --> E[تعطيل window.aclib عبر بروكسي مسبق]
-    D --> F[اعتراض دالة window.open لمنع أي نافذة إعلانية]
-    D --> G[اعتراض addEventListener لمنع مستمعي النقر الخاطف]
-    D --> H[تخطي كاشف مانع الإعلانات في eval وفحوصات الصور]
-    D --> I[مراقب MutationObserver لتطهير أي عناصر عائمة جديدة]
-    D --> J[دمج نداءات المراقب في إطار رسم واحد]
+    A --> D[bridge.js يقرأ حالة التشغيل المحفوظة]
+    D --> D2[ينشر data-teamx-enabled على عنصر html]
+    A --> E[content.js يعمل عند document_start في MAIN world]
+    D2 --> E
+    E --> F[تعطيل window.aclib عبر بروكسي مسبق]
+    E --> G[اعتراض دالة window.open لمنع أي نافذة إعلانية]
+    E --> H[اعتراض addEventListener لمنع مستمعي النقر الخاطف]
+    E --> I[تخطي كاشف مانع الإعلانات في eval وفحوصات الصور]
+    E --> J[الإبلاغ عن حجم سليم لصندوق الفحص 468x60]
+    E --> K[رفض أي مسح لـ document.body]
+    E --> L[مراقب MutationObserver لتطهير أي عناصر عائمة جديدة]
+    L --> M[كل إعلان يُزال يرفع العدّاد]
+    M --> N[bridge.js يجمع الفروق في chrome.storage.local]
+    N --> O[popup.html يعرض المفتاح والعداد والمستودع والحقوق والإصدار]
 ```
 
 ---
@@ -84,6 +92,40 @@ flowchart TD
 - **تمرير طبيعي:** يتم الحفاظ على سياق `this` وجميع المعاملات `arguments` للنوافذ العادية.
 - **إخماد صارم:** أي وجهة خارج `olympustaff.com` تُمنع فوراً وإرجاع `null` لإيقاف دورة حياة النافذة المنبثقة.
 - **ثقة بحدود النطاق:** يُرفض المضيف `fakeolympustaff.com` فلا تتجاوز النطاقات المشابهة قائمة الثقة.
+
+---
+
+<a id="القائمة"></a>
+## قائمة شريط الأدوات
+
+`popup.html` لوحة بعرض 316 بكسل تُفتح من أيقونة شريط الأدوات، ولا تحمل منطقاً
+خاصاً بها سوى قراءة التخزين:
+
+| العنصر | المصدر |
+| --- | --- |
+| مفتاح الحماية | `chrome.storage.local.enabled` |
+| إجمالي الإعلانات المحجوبة | `chrome.storage.local.blockedTotal` |
+| إعلانات اليوم | `blockedToday` مع `blockedDay` |
+| اللغة | `chrome.storage.local.lang` (العربية افتراضياً، والإنجليزية اختيارياً) |
+| رابط المستودع | `manifest.homepage_url` |
+| الإصدار | `chrome.runtime.getManifest().version` |
+| الحقوق | `manifest.author` + السنة الحالية |
+
+عند تبديل المفتاح تُحفظ الحالة الجديدة، ويُفعَّل أو يُعطَّل مجموعة قواعد
+`ruleset_1`، ثم تُعاد تحميل أي تبويب مفتوح للموقع حتى تُثبَّت دفاعات سياق
+الصفحة أوتُزال على مستند نظيف.
+
+اللوحة عمود واحد ممركز: كل كتلة بنفس العرض وكل سطر نص ممركز، فتتقاسم جميع
+العناصر محوراً واحداً في الاتجاهين. تُحلّ اللغة من قاموس صغير داخل الملف
+(`ar` و`en`)؛ وتبديلها يضبط `documentElement.lang` و`dir`، ويحدّث كل النصوص،
+ويحرّك مقبض المفتاح وفق اتجاه الكتابة الجديد، ويحفظ `lang` ليبقى الاختيار عند
+الفتح التالي. وتُحفظ حالة الحماية بالطريقة نفسها، فيبقى الخياران محفوظين بعد
+إعادة تشغيل المتصفح.
+
+يُنتَج العدّاد في MAIN world: يحتفظ `content.js` بإجمالي جارٍ على
+`<html data-teamx-blocked>` ويطلق حدث `teamx:blocked` عند إزالة كل إعلان.
+يقرأ `bridge.js` (العالم المعزول) هذه السمة ويجمع الفروق في التخزين بدفعات
+تبلغ نحو كتابة واحدة كل 400 مللي ثانية.
 
 ---
 

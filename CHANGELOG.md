@@ -20,12 +20,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Security
-- **Signing Key Isolation:** The CRX signing key is now explicitly excluded by name and by extension (`.pem`, `.key`, `.p12`, `.pfx`), the release workflow fails when a key file becomes tracked, and the key is purged from the runner even when packing fails.
-- **Popup Allowlist Hardening:** `window.open` destinations are trusted only when the hostname is exactly `olympustaff.com` or a subdomain of it, so look-alike hosts such as `fakeolympustaff.com` can no longer pass the check.
+### Added
+- **Popup Panel:** Clicking the toolbar icon opens a panel with a protection switch, the blocked-ad counter (total and today), a language switch, a link to the GitHub repository, the copyright line, and the running version.
+- **Arabic / English Switch:** The popup ships with both languages. Choosing one sets `document.documentElement.lang` and `dir`, rewrites every label, flips the switch travel direction for the new writing direction, and stores the choice as `lang` in `chrome.storage.local`, so the panel reopens in the same language.
+- **Single Center Axis:** The popup is one centered column: the mark, name, status, counter, protection switch, language switch, repository button, and legal lines all share the same width and center line, so nothing sits on a different edge.
+- **Blocked-Ad Counter:** Every ad element removed by the DOM layer is counted. Totals live in `chrome.storage.local` (`blockedTotal`, `blockedToday`, `blockedDay`) so they survive reloads and restart on a new day.
+- **Live On/Off Switch:** The popup writes `enabled` to storage, enables or disables the declarative ruleset, and reloads open site tabs so the page-context defenses are installed or removed immediately.
 
 ### Fixed
-- **Image Hook Safety:** `new Image()` no longer throws `Cannot redefine property: src` on pages that already lock the `src` property; the hook now falls back to intercepting `setAttribute`, so site images keep loading.
+- **Page Wipe (Content Blocking):** The DOM layer removed every `div`/`section` whose `innerText` contained the anti-adblock notice. Because an ancestor's `innerText` includes its descendants' text, every container between `body` and the notice was deleted, leaving a blank page — the reported "content blocked" symptom. The notice is now removed by targeting the blocking overlay itself (full-screen, high `z-index`, carries the notice, holds no page media); ancestors are never touched.
+- **Anti-AdBlock Detection Never Fires:** The site's blocker paints a 468x60 probe off-screen and flags a violation when `clientHeight`/`clientWidth` read back as `0`. Cosmetic rules that clipped the probe — or any browser reporting `0` for a clipped/offscreen box — let detection wipe the page. `clientHeight`/`clientWidth` now report the probe's intended size (cached per element so layout reads stay cheap), while every other element keeps its native metrics.
+- **Body Wipe Guard:** `Element.prototype.innerHTML`, `Node.prototype.textContent`, and `Element.prototype.replaceChildren` refuse to blank `document.body`/`document.documentElement`, so the page keeps its content even if detection fires.
+- **`aclib` Hook Crashes:** Installed unconditionally before, it threw `TypeError: aclib.runBanner is not a function` in the isolated world and `Cannot redefine property: aclib` when the site had already defined it; the second failure aborted the rest of `applyDefenses`. It is now an accessor that the site's loader cannot replace, `runBanner` is a silent no-op, and each defense runs in its own `try/catch`.
+- **Site Controls Not Responding:** The `addEventListener` guard cancelled any click/pointer listener whose source mentioned `aclib`, which matched the site's own bundle and dropped working controls. It now matches narrow ad fingerprints only (`goodpics.net`, `/go/3343952`, `lastOpened`, `intervalSeconds`, `teethesmitsvah`).
+- **Content Hidden by Cosmetic Rules:** Generic attribute selectors hid anything carrying inline `z-index: 999999`/`99999`, which the site now also uses for real modals and the reader. Those selectors and the `:has()`-based empty-wrapper rule are gone; `#fixedban`, ad containers, and ad iframes are still hidden by ID/class.
+- **Image Hook Safety:** `new Image()` no longer throws `Cannot redefine property: src` on pages that already lock the `src` property; the hook falls back to intercepting `setAttribute`, so site images keep loading.
 - **Popup Blocking Regression:** The page-context copy of the defenses no longer throws `ReferenceError: isTargetAd is not defined`, which previously broke every legitimate `window.open` call on the site.
 - **Over-Blocking of Legitimate Links:** The generic `bet` and `casino` substring checks were replaced with hostname-scoped ad-network matching, so URLs such as `alphabet.com`, `webster.com`, `/bets/reading`, or `?x=bet` are no longer cancelled.
 - **Firefox Update Channel:** Firefox now reads the Omaha manifest from `browser_specific_settings.gecko.update_url`, so `.xpi` users receive automatic updates again.
@@ -33,10 +42,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Firefox Submission Metadata:** Added `browser_specific_settings.gecko.data_collection_permissions` declaring that no data is collected.
 
 ### Changed
+- **Isolated-World Bridge:** A new `bridge.js` content script publishes the stored on/off state on `<html data-teamx-enabled>` (the MAIN-world script cannot use `chrome.*`), applies the cosmetic stylesheet only while enabled, and batches blocked-ad deltas into storage.
+- **Toggle-Aware Styling:** `rules.css` selectors are scoped with `:root:not([data-teamx-enabled="0"])`, so switching the extension off restores ads without any stylesheet churn. The attribute defaults to absent, so ads are hidden from the first paint.
+- **Defense Ordering:** Page-context defenses install once per window (`__TEAMX_DEFENSES__`), each isolated in a `step()` wrapper, and the page-context copy is injected after the isolated-world install so a failure in one cannot disable the other.
+- **Page Restoration:** `body` visibility/display/overflow locks applied by the blocker are reverted after the overlay is removed, so the page is interactive again.
 - **Inline Video Players:** The walkthroughs now play directly inside `README.md`, `README_AR.md`, `docs/INSTALLATION.md`, and `docs/INSTALLATION_AR.md` through GitHub-hosted asset URLs, because GitHub removes `<video>` elements that point at files inside a repository.
 - **Network Layer Coverage:** `propellerads.com`, `monetag.com`, `adsterra.com`, and `popads.net` are now blocked declaratively, matching the JavaScript heuristics.
-- **DOM Purge Performance:** Mutation observer callbacks are coalesced into a single animation frame and the per-element text scan runs only when the page shows the anti-adblock notice.
+- **DOM Purge Performance:** Mutation observer callbacks coalesce into a single animation frame, and the ad-wrapper scan is scoped to structure instead of walking page text on every mutation.
 - **Diagnostics:** Swallowed hook failures are reported when `window.__TEAMX_DEBUG__` is enabled, and the `Image` constructor keeps its prototype and static members.
+
+### Security
+- **Signing Key Isolation:** The CRX signing key is now explicitly excluded by name and by extension (`.pem`, `.key`, `.p12`, `.pfx`), the release workflow fails when a key file becomes tracked, and the key is purged from the runner even when packing fails.
+- **Popup Allowlist Hardening:** `window.open` destinations are trusted only when the hostname is exactly `olympustaff.com` or a subdomain of it, so look-alike hosts such as `fakeolympustaff.com` can no longer pass the check.
 
 ### Documentation
 - Refreshed version badges, the supported-versions table, the commit guidance, and the interception examples in `docs/ARCHITECTURE.md` and `docs/ARCHITECTURE_AR.md`.

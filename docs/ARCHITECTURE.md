@@ -2,7 +2,7 @@
 
 # Architecture - TeamX - AdBlock
 
-[![Version](https://img.shields.io/badge/version-1.3.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.4.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](../LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=flat-square&logo=googlechrome)
 ![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Chromium-9333ea?style=flat-square&logo=googlechrome)
@@ -22,6 +22,7 @@
 - [Overview](#overview)
 - [Execution Context](#execution-context)
 - [Interception Mechanics](#interception-mechanics)
+- [Toolbar Popup](#popup)
 - [Performance & Security](#performance--security)
 
 ---
@@ -35,13 +36,20 @@
 flowchart TD
     A[Browser navigates to olympustaff.com] --> B[declarativeNetRequest blocks ad network requests]
     A --> C[rules.css immediately collapses ad DOM elements]
-    A --> D[content.js loads at document_start in MAIN world]
-    D --> E[Stub window.aclib with immutable Proxy]
-    D --> F[Hook window.open to suppress ad popups]
-    D --> G[Hook addEventListener to drop click-hijacking listeners]
-    D --> H[Hook eval & Image to bypass anti-adblock probes]
-    D --> I[MutationObserver purges dynamic ad containers]
-    D --> J[Observer callbacks coalesced per animation frame]
+    A --> D[bridge.js reads the stored on/off state]
+    D --> D2[Publishes data-teamx-enabled on html]
+    A --> E[content.js loads at document_start in MAIN world]
+    D2 --> E
+    E --> F[Stub window.aclib with immutable no-op]
+    E --> G[Hook window.open to suppress ad popups]
+    E --> H[Hook addEventListener to drop click-hijacking listeners]
+    E --> I[Hook eval & Image to bypass anti-adblock probes]
+    E --> J[Report a healthy size for the 468x60 probe]
+    E --> K[Refuse any wipe of document.body]
+    E --> L[MutationObserver purges dynamic ad containers]
+    L --> M[Each removed ad increments the blocked counter]
+    M --> N[bridge.js batches deltas into chrome.storage.local]
+    N --> O[popup.html renders switch, counter, repo, copyright, version]
 ```
 
 ---
@@ -84,6 +92,41 @@ the extension guarantees that its wrapper runs before any inline scripts or exte
 - **Clean passthrough**: `arguments` and `this` context are faithfully preserved.
 - **Strict suppression**: Any destination outside `olympustaff.com` immediately returns `null` and terminates the popup lifecycle.
 - **Label-boundary trust**: `fakeolympustaff.com` is rejected, so look-alike hosts cannot slip through the allowlist.
+
+---
+
+<a id="popup"></a>
+## Toolbar Popup
+
+`popup.html` is a 316px panel opened from the toolbar icon. It has no logic of
+its own beyond reading storage:
+
+| Element | Source |
+| --- | --- |
+| Protection switch | `chrome.storage.local.enabled` |
+| Blocked ads (total) | `chrome.storage.local.blockedTotal` |
+| Blocked ads (today) | `blockedToday` + `blockedDay` |
+| Language | `chrome.storage.local.lang` (`ar` default, `en` optional) |
+| Repository link | `manifest.homepage_url` |
+| Version | `chrome.runtime.getManifest().version` |
+| Copyright | `manifest.author` + current year |
+
+Toggling the switch writes the new state, enables or disables the
+`ruleset_1` declarative ruleset, and reloads any open site tab so the
+page-context defenses are installed (or removed) on a clean document.
+
+The panel is a single centered column: every block is the same width and every
+line of text is centered, so all elements share one axis in both writing
+directions. Language is resolved from a small in-file dictionary (`ar`, `en`);
+switching it sets `documentElement.lang` and `dir`, updates every label, moves
+the switch thumb along the new writing direction, and persists `lang` so the
+next opening keeps the choice. The protection state is persisted the same way,
+so both preferences survive browser restarts.
+
+The counter is produced in the MAIN world: `content.js` keeps a running total on
+`<html data-teamx-blocked>` and dispatches a `teamx:blocked` event for each
+removed ad. `bridge.js` (isolated world) reads that attribute and batches the
+delta into storage, keeping writes to roughly one per 400 ms.
 
 ---
 

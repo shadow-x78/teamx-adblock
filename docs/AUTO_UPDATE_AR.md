@@ -2,7 +2,7 @@
 
 # التحديث التلقائي - TeamX - AdBlock
 
-[![Version](https://img.shields.io/badge/version-1.3.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.4.0-2563eb?style=flat-square&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](../LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=flat-square&logo=googlechrome)
 ![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Chromium-9333ea?style=flat-square&logo=googlechrome)
@@ -90,7 +90,7 @@ sequenceDiagram
 <?xml version='1.0' encoding='UTF-8'?>
 <gupdate xmlns='http://www.google.com/update2/response' protocol='2.0'>
   <app appid='cnefeiflkeegmadihlfffchlmnmfedmd'>
-    <updatecheck codebase='https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx' version='1.3.0' />
+    <updatecheck codebase='https://github.com/shadow-x78/teamx-adblock/releases/latest/download/TeamX-AdBlock.crx' version='1.4.0' />
   </app>
 </gupdate>
 ```
@@ -103,7 +103,7 @@ sequenceDiagram
 عند رغبتك في نشر تحديث ليصل تلقائياً إلى كافة المستخدمين:
 
 1. ارفع رقم الإصدار في `manifest.json` (مثلاً من `"1.2.0"` إلى `"1.3.0"`).
-2. ارفع رقم الإصدار في `updates.xml` إلى نفس القيمة (`version='1.3.0'`).
+2. ارفع رقم الإصدار في `updates.xml` إلى نفس القيمة (`version='1.4.0'`).
 3. احزم ملف الـ `.crx` الجديد بالمفتاح الخاص:
    ```bash
    google-chrome --pack-extension=. --pack-extension-key=<path-outside-repo>/TeamX-AdsBlock.pem
