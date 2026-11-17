@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.6.0] - 2026-11-18
+
+### Added
+- feat: disable the toolbar action on every tab outside `olympustaff.com`. A
+  service worker enables the action on the site and disables it everywhere else,
+  so the icon is greyed out and cannot be clicked on unrelated pages.
+- feat: keep the action state in step with tab activation, navigation, window
+  focus, install, and startup.
+
+### Changed
+- chore: unify the existing GitHub releases with the current style. Every release
+  now uses the `TeamX - AdBlock vX.Y.Z` title, notes taken from this file, and a
+  `.sha256` next to each asset.
+- Version bumped to 1.6.0 across `manifest.json`, `updates.xml`, and the
+  documentation badges.
+
 ## [v1.5.0] - 2026-11-18
 
 ### Added
