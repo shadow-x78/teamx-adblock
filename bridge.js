@@ -1,9 +1,5 @@
 // TeamX - AdBlock (MIT)
-// Isolated-world bridge between chrome.storage and the page.
-//
-// content.js runs in the MAIN world and cannot use extension APIs, so this file
-// publishes the stored on/off state on <html> (which content.js and rules.css
-// both read) and forwards the blocked-ad counter back into storage.
+// https://github.com/shadow-x78/teamx-adblock
 
 (() => {
   "use strict";
@@ -14,8 +10,6 @@
   const root = document.documentElement;
   if (!root) return;
 
-  // Published first: content.js runs in the MAIN world, which cannot see this
-  // scope, and reads the contract from this attribute.
   try {
     root.setAttribute(attrs.contract, JSON.stringify(handoff()));
   } catch (_) {}
@@ -45,8 +39,6 @@
     });
   } catch (_) {}
 
-  // content.js keeps a running total on <html> and fires one event per removal.
-  // Only the delta is persisted, batched so storage writes stay rare.
   let reported = 0;
   let pending = 0;
   let flushTimer = null;
@@ -54,19 +46,12 @@
 
   const flush = () => {
     flushTimer = null;
-    // `inFlight` keeps two overlapping writes from claiming the same batch.
     if (pending <= 0 || inFlight) return;
 
-    // The batch leaves `pending` before the async write, so a concurrent
-    // `onBlocked`/`pagehide` cannot claim it too; a failed write hands it back.
     const delta = pending;
     pending = 0;
     inFlight = true;
 
-    // Settles the batch exactly once. A storage call can *throw* instead of
-    // reporting `lastError` (e.g. "Extension context invalidated" after an
-    // update), which would otherwise leave `inFlight` stuck true and strand
-    // every later batch.
     let settled = false;
     const done = (written) => {
       if (settled) return;
