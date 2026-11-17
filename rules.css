@@ -1,22 +1,5 @@
 /* TeamX - AdBlock (MIT)
  * https://github.com/shadow-x78/teamx-adblock
- * Elimination of ad elements on Olympus Staff (olympustaff.com)
- *
- * Two rules govern this file:
- *
- * 1. Scope: every selector is prefixed with `:root:not([data-teamx-enabled="0"])`
- *    so the whole stylesheet goes inert the moment the popup switches the
- *    extension off. The attribute is absent while the page loads, which means
- *    the default state hides ads immediately (no flash of banners).
- *
- *    The "0" is the off value declared as `stateValues.off` in shared.js; CSS
- *    cannot read a JS constant, so this literal is the stylesheet's side of that
- *    one protocol and must change with it.
- *
- * 2. Specificity: only ad containers and the site's ad slot wrapper are hidden,
- *    by ID/class. Generic attribute matches (inline `z-index: 999999`, arbitrary
- *    `position: fixed` layers) are intentionally absent: the site ships modals
- *    and readers with those same values, and hiding them hides real content.
  */
 
 :root:not([data-teamx-enabled="0"]) #fixedban,
@@ -53,9 +36,6 @@
   overflow: hidden !important;
 }
 
-/* Ad iframes only. Never iframes in general: the reader and login flows use them.
-   Scripts cannot be hidden by display:none, so they are only listed for parity
-   with shared.js adSelectors and are removed by content.js. */
 :root:not([data-teamx-enabled="0"]) iframe[src*="acscdn"],
 :root:not([data-teamx-enabled="0"]) iframe[src*="teethesmitsvah"],
 :root:not([data-teamx-enabled="0"]) iframe[src*="goodpics"],
@@ -68,4 +48,3 @@
   width: 0 !important;
 }
 
-/* Loaded ad scripts are removed by content.js, not hidden here. */
