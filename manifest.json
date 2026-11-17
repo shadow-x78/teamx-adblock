@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TeamX - AdBlock",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Comprehensive ad, banner, and popup blocker engineered exclusively for Olympus Staff (olympustaff.com)",
   "author": "shadow-x78",
   "homepage_url": "https://github.com/shadow-x78/teamx-adblock",
@@ -23,12 +23,20 @@
   },
   "permissions": [
     "declarativeNetRequest",
-    "storage"
+    "storage",
+    "tabs"
   ],
   "host_permissions": [
     "https://olympustaff.com/*",
     "https://*.olympustaff.com/*"
   ],
+  "background": {
+    "service_worker": "background.js",
+    "scripts": [
+      "shared.js",
+      "background.js"
+    ]
+  },
   "declarative_net_request": {
     "rule_resources": [
       {
