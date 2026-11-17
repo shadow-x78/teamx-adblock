@@ -189,7 +189,12 @@ teamx-adblock/
 │   ├── icon48.png               # Extension manager view
 │   ├── icon128.png              # High-res store & install display
 │   └── icon512.png              # Master high-resolution asset
+├── shared.js                    # Shared contract: attributes, storage keys, patterns
+├── bridge.js                    # Isolated-world bridge: state sync & blocked counter
 ├── content.js                   # Interception logic (MAIN execution world)
+├── popup.html                   # Toolbar panel markup
+├── popup.css                    # Toolbar panel styling
+├── popup.js                     # Toolbar panel logic: switch, counter, language
 ├── rules.css                    # Cosmetic ad hiding & layout collapse
 ├── rules.json                   # Declarative Net Request blocking rules
 ├── manifest.json                # Manifest V3 extension configuration
