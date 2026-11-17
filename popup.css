@@ -1,10 +1,3 @@
-/* TeamX - AdBlock (MIT) — popup
- *
- * Layout rule: one centered column. Every block is the same width, and every
- * piece of text inside a block is centered, so the eye reads a single axis from
- * the mark down to the version line.
- */
-
 :root {
   --bg: #0f1015;
   --surface: #16171d;
@@ -14,7 +7,6 @@
   --muted: #8d8f9c;
   --accent: #e7081a;
   --ok: #2fbf71;
-
   --width: 316px;
   --radius: 14px;
   --pad: 14px;
@@ -41,12 +33,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Every direct child is one centered column of the same width. */
 body > * {
   width: 100%;
 }
-
-/* ---------- header ---------- */
 
 .head {
   display: flex;
@@ -58,7 +47,7 @@ body > * {
 .mark {
   border-radius: 10px;
   background: #000;
-  /* The logo art is optically top-heavy; nudge it onto the text axis. */
+  
   transform: translateY(-1px);
 }
 
@@ -94,16 +83,12 @@ body > * {
   background: var(--accent);
 }
 
-/* ---------- cards ---------- */
-
 .card {
   margin-top: 14px;
   padding: var(--pad);
   border-radius: var(--radius);
   background: var(--surface);
 }
-
-/* ---------- counter ---------- */
 
 .counter {
   padding: 16px var(--pad) 13px;
@@ -132,8 +117,6 @@ body > * {
   font-size: 11.5px;
   font-variant-numeric: tabular-nums;
 }
-
-/* ---------- control ---------- */
 
 .control {
   display: flex;
@@ -188,7 +171,6 @@ body > * {
   background: #fff;
 }
 
-/* Travel follows the writing direction: the thumb always ends on the far side. */
 :root[dir="ltr"] .switch[aria-checked="true"] .knob {
   transform: translateX(20px);
 }
@@ -206,8 +188,6 @@ body > * {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
-
-/* ---------- language ---------- */
 
 .segmented {
   display: flex;
@@ -246,8 +226,6 @@ body > * {
   outline-offset: 2px;
 }
 
-/* ---------- repo ---------- */
-
 .repo {
   display: flex;
   align-items: center;
@@ -284,8 +262,6 @@ body > * {
 .repo:hover svg {
   color: var(--text);
 }
-
-/* ---------- footer ---------- */
 
 .foot {
   display: flex;
