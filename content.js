@@ -1,20 +1,9 @@
 // TeamX - AdBlock (MIT)
 // https://github.com/shadow-x78/teamx-adblock
-//
-// Runs in the page's MAIN world (see manifest.json) so it can install the
-// anti-adblock defenses before the site's own scripts.
-//
-// The site's blocker wipes `document.body` and paints a full-screen notice when
-// it thinks an adblocker is present, so every layer here exists either to keep
-// that detection from firing or to keep the content on screen when it does.
 
 (async () => {
   "use strict";
 
-  // The contract is owned by the isolated world: Chrome runs a content-script
-  // file once per frame, so listing shared.js in both entries would leave this
-  // world with nothing (verified: ReferenceError). The bridge publishes it on
-  // <html> as JSON, which is the only channel between the worlds.
   const ATTR_CONTRACT = "data-teamx-contract";
 
   const reportError = (err) => {
@@ -25,8 +14,6 @@
     } catch (_) {}
   };
 
-  // Wait for an attribute to reach a value, then parse it. Both the contract and
-  // the on/off flag arrive this way, so the settle/disconnect logic lives once.
   const watchAttribute = (name, parse, deadlineMs) =>
     new Promise((resolve) => {
       const root = document.documentElement;
@@ -86,14 +73,10 @@
 
   const parseEnabled = (raw, values) => (raw === null ? null : raw === values.on);
 
-  // Bootstrap seam: the contract is not available until the bridge publishes it,
-  // so this one deadline must live before the handoff can be parsed.
   const contractDeadlineMs = 300;
   const contract = await watchAttribute(ATTR_CONTRACT, parseContract, contractDeadlineMs);
   if (!contract) return;
 
-  // The bootstrap name is the one literal this world must know before it can
-  // parse anything; fail loudly if the contract renamed it.
   if (contract.attrs.contract !== ATTR_CONTRACT) {
     reportError(new Error("contract attribute name mismatch"));
     return;
@@ -106,9 +89,6 @@
     return trustedHosts.some((allowed) => name === allowed || name.endsWith("." + allowed));
   };
 
-  // The bridge publishes the stored state on <html> before this runs. Waiting
-  // for the attribute (with a deadline) is what keeps a disabled extension from
-  // touching the page at all.
   const enabled = await watchAttribute(
     attrs.enabled,
     (raw) => parseEnabled(raw, stateValues),
@@ -116,8 +96,6 @@
   );
   if (enabled === false) return;
 
-  // The popup can switch the extension off without a reload; stop cleaning when
-  // it does. rules.css carries the same switch for the cosmetic layer.
   let active = true;
   try {
     const watcher = new MutationObserver(() => {
@@ -138,8 +116,6 @@
     return noticeMarkers.some((marker) => text.includes(marker));
   };
 
-  // Each defense is installed independently: one failing must not disable the
-  // rest, since the site only needs a single gap to block the page.
   const step = (fn) => {
     try {
       fn();
@@ -151,17 +127,9 @@
   const installDefenses = () => {
     const doc = document;
 
-    // The blocker's only way to hide the page is to empty the root element, so
-    // "a wipe" is defined once and reused by all three hooks below.
     const isPageRoot = (el) => el === doc.body || el === doc.documentElement;
-    // Replacing the native accessor means WebIDL no longer converts the value,
-    // so `null` arrives as `null` here — and the native setter clears the node
-    // for it, which is a wipe. Anything whose text is empty counts.
     const isWipe = (value) => value == null || String(value).trim() === "";
 
-
-    // The blocker empties `document.body` before painting its notice. Refusing
-    // that assignment is what preserves the page.
     step(() => {
       const proto = window.Element && window.Element.prototype;
       if (!proto) return;
@@ -221,9 +189,6 @@
       };
     });
 
-    // Inline scripts call `aclib.runBanner({zoneId})`. A callable, chainable
-    // no-op keeps those calls from throwing while no banner is ever rendered.
-    // An accessor (not a value) stops the loader's assignment from replacing it.
     step(() => {
       const noop = () => {};
       const noopProxy = new Proxy(noop, {
@@ -253,9 +218,6 @@
       };
     });
 
-    // The blocker builds `new Image()` against ad hosts and treats `onerror` as
-    // proof of blocking. Faking the load for those hosts only leaves real page
-    // images on the native path.
     step(() => {
       const NativeImage = window.Image;
       if (!NativeImage) return;
@@ -280,9 +242,6 @@
       const ImageHook = function (width, height) {
         const img = new NativeImage(width, height);
 
-        // The getter must stay native so page code that reads `img.src` back
-        // (lazyloaders, cache keys) still sees the resolved URL, including after
-        // a `setAttribute`. Only the setter diverges, and only for ad probes.
         const hookSrc = () => {
           Object.defineProperty(img, "src", {
             configurable: true,
@@ -303,7 +262,7 @@
           hookSrc();
         } catch (e) {
           reportError(e);
-          // Some pages lock `src`; intercept setAttribute instead.
+
           try {
             const originalSetAttribute = img.setAttribute;
             img.setAttribute = function (name, value) {
@@ -348,10 +307,6 @@
       };
     });
 
-    // The blocker measures a 468x60 box it paints off-screen and blocks when the
-    // measurement collapses to 0 — which any cosmetic rule that clips the box,
-    // or any browser that reports 0 for an offscreen box, would cause. Reporting
-    // the intended size for that one probe keeps detection from ever firing.
     step(() => {
       const proto = window.Element && window.Element.prototype;
       if (!proto) return;
@@ -359,8 +314,6 @@
       const widthDesc = Object.getOwnPropertyDescriptor(proto, "clientWidth");
       if (!heightDesc || !widthDesc) return;
 
-      // `clientHeight` is read constantly by layout code, so the verdict is
-      // cached per element.
       const probeCache = new WeakMap();
 
       const isProbe = (el) => {
@@ -450,8 +403,6 @@
     } catch (_) {}
   };
 
-  // The blocking screen is a full-screen, high-z layer carrying the notice.
-  // Ancestors of it are content, so only the overlay itself is ever removed.
   const isBlockingOverlay = (el) => {
     if (!el || el.nodeType !== 1) return false;
     if (el === document.body || el === document.documentElement) return false;
@@ -486,8 +437,6 @@
     const body = document.body;
     if (!body) return;
 
-    // Reading computed styles per element is expensive, so the scan only runs
-    // when the notice is actually present.
     const bodyText = body.textContent || "";
     if (!noticeMarkers.some((marker) => bodyText.includes(marker))) return;
 
@@ -496,7 +445,6 @@
     }
   };
 
-  // Undo the visibility/scroll locks the blocker applies while it paints.
   const restorePage = () => {
     const body = document.body;
     if (!body) return;
@@ -523,8 +471,6 @@
     }
     countBlocked(removed);
 
-    // Empty ad wrappers left after their slot is gone. Not counted: the ad
-    // inside was counted when it was removed.
     for (const el of document.querySelectorAll(".mb-3.mt-2")) {
       try {
         if (el.querySelector("img, a, input, button, iframe, video, canvas, .swiper, .popular-manga")) {
@@ -554,8 +500,6 @@
 
   purge();
 
-  // Ads are injected after load, so the observer is the steady-state path; the
-  // initial run above covers content already in the document.
   try {
     const observer = new MutationObserver(schedulePurge);
     observer.observe(document.documentElement || document, {
