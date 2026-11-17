@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.5.0] - 2026-11-18
+
+### Added
+- feat: add a "Check for updates" button to the popup. It reads the published
+  `updates.xml`, compares its version with the running manifest, and reports
+  "You are up to date", the newer version, or a failed check. When a newer
+  version exists, the same button opens the latest release page.
+- feat: localize the update states in both languages (`التحقق من التحديث`,
+  `جارٍ التحقق…`, `أنت على أحدث إصدار`, `يتوفر vX.Y.Z`, `تعذّر التحقق`).
+
+### Changed
+- fix: put the mark, name, and status on one row instead of stacking them, so the
+  header reads as a single line.
+- fix: put the protection title and hint beside the switch instead of above it, so
+  the control is one row with the switch on the trailing edge.
+- fix: match the published update manifest on the `<updatecheck>` element. The
+  first `version='…'` in the file is the XML declaration, so the previous pattern
+  always read `1.0` and the panel reported "up to date" for every build.
+- Version bumped to 1.5.0 across `manifest.json`, `updates.xml`, and the
+  documentation badges.
+
 ## [v1.4.1] - 2026-11-17
 
 ### Changed
