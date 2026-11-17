@@ -2,7 +2,7 @@
 
 # Changelog - TeamX - AdBlock
 
-[![Version](https://img.shields.io/badge/version-1.3.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.4.0-2563eb?style=flat-square&logo=semver)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=flat-square)](LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=flat-square&logo=googlechrome)
 ![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Chromium-9333ea?style=flat-square&logo=googlechrome)
@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [Unreleased]
+## [1.4.0] - 2026-11-17
 
 ### Added
 - **Popup Panel:** Clicking the toolbar icon opens a panel with a protection switch, the blocked-ad counter (total and today), a language switch, a link to the GitHub repository, the copyright line, and the running version.
@@ -57,6 +57,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Documentation
 - Refreshed version badges, the supported-versions table, the commit guidance, and the interception examples in `docs/ARCHITECTURE.md` and `docs/ARCHITECTURE_AR.md`.
+
+### Audit & Cleanup
+- **CRX Release Step:** The signing step could never run because a step `if` cannot read that step's own `env`; the secret stays scoped to the single step and the script now decides whether to sign.
+- **Popup Switch Recovery:** A rejected `chrome.storage.local.set` left the protection switch disabled with no way to interact; the handler now releases it in a `finally`.
+- **Generated Ruleset Cache:** Chrome's `_metadata/generated_indexed_rulesets/` is ignored, so runtime output can no longer be committed.
+- **Comment Cleanup:** Source comments were reduced to the documented two-line attribution header, and the configuration files follow the project `─` header and section style.
+- **Documentation:** Version badges, the auto-update examples, and both README project trees now match the shipped package.
 
 ---
 
