@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.4.1] - 2026-11-17
+
+### Changed
+- chore: publish releases the way the reference project does. The workflow
+  extracts the notes for the tag from this file, writes a `.sha256` next to each
+  asset, titles the release `TeamX - AdBlock vX.Y.Z`, and no longer asks GitHub to
+  generate its own notes.
+- docs: rewrite this file in the Keep a Changelog form used by the reference
+  project, with one `## [vX.Y.Z]` heading per release and `feat:`/`fix:`/`chore:`
+  bullets, and switch every documentation badge from `flat-square` to
+  `for-the-badge`.
+- Version bumped to 1.4.1 across `manifest.json`, `updates.xml`, and the
+  documentation badges.
+
 ## [v1.4.0] - 2026-11-17
 
 ### Added
