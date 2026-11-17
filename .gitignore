@@ -16,6 +16,7 @@ TeamX-AdsBlock.pem
 *.zip
 dist/
 build/
+_metadata/
 
 # ── Operating System ──
 .DS_Store
