@@ -102,17 +102,17 @@ Chromium reads the root key; Firefox ignores it and reads the `browser_specific_
 
 When deploying an update to all users:
 
-1. Increment the `"version"` field in `manifest.json` (e.g. from `"1.2.0"` to `"1.3.0"`).
+1. Increment the `"version"` field in `manifest.json` (e.g. from `"1.3.0"` to `"1.4.0"`).
 2. Increment the `version` attribute in `updates.xml` to match (`version='1.4.0'`).
 3. Commit and push your changes to GitHub:
    ```bash
-   git commit -m "teamx-adblock | v1.3.0 | release: update ad filter rules"
+   git commit -m "teamx-adblock | v1.4.0 | release: update ad filter rules"
    ```
 4. Pack the new `.crx` file:
    ```bash
    google-chrome --pack-extension=. --pack-extension-key=<path-outside-repo>/TeamX-AdsBlock.pem
    ```
-5. Create a new GitHub Release with the tag `v1.3.0` and upload the generated `TeamX-AdBlock.crx`.
+5. Create a new GitHub Release with the tag `v1.4.0` and upload the generated `TeamX-AdBlock.crx`.
 
 Once published, all users' Chrome browsers will automatically pull the update within hours without requiring any manual clicks or intervention!
 
