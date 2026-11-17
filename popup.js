@@ -31,6 +31,11 @@
       hintOn: (host) => `تحجب الإعلانات على ${host}`,
       hintOff: "معطّلة — ستظهر الإعلانات",
       repo: "المستودع على GitHub",
+      update: "التحقق من التحديث",
+      updateBusy: "جارٍ التحقق…",
+      updateCurrent: "أنت على أحدث إصدار",
+      updateAvailable: (v) => `يتوفر ${v}`,
+      updateFailed: "تعذّر التحقق",
       copyright: (year, author) => `حقوق النشر © ${year} ${author}`,
     },
     en: {
@@ -45,6 +50,11 @@
       hintOn: (host) => `Blocking ads on ${host}`,
       hintOff: "Paused — ads will show",
       repo: "View on GitHub",
+      update: "Check for updates",
+      updateBusy: "Checking…",
+      updateCurrent: "You are up to date",
+      updateAvailable: (v) => `${v} available`,
+      updateFailed: "Check failed",
       copyright: (year, author) => `Copyright © ${year} ${author}`,
     }
   };
@@ -62,6 +72,8 @@
     controlTitle: $("controlTitle"),
     hint: $("controlHint"),
     langGroup: $("langGroup"),
+    update: $("update"),
+    updateText: $("updateText"),
     repo: $("repo"),
     repoText: $("repoText"),
     copyright: $("copyright"),
@@ -90,6 +102,9 @@
     nodes.caption.textContent = t.caption;
     nodes.controlTitle.textContent = t.control;
     nodes.repoText.textContent = t.repo;
+    if (!nodes.update.dataset.state || nodes.update.dataset.state === "idle") {
+      nodes.updateText.textContent = t.update;
+    }
     nodes.copyright.textContent = t.copyright(new Date().getFullYear(), MANIFEST.author);
 
     for (const button of nodes.langGroup.querySelectorAll("[data-lang]")) {
@@ -178,6 +193,60 @@
 
     applyLanguage();
     render();
+  });
+
+  const UPDATE_URL = "https://raw.githubusercontent.com/shadow-x78/teamx-adblock/main/updates.xml";
+
+  const setUpdateState = (state, text) => {
+    nodes.update.dataset.state = state;
+    nodes.updateText.textContent = text;
+    nodes.update.disabled = state === "busy";
+  };
+
+  const parseVersion = (value) => {
+    const parts = String(value).replace(/^v/i, "").split(".").map((n) => parseInt(n, 10) || 0);
+    return [parts[0] || 0, parts[1] || 0, parts[2] || 0];
+  };
+
+  const isNewer = (remote, local) => {
+    const a = parseVersion(remote);
+    const b = parseVersion(local);
+    for (let i = 0; i < 3; i += 1) {
+      if (a[i] !== b[i]) return a[i] > b[i];
+    }
+    return false;
+  };
+
+  const checkForUpdate = async () => {
+    const t = strings();
+    setUpdateState("busy", t.updateBusy);
+
+    try {
+      const response = await fetch(UPDATE_URL, { cache: "no-store" });
+      if (!response.ok) throw new Error("http " + response.status);
+      const text = await response.text();
+      const match = /<updatecheck[^>]*\sversion='([^']+)'/.exec(text);
+      if (!match) throw new Error("no version in manifest");
+
+      const remote = match[1];
+      if (isNewer(remote, MANIFEST.version)) {
+        setUpdateState("available", t.updateAvailable("v" + remote));
+        return;
+      }
+      setUpdateState("current", t.updateCurrent);
+    } catch (_) {
+      setUpdateState("failed", t.updateFailed);
+    }
+  };
+
+  nodes.update.addEventListener("click", () => {
+    if (nodes.update.dataset.state === "busy") return;
+    if (nodes.update.dataset.state === "available") {
+      const url = MANIFEST.homepage_url + "/releases/latest";
+      chrome.tabs.create({ url });
+      return;
+    }
+    checkForUpdate();
   });
 
   nodes.repo.addEventListener("click", () => {
