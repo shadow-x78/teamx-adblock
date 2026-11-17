@@ -1,4 +1,5 @@
-// TeamX - AdBlock (MIT) — popup
+// TeamX - AdBlock (MIT)
+// https://github.com/shadow-x78/teamx-adblock
 
 (() => {
   "use strict";
@@ -7,11 +8,8 @@
   const { storage, siteHost, dayKey, coerceEnabled } = TeamXContract;
   const { keys, defaults } = storage;
 
-  // The manifest owns the ruleset id, so read it there instead of restating it.
   const RULESET_ID = MANIFEST.declarative_net_request.rule_resources[0].id;
 
-  // Tabs are filtered through the contract's host rule rather than repeating
-  // the manifest's match patterns here.
   const onSite = (tab) => {
     try {
       return new URL(tab.url).hostname === siteHost || new URL(tab.url).hostname.endsWith("." + siteHost);
@@ -119,9 +117,6 @@
     renderCounter();
   };
 
-  // Returns whether the ruleset now matches `enabled`. The caller decides what
-  // to show; a silent failure would let the panel claim "Active" while network
-  // blocking is off.
   const rulesetIsOn = async () => {
     try {
       return (await chrome.declarativeNetRequest.getEnabledRulesets()).includes(RULESET_ID);
@@ -154,22 +149,18 @@
     try {
       await chrome.storage.local.set({ [keys.enabled]: state.enabled });
 
-      // If the ruleset could not be switched, put the control back where it was so
-      // the panel never claims protection it does not have.
       if (!(await setRulesetEnabled(state.enabled))) {
         state.enabled = !state.enabled;
         await chrome.storage.local.set({ [keys.enabled]: state.enabled });
         render();
       }
 
-      // Reload open site tabs so the page-context defenses are (un)installed.
       const tabs = await chrome.tabs.query({});
       for (const tab of tabs) {
         if (tab.id !== undefined && onSite(tab)) chrome.tabs.reload(tab.id);
       }
     } catch (_) {
-      // The extension context can be invalidated while the panel is open; the
-      // switch must never stay disabled with no way to interact.
+
     } finally {
       nodes.toggle.disabled = false;
     }
@@ -196,8 +187,6 @@
 
   nodes.version.textContent = `v${MANIFEST.version}`;
 
-  // Read the whole state through the contract's key/default table so the popup
-  // and the bridge can never disagree about a key name or a default.
   const query = () => ({
     [keys.lang]: defaults.lang,
     [keys.enabled]: defaults.enabled,
@@ -223,13 +212,6 @@
     applyLanguage();
     render();
 
-    // Heal a ruleset that drifted from the stored state. If it will not follow
-    // the stored intent, adopt what it actually is *and persist that*, because
-    // every later storage read (each counter flush) re-reads `enabled` and would
-    // otherwise flip the panel back to the state the ruleset is not in.
-    //
-    // The switch stays disabled until this settles, so a click cannot race the
-    // heal and be overridden by it (or override the toggle's own revert).
     setRulesetEnabled(state.enabled)
       .then(async (healed) => {
         if (healed) return;
@@ -244,8 +226,6 @@
       });
   });
 
-  // Live updates while the popup stays open. Re-reading the whole state keeps
-  // one path for "something changed" instead of one branch per key.
   chrome.storage.onChanged.addListener((changes, area) => {
     if (area !== "local") return;
     if (!Object.keys(keys).some((name) => changes[keys[name]])) return;
