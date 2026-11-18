@@ -127,21 +127,14 @@
         callback();
         return;
       }
-      chrome.scripting
-        .executeScript({
-          target: { tabId: tab.id },
-          args: [TeamXContract.attrs.blocked],
-          func: (blockedAttr) => {
-            const root = document.documentElement;
-            return root ? parseInt(root.getAttribute(blockedAttr) || "0", 10) || 0 : 0;
-          }
-        })
-        .then((results) => {
-          const value = results && results[0] ? results[0].result : 0;
-          state.pageBlocked = Number(value) || 0;
-          callback();
-        })
-        .catch(() => callback());
+      chrome.tabs.sendMessage(tab.id, { type: TeamXContract.messages.count }, (response) => {
+        if (chrome.runtime.lastError || !response) {
+          state.pageBlocked = 0;
+        } else {
+          state.pageBlocked = Number(response.count) || 0;
+        }
+        callback();
+      });
     });
   };
 

@@ -12,6 +12,10 @@ const TeamXContract = (() => {
 
   const stateValues = Object.freeze({ on: "1", off: "0" });
 
+  const messages = Object.freeze({
+    count: "teamx:count"
+  });
+
   const storage = Object.freeze({
     keys: Object.freeze({
       enabled: "enabled",
@@ -83,6 +87,7 @@ const TeamXContract = (() => {
     Object.freeze({
       attrs,
       stateValues,
+      messages,
       noticeMarkers,
       probe,
       overlay: {
@@ -102,6 +107,7 @@ const TeamXContract = (() => {
   return Object.freeze({
     attrs,
     stateValues,
+    messages,
     storage,
     timing,
     siteHost,

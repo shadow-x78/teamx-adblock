@@ -4,7 +4,7 @@
 (() => {
   "use strict";
 
-  const { attrs, stateValues, storage, coerceEnabled, handoff } = TeamXContract;
+  const { attrs, stateValues, messages, storage, coerceEnabled, handoff } = TeamXContract;
   const { keys, defaults } = storage;
 
   const root = document.documentElement;
@@ -36,6 +36,15 @@
     chrome.storage.onChanged.addListener((changes, area) => {
       if (area !== "local" || !changes[keys.enabled]) return;
       publish(coerceEnabled(changes[keys.enabled].newValue));
+    });
+  } catch (_) {}
+
+  try {
+    chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+      if (!message || message.type !== messages.count) return false;
+      const value = parseInt(root.getAttribute(attrs.blocked) || "0", 10) || 0;
+      sendResponse({ count: value });
+      return false;
     });
   } catch (_) {}
 
