@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.7.1] - 2026-11-19
+
+### Changed
+- refactor: drop the `scripting` permission. The panel used it only to read one
+  attribute from the active tab; the isolated-world bridge now answers a
+  `teamx:count` message instead, so the extension asks for one fewer permission
+  and the counter behaves the same.
+- docs: record that the CRX signing key stays outside git. It is ignored by name
+  and by extension, has never been committed, and the release workflow fails if a
+  key file becomes tracked.
+- Version bumped to 1.7.1 across `manifest.json`, `updates.xml`, and the
+  documentation badges.
+
 ## [v1.7.0] - 2026-11-19
 
 ### Changed

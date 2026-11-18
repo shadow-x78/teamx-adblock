@@ -2,7 +2,7 @@
 
 # البنية البرمجية والمعمارية - TeamX - AdBlock
 
-[![Version](https://img.shields.io/badge/version-1.7.0-2563eb?style=for-the-badge&logo=semver)](../CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.7.1-2563eb?style=for-the-badge&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=for-the-badge)](../LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=for-the-badge&logo=googlechrome)
 ![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Chromium-9333ea?style=for-the-badge&logo=googlechrome)
@@ -125,7 +125,9 @@ flowchart TD
 
 العدّاد يخصّ الصفحة التي أنتجته: يحتفظ `content.js` به على
 `<html data-teamx-blocked>`، فكل تحميل يبدأ من صفر ولا يتراكم عند إعادة التحميل.
-تقرأ اللوحة هذه السمة من التبويب النشط، وفقط عندما يكون ذلك التبويب هو الموقع.
+تطلب اللوحة قيمته من جسر العالم المعزول عبر رسالة `teamx:count`، وفقط عندما
+يكون التبويب النشط هو الموقع؛ ولا حاجة لصلاحية `scripting` لأن الجسر يعمل على
+الصفحة أصلًا.
 
 `background.js` هو عامل الخدمة: يفعّل أيقونة شريط الأدوات على
 `olympustaff.com` ويعطّلها في كل تبويب آخر، فتبقى الأيقونة باهتة ولا يمكن

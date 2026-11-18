@@ -2,7 +2,7 @@
 
 # Security Policy - TeamX - AdBlock
 
-[![Version](https://img.shields.io/badge/version-1.7.0-2563eb?style=for-the-badge&logo=semver)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.7.1-2563eb?style=for-the-badge&logo=semver)](CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=for-the-badge)](LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=for-the-badge&logo=googlechrome)
 ![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Chromium-9333ea?style=for-the-badge&logo=googlechrome)
@@ -59,6 +59,8 @@ Please include:
 ## Trust Boundaries
 
 - **Execution Context:** The extension runs in `MAIN` world at `document_start` to intercept `window.open`. It does not store user data, transmit network telemetry, or inspect credentials.
+- **Signing Key:** the CRX private key is never committed. It is ignored by name (`TeamX-AdsBlock.pem`) and by extension (`.pem`, `.key`, `.p12`, `.pfx`), CI reads it from the `CRX_PRIVATE_KEY` secret, and the release workflow fails if a key file becomes tracked. A local copy inside the working tree is ignored by git and must never be pushed.
+
 - **Auto-Updates:** Chromium verifies every `.crx` update against the extension's public key; the extension ID `cnefeiflkeegmadihlfffchlmnmfedmd` is derived from that key, so a package signed with a different key is rejected. The Firefox package updates through `browser_specific_settings.gecko.update_url` and must carry a valid Mozilla signature when distributed through AMO.
 
 ---

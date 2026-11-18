@@ -2,7 +2,7 @@
 
 # Architecture - TeamX - AdBlock
 
-[![Version](https://img.shields.io/badge/version-1.7.0-2563eb?style=for-the-badge&logo=semver)](../CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.7.1-2563eb?style=for-the-badge&logo=semver)](../CHANGELOG.md)
 [![License](https://img.shields.io/badge/license-MIT-dc2626?style=for-the-badge)](../LICENSE)
 ![Manifest](https://img.shields.io/badge/manifest-v3-16a34a?style=for-the-badge&logo=googlechrome)
 ![Platform](https://img.shields.io/badge/platform-Chrome%20%7C%20Chromium-9333ea?style=for-the-badge&logo=googlechrome)
@@ -125,8 +125,9 @@ so both preferences survive browser restarts.
 
 The counter belongs to the page that produced it: `content.js` keeps it on
 `<html data-teamx-blocked>`, so every load starts at zero and a reload never
-accumulates. The panel reads that attribute from the active tab, and only when
-that tab is the site.
+accumulates. The panel asks the isolated-world bridge for it over a
+`teamx:count` message, and only when the active tab is the site; no `scripting`
+permission is needed because the bridge already runs on the page.
 
 `background.js` is the service worker. It enables the toolbar action on
 `olympustaff.com` and disables it on every other tab, so the icon is greyed out
