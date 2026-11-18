@@ -12,7 +12,8 @@
 
   const onSite = (tab) => {
     try {
-      return new URL(tab.url).hostname === siteHost || new URL(tab.url).hostname.endsWith("." + siteHost);
+      const host = new URL(tab.url).hostname;
+      return host === siteHost || host.endsWith("." + siteHost);
     } catch (_) {
       return false;
     }
@@ -121,16 +122,18 @@
   const readPageCounter = (callback) => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       const tab = tabs && tabs[0];
-      if (chrome.runtime.lastError || !tab || tab.id === undefined) {
+      if (chrome.runtime.lastError || !tab || tab.id === undefined || !onSite(tab)) {
+        state.pageBlocked = 0;
         callback();
         return;
       }
       chrome.scripting
         .executeScript({
           target: { tabId: tab.id },
-          func: () => {
+          args: [TeamXContract.attrs.blocked],
+          func: (blockedAttr) => {
             const root = document.documentElement;
-            return root ? parseInt(root.getAttribute("data-teamx-blocked") || "0", 10) || 0 : 0;
+            return root ? parseInt(root.getAttribute(blockedAttr) || "0", 10) || 0 : 0;
           }
         })
         .then((results) => {
@@ -191,7 +194,6 @@
         if (tab.id !== undefined && onSite(tab)) chrome.tabs.reload(tab.id);
       }
     } catch (_) {
-
     } finally {
       nodes.toggle.disabled = false;
     }
