@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.7.0] - 2026-11-19
+
+### Changed
+- fix: stop the toolbar panel from polling the active tab every second. It
+  injected a script on every tab, including tabs the host permission does not
+  cover, where the call always rejected; it now reads only the site tab.
+- fix: take the counter's attribute name from the shared contract instead of
+  typing it again in the panel, so a rename cannot leave a silent copy behind.
+- fix: drop the tab-removed listener in the service worker. It enabled the
+  action for a tab id that no longer existed, so every call rejected.
+- fix: name both null and undefined in the body-wipe guard instead of relying on
+  loose equality, which is one keystroke from letting `undefined` through.
+- fix: parse the active tab's URL once when deciding whether it is the site.
+- chore: remove the Chrome-generated `_metadata/` cache from the working tree; it
+  was already ignored.
+- docs: add `background.js` to both project trees and describe the service worker
+  and the per-page counter in the architecture guides, which still documented a
+  stored counter with a daily row.
+- Version bumped to 1.7.0 across `manifest.json`, `updates.xml`, and the
+  documentation badges.
+
 ## [v1.6.2] - 2026-11-18
 
 ### Changed
