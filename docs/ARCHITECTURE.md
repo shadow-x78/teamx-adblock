@@ -47,9 +47,10 @@ flowchart TD
     E --> J[Report a healthy size for the 468x60 probe]
     E --> K[Refuse any wipe of document.body]
     E --> L[MutationObserver purges dynamic ad containers]
-    L --> M[Each removed ad increments the blocked counter]
-    M --> N[bridge.js batches deltas into chrome.storage.local]
-    N --> O[popup.html renders switch, counter, repo, copyright, version]
+    L --> M[Each removed ad increments the page counter on html]
+    A --> P[background.js enables the action on the site, disables it elsewhere]
+    M --> O[popup.html reads the active tab and renders switch, counter, repo, copyright, version]
+    P --> O
 ```
 
 ---
@@ -104,8 +105,7 @@ its own beyond reading storage:
 | Element | Source |
 | --- | --- |
 | Protection switch | `chrome.storage.local.enabled` |
-| Blocked ads (total) | `chrome.storage.local.blockedTotal` |
-| Blocked ads (today) | `blockedToday` + `blockedDay` |
+| Blocked ads | `<html data-teamx-blocked>` of the active tab |
 | Language | `chrome.storage.local.lang` (`ar` default, `en` optional) |
 | Repository link | `manifest.homepage_url` |
 | Version | `chrome.runtime.getManifest().version` |
@@ -123,10 +123,15 @@ the switch thumb along the new writing direction, and persists `lang` so the
 next opening keeps the choice. The protection state is persisted the same way,
 so both preferences survive browser restarts.
 
-The counter is produced in the MAIN world: `content.js` keeps a running total on
-`<html data-teamx-blocked>` and dispatches a `teamx:blocked` event for each
-removed ad. `bridge.js` (isolated world) reads that attribute and batches the
-delta into storage, keeping writes to roughly one per 400 ms.
+The counter belongs to the page that produced it: `content.js` keeps it on
+`<html data-teamx-blocked>`, so every load starts at zero and a reload never
+accumulates. The panel reads that attribute from the active tab, and only when
+that tab is the site.
+
+`background.js` is the service worker. It enables the toolbar action on
+`olympustaff.com` and disables it on every other tab, so the icon is greyed out
+and cannot be clicked away from the site, and it re-syncs on tab activation,
+navigation, and window focus.
 
 ---
 
