@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.6.1] - 2026-11-18
+
+### Changed
+- fix: show one direct counter instead of a total plus a separate "today" line.
+  The daily figure, its storage keys, and the day rollover are gone; the panel
+  shows `blockedTotal` and updates as ads are removed.
+- fix: drop the black plate behind the popup logo. The icon is already
+  transparent at the edges, so the background only added a dark square.
+
 ## [v1.6.0] - 2026-11-18
 
 ### Added
