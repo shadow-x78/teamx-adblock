@@ -46,10 +46,6 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.url || changeInfo.status === "complete") syncTab(tabId, tab.url);
 });
 
-chrome.tabs.onRemoved.addListener((tabId) => {
-  chrome.action.enable(tabId).catch(() => {});
-});
-
 chrome.windows.onFocusChanged.addListener((windowId) => {
   if (windowId === chrome.windows.WINDOW_ID_NONE) return;
   chrome.tabs
