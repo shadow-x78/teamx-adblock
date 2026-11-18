@@ -128,7 +128,8 @@
     const doc = document;
 
     const isPageRoot = (el) => el === doc.body || el === doc.documentElement;
-    const isWipe = (value) => value == null || String(value).trim() === "";
+    const isWipe = (value) =>
+      value === null || value === undefined || String(value).trim() === "";
 
     step(() => {
       const proto = window.Element && window.Element.prototype;
