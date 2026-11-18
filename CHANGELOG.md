@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.6.2] - 2026-11-18
+
+### Changed
+- fix: make the counter count the current page, not every page ever visited. The
+  number lived in `chrome.storage.local` and each page added its removals to the
+  stored total, so reloading grew it without limit. The count now stays on the
+  page that produced it and starts at zero on every load, and the popup reads the
+  active tab's count instead of storage.
+- chore: drop the storage key, the `teamx:blocked` event, and the batch timer that
+  existed only to persist that running total.
+
 ## [v1.6.1] - 2026-11-18
 
 ### Changed
