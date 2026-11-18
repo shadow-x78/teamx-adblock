@@ -192,6 +192,7 @@ teamx-adblock/
 ├── shared.js                    # Shared contract: attributes, storage keys, patterns
 ├── bridge.js                    # Isolated-world bridge: state sync & blocked counter
 ├── content.js                   # Interception logic (MAIN execution world)
+├── background.js                # Service worker: enables the action on the site only
 ├── popup.html                   # Toolbar panel markup
 ├── popup.css                    # Toolbar panel styling
 ├── popup.js                     # Toolbar panel logic: switch, counter, language
