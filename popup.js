@@ -84,7 +84,7 @@
   const state = {
     lang: DEFAULT_LANG,
     enabled: defaults.enabled,
-    blockedTotal: defaults.blockedTotal
+    pageBlocked: 0
   };
 
   const applyLanguage = () => {
@@ -115,7 +115,31 @@
   };
 
   const renderCounter = () => {
-    nodes.total.textContent = formatCount(state.blockedTotal);
+    nodes.total.textContent = formatCount(state.pageBlocked);
+  };
+
+  const readPageCounter = (callback) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      const tab = tabs && tabs[0];
+      if (chrome.runtime.lastError || !tab || tab.id === undefined) {
+        callback();
+        return;
+      }
+      chrome.scripting
+        .executeScript({
+          target: { tabId: tab.id },
+          func: () => {
+            const root = document.documentElement;
+            return root ? parseInt(root.getAttribute("data-teamx-blocked") || "0", 10) || 0 : 0;
+          }
+        })
+        .then((results) => {
+          const value = results && results[0] ? results[0].result : 0;
+          state.pageBlocked = Number(value) || 0;
+          callback();
+        })
+        .catch(() => callback());
+    });
   };
 
   const render = () => {
@@ -250,8 +274,7 @@
 
   const query = () => ({
     [keys.lang]: defaults.lang,
-    [keys.enabled]: defaults.enabled,
-    [keys.total]: defaults.blockedTotal
+    [keys.enabled]: defaults.enabled
   });
 
   const readState = (callback) => {
@@ -259,7 +282,6 @@
       if (!chrome.runtime.lastError && stored) {
         if (STRINGS[stored[keys.lang]]) state.lang = stored[keys.lang];
         state.enabled = coerceEnabled(stored[keys.enabled]);
-        state.blockedTotal = stored[keys.total] || 0;
       }
       callback();
     });
@@ -268,6 +290,8 @@
   readState(() => {
     applyLanguage();
     render();
+
+    readPageCounter(() => renderCounter());
 
     setRulesetEnabled(state.enabled)
       .then(async (healed) => {
@@ -292,4 +316,10 @@
       render();
     });
   });
+
+  const counterTimer = setInterval(() => {
+    readPageCounter(() => renderCounter());
+  }, 1000);
+
+  window.addEventListener("pagehide", () => clearInterval(counterTimer));
 })();

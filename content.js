@@ -82,7 +82,7 @@
     return;
   }
 
-  const { attrs, stateValues, events, noticeMarkers, probe, timing, adSelectors } = contract;
+  const { attrs, stateValues, noticeMarkers, probe, timing, adSelectors } = contract;
   const { overlay, probeHostPattern, listenerPattern, trustedHosts } = contract;
   const isTrustedHost = (host) => {
     const name = String(host || "").toLowerCase();
@@ -399,7 +399,6 @@
       if (!root) return;
       const current = parseInt(root.getAttribute(attrs.blocked) || "0", 10) || 0;
       root.setAttribute(attrs.blocked, String(current + n));
-      document.dispatchEvent(new Event(events.blocked));
     } catch (_) {}
   };
 

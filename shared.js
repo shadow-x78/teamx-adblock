@@ -12,19 +12,13 @@ const TeamXContract = (() => {
 
   const stateValues = Object.freeze({ on: "1", off: "0" });
 
-  const events = Object.freeze({
-    blocked: "teamx:blocked"
-  });
-
   const storage = Object.freeze({
     keys: Object.freeze({
       enabled: "enabled",
-      total: "blockedTotal",
       lang: "lang"
     }),
     defaults: Object.freeze({
       enabled: true,
-      blockedTotal: 0,
       lang: "ar"
     })
   });
@@ -52,8 +46,7 @@ const TeamXContract = (() => {
 
   const timing = Object.freeze({
     stateDeadlineMs: 150,
-    fakeImageDelayMs: 10,
-    flushBatchMs: 400
+    fakeImageDelayMs: 10
   });
 
   const adSelectors = Object.freeze([
@@ -90,7 +83,6 @@ const TeamXContract = (() => {
     Object.freeze({
       attrs,
       stateValues,
-      events,
       noticeMarkers,
       probe,
       overlay: {
@@ -110,7 +102,6 @@ const TeamXContract = (() => {
   return Object.freeze({
     attrs,
     stateValues,
-    events,
     storage,
     timing,
     siteHost,
