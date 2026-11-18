@@ -4,7 +4,7 @@
 (() => {
   "use strict";
 
-  const { attrs, stateValues, events, storage, timing, dayKey, coerceEnabled, handoff } = TeamXContract;
+  const { attrs, stateValues, events, storage, timing, coerceEnabled, handoff } = TeamXContract;
   const { keys, defaults } = storage;
 
   const root = document.documentElement;
@@ -64,25 +64,15 @@
     };
 
     try {
-      const query = {
-        [keys.total]: defaults.blockedTotal,
-        [keys.today]: defaults.blockedToday,
-        [keys.day]: defaults.blockedDay
-      };
+      const query = { [keys.total]: defaults.blockedTotal };
       chrome.storage.local.get(query, (state) => {
         try {
           if (chrome.runtime.lastError) {
             done(false);
             return;
           }
-          const today = dayKey();
-          const todayBase = state[keys.day] === today ? state[keys.today] || 0 : 0;
           chrome.storage.local.set(
-            {
-              [keys.total]: (state[keys.total] || 0) + delta,
-              [keys.today]: todayBase + delta,
-              [keys.day]: today
-            },
+            { [keys.total]: (state[keys.total] || 0) + delta },
             () => {
               try {
                 done(!chrome.runtime.lastError);

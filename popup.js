@@ -5,7 +5,7 @@
   "use strict";
 
   const MANIFEST = chrome.runtime.getManifest();
-  const { storage, siteHost, dayKey, coerceEnabled } = TeamXContract;
+  const { storage, siteHost, coerceEnabled } = TeamXContract;
   const { keys, defaults } = storage;
 
   const RULESET_ID = MANIFEST.declarative_net_request.rule_resources[0].id;
@@ -26,7 +26,6 @@
       on: "نشط",
       off: "متوقف",
       caption: "إعلان محجوب",
-      today: (n) => `اليوم: ${n}`,
       control: "الحماية",
       hintOn: (host) => `تحجب الإعلانات على ${host}`,
       hintOff: "معطّلة — ستظهر الإعلانات",
@@ -45,7 +44,6 @@
       on: "Active",
       off: "Paused",
       caption: "ads blocked",
-      today: (n) => `Today: ${n}`,
       control: "Protection",
       hintOn: (host) => `Blocking ads on ${host}`,
       hintOff: "Paused — ads will show",
@@ -67,7 +65,6 @@
     statusText: $("statusText"),
     total: $("blockedTotal"),
     caption: $("blockedCaption"),
-    today: $("blockedToday"),
     toggle: $("toggle"),
     controlTitle: $("controlTitle"),
     hint: $("controlHint"),
@@ -87,9 +84,7 @@
   const state = {
     lang: DEFAULT_LANG,
     enabled: defaults.enabled,
-    blockedTotal: defaults.blockedTotal,
-    blockedToday: defaults.blockedToday,
-    blockedDay: defaults.blockedDay
+    blockedTotal: defaults.blockedTotal
   };
 
   const applyLanguage = () => {
@@ -120,10 +115,7 @@
   };
 
   const renderCounter = () => {
-    const t = strings();
     nodes.total.textContent = formatCount(state.blockedTotal);
-    const todayCount = state.blockedDay === dayKey() ? state.blockedToday || 0 : 0;
-    nodes.today.textContent = t.today(formatCount(todayCount));
   };
 
   const render = () => {
@@ -259,9 +251,7 @@
   const query = () => ({
     [keys.lang]: defaults.lang,
     [keys.enabled]: defaults.enabled,
-    [keys.total]: defaults.blockedTotal,
-    [keys.today]: defaults.blockedToday,
-    [keys.day]: defaults.blockedDay
+    [keys.total]: defaults.blockedTotal
   });
 
   const readState = (callback) => {
@@ -270,8 +260,6 @@
         if (STRINGS[stored[keys.lang]]) state.lang = stored[keys.lang];
         state.enabled = coerceEnabled(stored[keys.enabled]);
         state.blockedTotal = stored[keys.total] || 0;
-        state.blockedToday = stored[keys.today] || 0;
-        state.blockedDay = stored[keys.day] || "";
       }
       callback();
     });

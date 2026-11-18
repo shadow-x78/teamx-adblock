@@ -20,15 +20,11 @@ const TeamXContract = (() => {
     keys: Object.freeze({
       enabled: "enabled",
       total: "blockedTotal",
-      today: "blockedToday",
-      day: "blockedDay",
       lang: "lang"
     }),
     defaults: Object.freeze({
       enabled: true,
       blockedTotal: 0,
-      blockedToday: 0,
-      blockedDay: "",
       lang: "ar"
     })
   });
@@ -90,12 +86,6 @@ const TeamXContract = (() => {
 
   const coerceEnabled = (value) => value !== false;
 
-  const dayKey = (date = new Date()) => {
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    return `${date.getFullYear()}-${month}-${day}`;
-  };
-
   const handoff = () =>
     Object.freeze({
       attrs,
@@ -124,7 +114,6 @@ const TeamXContract = (() => {
     storage,
     timing,
     siteHost,
-    dayKey,
     coerceEnabled,
     handoff
   });
